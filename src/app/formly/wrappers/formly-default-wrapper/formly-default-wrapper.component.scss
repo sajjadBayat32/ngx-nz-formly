@@ -1,0 +1,15 @@
+.error-message {
+  left: 0;
+  gap: 6px;
+  bottom: -4px;
+  display: flex;
+  color: #f10232;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    margin: 0 !important;
+  }
+}

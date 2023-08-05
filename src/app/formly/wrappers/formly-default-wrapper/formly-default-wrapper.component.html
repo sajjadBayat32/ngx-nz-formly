@@ -1,0 +1,12 @@
+<div class="position-relative py-3">
+  <ng-container #fieldComponent></ng-container>
+  <div
+    class="error-message"
+    [ngStyle]="{ 'margin-left': props.labelWidth }"
+    *ngIf="formControl.touched && formControl.invalid"
+    [@myAnimation]="formControl.touched && formControl.invalid"
+  >
+    <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+    <formly-validation-message [field]="field"></formly-validation-message>
+  </div>
+</div>

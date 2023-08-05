@@ -1,0 +1,15 @@
+.field-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: initial;
+  }
+}
+
+label {
+  font-weight: bold;
+  position: relative;
+  padding-right: 5px;
+}
