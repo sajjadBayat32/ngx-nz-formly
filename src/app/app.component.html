@@ -1,0 +1,17 @@
+<div class="container mt-2">
+  <div>
+    <strong class="me-2">New York City:</strong>
+    {{ now | date : "MM/dd/yyyy hh:mm a" }}
+  </div>
+
+  <div class="formly mt-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <formly-form
+        [form]="form"
+        [fields]="fields"
+        [model]="model"
+      ></formly-form>
+      <!--      <button nz-button type="submit">Submit</button>-->
+    </form>
+  </div>
+</div>
