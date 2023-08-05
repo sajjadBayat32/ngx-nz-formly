@@ -22,7 +22,7 @@
     "@ngx-formly/ng-zorro-antd": "6",
     "bootstrap": "^5.2.3",
     "ng-zorro-antd": "^15.1.0",
-    "prettier": "^2.8.4",
+    "prettier": "^3.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

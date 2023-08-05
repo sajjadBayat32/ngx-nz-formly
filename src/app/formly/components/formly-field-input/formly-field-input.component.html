@@ -6,10 +6,20 @@
   [nzSize]="props.nzSize || 'default'"
 >
   <input
+    #input
     nz-input
     [formControl]="formControl"
     [placeholder]="props.placeholder"
     [nzBorderless]="props.nzBorderless"
+    [type]="props.isPassword ? 'password' : 'text'"
     [nzStatus]="formControl.touched && formControl.invalid ? 'error' : ''"
   />
+  <div class="show-password">
+    <span
+      nz-icon
+      nzTheme="outline"
+      (click)="changeShowPassword(input)"
+      [nzType]="showPassword(input) ? 'eye-invisible' : 'eye'"
+    ></span>
+  </div>
 </nz-input-group>

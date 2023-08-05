@@ -1,4 +1,17 @@
+nz-input-group {
+  position: relative;
+}
+
 input {
   border-radius: 2px !important;
   box-shadow: none !important;
+}
+
+.show-password {
+  top: 2px;
+  z-index: 5;
+  right: 10px;
+  opacity: 0.6;
+  cursor: pointer;
+  position: absolute;
 }
