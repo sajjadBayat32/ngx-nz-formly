@@ -23,25 +23,16 @@ export class AppComponent implements OnInit {
       type: "input",
       name: "Email",
       props: {
-        label: "Email address",
-        placeholder: "e.x. sajjad@gmail.com",
-        labelWidth: "120px",
         required: true,
-        // minLength: 5,
-        // maxLength: 15,
-        isPassword: true,
+        labelWidth: "120px",
+        label: "Email address",
         fieldWrapperClass: "flex-auto",
+        placeholder: "e.x. sajjad@gmail.com",
+        change: data => console.log(data),
       },
       validators: {
-        validation: ["password"],
+        validation: ["email"],
       },
-      // validators: {
-      //   minLength: {
-      //     expression: (c: AbstractControl, f: FormlyFieldConfig) =>
-      //       minLengthValidator(c, f),
-      //     message: (err: any, f: FormlyFieldConfig) => minLengthMessage(f),
-      //   },
-      // },
     },
   ];
 
