@@ -15,7 +15,7 @@ export function minLengthValidator(
 }
 
 export function minLengthMessage(field: FormlyFieldConfig) {
-  return `${field.name || "Field"} must be at least ${field.props?.minLength} characters`;
+  return `Field must be at least ${field.props?.minLength} characters`;
 }
 
 export function maxLengthValidator(
@@ -28,7 +28,7 @@ export function maxLengthValidator(
 }
 
 export function maxLengthMessage(field: FormlyFieldConfig) {
-  return `${field.name || "Field"} must be at most ${field.props?.maxLength} characters`;
+  return `Field must be at most ${field.props?.maxLength} characters`;
 }
 
 export function emailValidator(control: AbstractControl): validatorNames | null {

@@ -1,6 +1,6 @@
-import { FormlyFieldProps } from '@ngx-formly/core/lib/models/fieldconfig';
-import { TemplateRef } from '@angular/core';
-import { NzSizeLDSType, NzStatus } from 'ng-zorro-antd/core/types';
+import { FormlyFieldProps } from "@ngx-formly/core/lib/models/fieldconfig";
+import { TemplateRef } from "@angular/core";
+import { NzSizeLDSType, NzStatus } from "ng-zorro-antd/core/types";
 
 export type FormlyCustomFieldProps = FormlyInputProps;
 
@@ -13,10 +13,12 @@ export interface FormlyInputProps extends FormlyFieldProps {
   nzSize?: NzSizeLDSType | undefined;
   nzStatus?: NzStatus | undefined;
   // custom props
+  styles?: {
+    labelClass?: string | undefined;
+    fieldClass?: string | undefined;
+    labelWidth?: string | undefined;
+    wrapperClass?: string | undefined;
+  };
   isPassword?: boolean | undefined;
-  labelPosition?: 'Top' | 'Left';
-  labelWidth?: string | undefined;
-  labelClass?: string | undefined;
-  fieldWrapperClass?: string | undefined;
-  fieldClass?: string | undefined;
+  labelPosition?: "Top" | "Left";
 }

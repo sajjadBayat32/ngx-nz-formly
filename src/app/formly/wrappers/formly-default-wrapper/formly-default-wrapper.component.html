@@ -1,8 +1,8 @@
-<div class="position-relative py-3" *ngIf="!props.hidden">
+<div class="position-relative" [classList]="props.styles?.wrapperClass" *ngIf="!props.hidden">
   <ng-container #fieldComponent></ng-container>
   <div
     class="error-message"
-    [ngStyle]="{ 'margin-left': props.labelWidth }"
+    [ngStyle]="{ 'margin-left': props.styles?.labelWidth }"
     *ngIf="formControl.touched && formControl.invalid"
     [@myAnimation]="formControl.touched && formControl.invalid"
   >

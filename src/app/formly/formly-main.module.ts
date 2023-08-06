@@ -28,7 +28,6 @@ export const FormlyForRoot: ConfigOption = {
         props: {
           nzSize: "default",
           labelPosition: "Left",
-          labelWidth: "auto",
         },
       },
     },

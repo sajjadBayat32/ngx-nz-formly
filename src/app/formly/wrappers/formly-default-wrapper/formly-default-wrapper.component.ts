@@ -10,12 +10,12 @@ import {FormlyCustomFieldProps} from '../../formly-props.model';
   animations: [
     trigger('myAnimation', [
       transition(':enter', [
-        style({bottom: '2px', opacity: 0}),
-        animate('100ms', style({bottom: '-2px', opacity: 1})),
+        style({bottom: '4px', opacity: 0}),
+        animate('100ms', style({bottom: '0px', opacity: 1})),
       ]),
       transition(':leave', [
-        style({bottom: '-2px', opacity: 1}),
-        animate('100ms', style({bottom: '2px', opacity: 0})),
+        style({bottom: '0px', opacity: 1}),
+        animate('100ms', style({bottom: '4px', opacity: 0})),
       ]),
     ]),
   ],

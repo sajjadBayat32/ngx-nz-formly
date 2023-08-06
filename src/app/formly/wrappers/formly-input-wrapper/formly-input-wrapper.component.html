@@ -5,14 +5,12 @@
 
 <div class="top-label" *ngIf="props.labelPosition == 'Left'">
   <div class="field-wrapper">
-    <div [ngStyle]="{ width: props.labelWidth }">
-      <label [classList]="props.labelClass">{{ props.label }}:</label>
+    <div [ngStyle]="{ width: props.styles?.labelWidth }">
+      <label [classList]="props.styles?.labelClass">{{ props.label }}:</label>
     </div>
 
     <div class="flex-grow-1">
-      <div [classList]="props.fieldWrapperClass">
-        <ng-container #fieldComponent></ng-container>
-      </div>
+      <ng-container #fieldComponent></ng-container>
     </div>
   </div>
 </div>
