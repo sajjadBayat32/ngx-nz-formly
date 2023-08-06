@@ -6,7 +6,6 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { DATE_PIPE_DEFAULT_OPTIONS, registerLocaleData } from '@angular/common';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
 import { FormlyModule } from '@ngx-formly/core';
@@ -22,7 +21,6 @@ registerLocaleData(en);
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormlyModule.forRoot(FormlyForRoot),
     FormlyNgZorroAntdModule,
     BrowserAnimationsModule,

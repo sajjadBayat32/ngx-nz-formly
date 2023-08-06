@@ -1,4 +1,4 @@
-<div class="position-relative py-3">
+<div class="position-relative py-3" *ngIf="!props.hidden">
   <ng-container #fieldComponent></ng-container>
   <div
     class="error-message"

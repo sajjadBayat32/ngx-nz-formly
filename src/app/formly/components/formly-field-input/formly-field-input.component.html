@@ -14,7 +14,7 @@
     [type]="props.isPassword ? 'password' : 'text'"
     [nzStatus]="formControl.touched && formControl.invalid ? 'error' : ''"
   />
-  <div class="show-password">
+  <div class="show-password" *ngIf="props.isPassword">
     <span
       nz-icon
       nzTheme="outline"

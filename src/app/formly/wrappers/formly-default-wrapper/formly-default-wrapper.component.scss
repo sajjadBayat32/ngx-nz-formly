@@ -1,13 +1,18 @@
 .error-message {
   left: 0;
   gap: 6px;
-  bottom: -4px;
+  bottom: -2px;
   display: flex;
   color: #f10232;
   font-size: 12px;
   font-weight: 500;
-  position: absolute;
-  align-items: center;
+  position: relative;
+  align-items: flex-start;
+
+  span {
+    position: relative;
+    top: 4px;
+  }
 
   @media (max-width: 500px) {
     margin: 0 !important;
