@@ -1,4 +1,9 @@
-<div class="position-relative" [classList]="props.styles?.wrapperClass" *ngIf="!props.hidden">
+<div
+  class="position-relative"
+  [classList]="props.styles?.wrapperClass"
+  [id]="'wrapper-' + field.key"
+  *ngIf="!props.hidden"
+>
   <ng-container #fieldComponent></ng-container>
   <div
     class="error-message"

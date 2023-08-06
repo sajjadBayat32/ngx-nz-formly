@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { FormlyInputProps } from "../../formly-props.model";
-import { debounceTime, filter, fromEvent, map, Subject, takeUntil, tap } from "rxjs";
+import { debounceTime, fromEvent, map, Subject, takeUntil, tap } from "rxjs";
 
 @Component({
   selector: "app-formly-field-input",
