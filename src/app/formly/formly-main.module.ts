@@ -17,6 +17,7 @@ import {
   emailValidator,
   passwordValidator,
 } from "./formly-validators";
+import { NgxMaskModule } from "ngx-mask";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -86,6 +87,10 @@ export const FormlyForRoot: ConfigOption = {
       message:
         "Password should be at least 8 characters, including one capital letter, one number and one special character",
     },
+    {
+      name: "mask",
+      message: "Invalid data",
+    },
   ],
 };
 
@@ -102,6 +107,7 @@ export const FormlyForRoot: ConfigOption = {
     NzIconModule,
     ReactiveFormsModule,
     FormlyModule,
+    NgxMaskModule,
   ],
 })
 export class FormlyMainModule {}

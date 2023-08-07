@@ -46,6 +46,20 @@ export class AppComponent implements OnInit {
       },
     },
     {
+      key: "phoneNumber",
+      type: "input",
+      className: "flex-50 px-2",
+      props: {
+        label: "Phone No",
+        mask: "phone",
+        placeholder: "e.x. 9127403028",
+        styles: {
+          labelWidth: "100px",
+          wrapperClass: "mb-4",
+        },
+      },
+    },
+    {
       key: "email",
       type: "input",
       className: "flex-50 px-2",
@@ -69,7 +83,7 @@ export class AppComponent implements OnInit {
       className: "flex-50 px-2",
       props: {
         required: true,
-        isPassword: true,
+        type: "password",
         label: "Password",
         placeholder: "use complex one",
         styles: {

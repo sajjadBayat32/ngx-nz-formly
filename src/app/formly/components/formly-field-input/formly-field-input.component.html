@@ -8,14 +8,17 @@
   <input
       #input
       nz-input
-      [id]="'control-' + field.key"
+      [mask]="mask"
+      [type]="type"
+      [readonly]="props.readonly"
       [formControl]="formControl"
+      [id]="'control-' + field.key"
       [placeholder]="props.placeholder"
       [nzBorderless]="props.nzBorderless"
-      [type]="props.isPassword ? 'password' : 'text'"
+      [disabled]="props.disabled || false"
       [nzStatus]="formControl.touched && formControl.invalid ? 'error' : ''"
   />
-  <div class="show-password" *ngIf="props.isPassword">
+  <div class="show-password" *ngIf="props.type === 'password'">
     <span
       nz-icon
       nzTheme="outline"

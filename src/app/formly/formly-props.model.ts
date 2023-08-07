@@ -12,6 +12,7 @@ export interface FormlyInputProps extends FormlyFieldProps {
   nzSuffix?: string | TemplateRef<void> | undefined;
   nzSize?: NzSizeLDSType | undefined;
   nzStatus?: NzStatus | undefined;
+  mask?: string;
   // custom props
   styles?: {
     labelClass?: string | undefined;
@@ -19,6 +20,5 @@ export interface FormlyInputProps extends FormlyFieldProps {
     labelWidth?: string | undefined;
     wrapperClass?: string | undefined;
   };
-  isPassword?: boolean | undefined;
   labelPosition?: "Top" | "Left";
 }
