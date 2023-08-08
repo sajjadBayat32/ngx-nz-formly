@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { FormlyInputProps } from "../../formly-props.model";
 import { debounceTime, map, Subject, takeUntil, tap } from "rxjs";
@@ -19,11 +19,41 @@ export class FormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<FormlyInputProps>>
   implements AfterViewInit, OnDestroy
 {
+  mask: string = "";
   unSubscribeAll$ = new Subject<void>();
-  @ViewChild("input") inputElement: ElementRef | undefined;
 
   ngAfterViewInit() {
+    this.createInitState();
     this.onValueChange();
+  }
+
+  createInitState() {
+    if (this.props.mask === "phone") {
+      this.mask = DefaultPhoneMask.globalMask;
+      this.handlePhoneMask();
+    }
+  }
+
+  handlePhoneMask() {
+    this.formControl.valueChanges
+      .pipe(
+        takeUntil(this.unSubscribeAll$),
+        map(() => this.formControl.value),
+        tap((value: string) => {
+          if (value == "") {
+            // hint: without setTimeout we don't have Ctrl + A -> delete
+            setTimeout(() => {
+              this.mask = DefaultPhoneMask.globalMask;
+            });
+          } else {
+            let mask = this.findAppropriateMask(value);
+            if (mask && this.mask !== mask.globalMask) {
+              this.mask = mask.globalMask?.replace(/#|[1-9]/g, "0");
+            }
+          }
+        }),
+      )
+      .subscribe();
   }
 
   onValueChange() {
@@ -31,18 +61,6 @@ export class FormlyFieldInputComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         map(() => this.formControl.value),
-        tap((value: string) => {
-          if (this.props.mask) {
-            if (value == "") {
-              this.props.mask = DefaultPhoneMask.globalMask;
-            } else {
-              let mask = this.findAppropriateMask(value);
-              if (mask && this.props.mask !== mask.globalMask) {
-                this.props.mask = mask.globalMask?.replace(/#|[1-9]/g, "0");
-              }
-            }
-          }
-        }),
         debounceTime(300),
         tap((value: any) => {
           if (typeof this.props.change == "function") {
@@ -62,8 +80,8 @@ export class FormlyFieldInputComponent
   }
 
   exactEquality(str: string, prefix: string): boolean {
-    // replace function removes all characters except numbers to return clean numeric string
-    // index of convince us to match prefix on first index of input value
+    // hint: replace function removes all characters except numbers to return clean numeric string
+    // hint: index of convince us to match prefix on first index of input value
     let new_str = str.replace(/[^0-9.]/g, "");
     let new_prefix = prefix.replace(/[^0-9.]/g, "");
     return new_str.indexOf(new_prefix) == 0;
@@ -81,18 +99,20 @@ export class FormlyFieldInputComponent
     return input.type === "text";
   }
 
-  get mask(): string {
-    if (this.props.mask) {
-      if (this.props.mask == "phone") {
-        return <string>DefaultPhoneMask.globalMask;
-      }
-      return this.props.mask;
-    }
-    return "";
-  }
-
   get type() {
     return this.props.type ?? "text";
+  }
+
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
+  get status() {
+    return this.formControl.touched && this.formControl.invalid ? "error" : "";
+  }
+
+  get disabled() {
+    return this.props.disabled || false
   }
 
   ngOnDestroy() {

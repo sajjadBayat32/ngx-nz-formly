@@ -10,13 +10,13 @@
       nz-input
       [mask]="mask"
       [type]="type"
+      [id]="fieldID"
+      [nzStatus]="status"
+      [disabled]="disabled"
       [readonly]="props.readonly"
       [formControl]="formControl"
-      [id]="'control-' + field.key"
       [placeholder]="props.placeholder"
       [nzBorderless]="props.nzBorderless"
-      [disabled]="props.disabled || false"
-      [nzStatus]="formControl.touched && formControl.invalid ? 'error' : ''"
   />
   <div class="show-password" *ngIf="props.type === 'password'">
     <span

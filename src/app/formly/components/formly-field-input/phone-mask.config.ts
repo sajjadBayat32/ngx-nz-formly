@@ -1,8 +1,8 @@
 /**BR & CN DE EC has problem */
 export interface CountryCodeMask {
-  countryShortName?: string;
-  prefix?: string;
-  globalMask?: string;
+  countryShortName: string;
+  prefix: string;
+  globalMask: string;
 }
 
 export const CountryMasks2 = [
