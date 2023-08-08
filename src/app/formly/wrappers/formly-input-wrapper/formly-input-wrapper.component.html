@@ -1,12 +1,12 @@
 <div class="top-label" *ngIf="props.labelPosition == 'Top'">
-  <small>{{ props.label }}</small>
+  <ng-container *ngTemplateOutlet="Label"></ng-container>
   <ng-container #fieldComponent></ng-container>
 </div>
 
 <div class="top-label" *ngIf="props.labelPosition == 'Left'">
   <div class="field-wrapper">
-    <div [ngStyle]="{ width: props.styles?.labelWidth }">
-      <label [classList]="props.styles?.labelClass">{{ props.label }}:</label>
+    <div class="left-label" [ngStyle]="{ width: props.styles?.labelWidth }">
+      <ng-container *ngTemplateOutlet="Label"></ng-container>
     </div>
 
     <div class="flex-grow-1">
@@ -14,3 +14,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #Label>
+  <label [classList]="props.styles?.labelClass">
+    {{ props.label }}
+    <span class="colon" *ngIf="props.labelPosition == 'Left'">:</span>
+    <span class="required" *ngIf="props.required">*</span>
+  </label>
+</ng-template>

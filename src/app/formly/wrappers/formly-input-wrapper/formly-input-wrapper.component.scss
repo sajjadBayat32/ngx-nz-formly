@@ -8,8 +8,26 @@
   }
 }
 
-label {
-  font-weight: bold;
+.top-label label {
+  font-size: 75%;
+  font-weight: 500;
+}
+
+.left-label label {
+  font-size: 100%;
+  font-weight: 600;
   position: relative;
   padding-right: 5px;
+}
+
+label .colon {
+  position: relative;
+  left: -2px;
+}
+
+label .required {
+  color: #f10232;
+  position: relative;
+  right: 0;
+  top: 2px;
 }
