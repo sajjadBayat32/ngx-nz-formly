@@ -4,6 +4,11 @@ import { NzSizeLDSType, NzStatus } from "ng-zorro-antd/core/types";
 
 export type FormlyCustomFieldProps = FormlyInputProps;
 
+enum InputMask {
+  PHONE = "phone",
+  CURRENCY = "currency",
+}
+
 export interface FormlyInputProps extends FormlyFieldProps {
   nzAddOnAfter?: string | TemplateRef<void> | undefined;
   nzAddOnBefore?: string | TemplateRef<void> | undefined;
@@ -12,7 +17,7 @@ export interface FormlyInputProps extends FormlyFieldProps {
   nzSuffix?: string | TemplateRef<void> | undefined;
   nzSize?: NzSizeLDSType | undefined;
   nzStatus?: NzStatus | undefined;
-  mask?: string;
+  mask?: InputMask | string;
   // custom props
   styles?: {
     labelClass?: string | undefined;
