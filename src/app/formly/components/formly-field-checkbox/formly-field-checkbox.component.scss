@@ -1,0 +1,11 @@
+label {
+  display: flex;
+  font-size: 100%;
+  font-weight: 600;
+  min-height: 30px;
+  align-items: center;
+
+  ::ng-deep .ant-checkbox {
+    top: 0 !important;
+  }
+}
