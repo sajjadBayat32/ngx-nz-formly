@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
       },
     },
     {
-      key: "Age",
+      key: "age",
       type: "input",
       className: "flex-50 px-2",
       props: {

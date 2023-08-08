@@ -3,15 +3,21 @@ describe("Nz Formly", () => {
     cy.visit("/");
     // Test Purpose: Required and min length validations
     cy.get("#control-firstName").type("sj").blur();
-    cy.get("#wrapper-firstName .error-message").contains("Field must be at least 3 characters");
+    cy.get("#wrapper-firstName .error-message").contains(
+      "Field must be at least 3 characters",
+    );
     cy.get("#control-firstName").clear().blur();
-    cy.get("#wrapper-firstName .error-message").contains("This field is required");
+    cy.get("#wrapper-firstName .error-message").contains(
+      "This field is required",
+    );
     cy.get("#control-firstName").clear().type("sajjad").blur();
     cy.get("#wrapper-firstName .error-message").should("not.exist");
 
     // Test Purpose: Max length validation
     cy.get("#control-lastName").type("bayat@gmail.com").blur();
-    cy.get("#wrapper-lastName .error-message").contains("Field must be at most 10 characters");
+    cy.get("#wrapper-lastName .error-message").contains(
+      "Field must be at most 10 characters",
+    );
     cy.get("#control-lastName").clear().type("bayat").blur();
     cy.get("#wrapper-lastName .error-message").should("not.exist");
 
@@ -27,7 +33,9 @@ describe("Nz Formly", () => {
 
     // Test Purpose: Phone Mask validation
     cy.get("#control-email").type("sajjad").blur();
-    cy.get("#wrapper-email .error-message").contains("Email format is not correct");
+    cy.get("#wrapper-email .error-message").contains(
+      "Email format is not correct",
+    );
     cy.get("#control-email").clear().type("sajjad@gmail").blur();
     cy.get("#wrapper-email .error-message").should("exist");
     cy.get("#control-email").clear().type("sajjad@gmail.com").blur();
@@ -50,8 +58,16 @@ describe("Nz Formly", () => {
     cy.get("#wrapper-password .error-message").should("not.exist");
     cy.get("#wrapper-password .show-password span").click();
     cy.get("#control-password").should("have.attr", "type", "text");
-    cy.get("#wrapper-password .show-password span").should("have.class", "anticon-eye-invisible");
+    cy.get("#wrapper-password .show-password span").should(
+      "have.class",
+      "anticon-eye-invisible",
+    );
     cy.get("#wrapper-password .show-password span").click();
     cy.get("#control-password").should("have.attr", "type", "password");
+
+    // Test Purpose: Checkbox and input disabled
+    cy.get("#control-age").should("be.disabled");
+    cy.get("#control-olderThan20").click();
+    cy.get("#control-age").should("not.be.disabled");
   });
 });

@@ -9,4 +9,8 @@ import { FormlyCheckboxProps } from "../../formly-props.model";
 })
 export class FormlyFieldCheckboxComponent extends FieldType<
   FieldTypeConfig<FormlyCheckboxProps>
-> {}
+> {
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+}
