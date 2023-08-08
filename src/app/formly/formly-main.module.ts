@@ -2,13 +2,21 @@ import { NgModule } from "@angular/core";
 import { FormlyFieldInputComponent } from "./components/formly-field-input/formly-field-input.component";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzInputModule } from "ng-zorro-antd/input";
-import { ConfigOption, FormlyFieldConfig, FormlyModule } from "@ngx-formly/core";
+import {
+  ConfigOption,
+  FormlyFieldConfig,
+  FormlyModule,
+} from "@ngx-formly/core";
 import { FormlyInputWrapperComponent } from "./wrappers/formly-input-wrapper/formly-input-wrapper.component";
 import { CommonModule } from "@angular/common";
-import { FormlyCustomFieldProps } from "./formly-props.model";
+import { FormlyCheckboxProps, FormlyInputProps } from "./formly-props.model";
 import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
 import { NzIconModule } from "ng-zorro-antd/icon";
-import { AbstractControl, ReactiveFormsModule, RequiredValidator } from "@angular/forms";
+import {
+  AbstractControl,
+  ReactiveFormsModule,
+  RequiredValidator,
+} from "@angular/forms";
 import {
   maxLengthMessage,
   minLengthMessage,
@@ -18,6 +26,8 @@ import {
   passwordValidator,
 } from "./formly-validators";
 import { NgxMaskModule } from "ngx-mask";
+import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
+import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -25,9 +35,19 @@ export const FormlyForRoot: ConfigOption = {
       name: "input",
       component: FormlyFieldInputComponent,
       wrappers: ["default-wrapper", "input-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlyCustomFieldProps>>{
+      defaultOptions: <FormlyFieldConfig<FormlyInputProps>>{
         props: {
           nzSize: "default",
+          labelPosition: "Left",
+        },
+      },
+    },
+    {
+      name: "checkbox",
+      component: FormlyFieldCheckboxComponent,
+      wrappers: [],
+      defaultOptions: <FormlyFieldConfig<FormlyCheckboxProps>>{
+        props: {
           labelPosition: "Left",
         },
       },
@@ -50,11 +70,13 @@ export const FormlyForRoot: ConfigOption = {
     },
     {
       name: "minLength",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) => minLengthValidator(c, f),
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        minLengthValidator(c, f),
     },
     {
       name: "maxLength",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) => maxLengthValidator(c, f),
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        maxLengthValidator(c, f),
     },
     {
       name: "email",
@@ -99,6 +121,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyFieldInputComponent,
     FormlyInputWrapperComponent,
     FormlyDefaultWrapperComponent,
+    FormlyFieldCheckboxComponent,
   ],
   imports: [
     NzInputModule,
@@ -108,6 +131,7 @@ export const FormlyForRoot: ConfigOption = {
     ReactiveFormsModule,
     FormlyModule,
     NgxMaskModule,
+    NzCheckboxModule,
   ],
 })
 export class FormlyMainModule {}
