@@ -19,7 +19,7 @@ export class FormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<FormlyInputProps>>
   implements AfterViewInit, OnDestroy
 {
-  mask: string = "";
+  mask: string | undefined;
   unSubscribeAll$ = new Subject<void>();
 
   ngAfterViewInit() {
@@ -31,6 +31,8 @@ export class FormlyFieldInputComponent
     if (this.props.mask === "phone") {
       this.mask = DefaultPhoneMask.globalMask;
       this.handlePhoneMask();
+    } else {
+      this.mask = this.props.mask;
     }
   }
 
@@ -72,9 +74,9 @@ export class FormlyFieldInputComponent
   }
 
   findAppropriateMask(value: string): CountryCodeMask | null {
-    let newMask = CountryMasks2.filter(item => this.exactEquality(value, item.prefix)).find(
-      item => value.length <= item.globalMask.length,
-    );
+    let newMask = CountryMasks2.filter(item =>
+      this.exactEquality(value, item.prefix),
+    ).find(item => value.length <= item.globalMask.length);
     if (newMask) return newMask;
     return null;
   }
@@ -112,7 +114,7 @@ export class FormlyFieldInputComponent
   }
 
   get disabled() {
-    return this.props.disabled || false
+    return this.props.disabled || false;
   }
 
   ngOnDestroy() {
