@@ -65,9 +65,19 @@ describe("Nz Formly", () => {
     cy.get("#wrapper-password .show-password span").click();
     cy.get("#control-password").should("have.attr", "type", "password");
 
-    // Test Purpose: Checkbox and input disabled
+    // Test Purpose: Checkbox and input disabled and switch visibility
     cy.get("#control-age").should("be.disabled");
-    cy.get("#control-olderThan20").click();
+    cy.get("#control-allowNotifications").should("not.be.visible");
+    cy.get("#control-olderThan20").check().should("be.checked");
     cy.get("#control-age").should("not.be.disabled");
+    cy.get("#control-allowNotifications").should("be.visible");
+
+    // Test Purpose: Switch
+    cy.get("#control-allowNotifications")
+      .click()
+      .should("have.class", "ant-switch-checked");
+    cy.get("#control-allowNotifications")
+      .click()
+      .should("not.have.class", "ant-switch-checked");
   });
 });
