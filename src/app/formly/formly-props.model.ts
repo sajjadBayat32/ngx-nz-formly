@@ -5,7 +5,8 @@ import {
   NzSizeLDSType,
   NzStatus,
 } from "ng-zorro-antd/core/types";
-import {FormlyFieldProps} from "@ngx-formly/ng-zorro-antd/form-field";
+import { Observable } from "rxjs";
+import { FormlyFieldProps } from "@ngx-formly/ng-zorro-antd/form-field";
 
 export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
 
@@ -18,6 +19,7 @@ export interface FormlyCommonProps {
   disabled?: boolean;
   hidden?: boolean;
   label?: string;
+  labelObs?: Observable<string>;
   labelPosition?: "Top" | "Left";
   placeholder?: string;
   required?: boolean;
