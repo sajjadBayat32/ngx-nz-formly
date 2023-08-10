@@ -113,10 +113,6 @@ export class FormlyFieldInputComponent
     return this.formControl.touched && this.formControl.invalid ? "error" : "";
   }
 
-  get disabled() {
-    return this.props.disabled || false;
-  }
-
   ngOnDestroy() {
     this.unSubscribeAll$.next();
     this.unSubscribeAll$.complete();

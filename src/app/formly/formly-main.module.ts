@@ -7,9 +7,9 @@ import {
   FormlyFieldConfig,
   FormlyModule,
 } from "@ngx-formly/core";
-import { FormlyInputWrapperComponent } from "./wrappers/formly-input-wrapper/formly-input-wrapper.component";
+import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
 import { CommonModule } from "@angular/common";
-import { FormlyCheckboxProps, FormlyInputProps } from "./formly-props.model";
+import { FormlyInputProps } from "./formly-props.model";
 import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import {
@@ -28,13 +28,15 @@ import {
 import { NgxMaskModule } from "ngx-mask";
 import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
+import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
+import { NzSwitchModule } from "ng-zorro-antd/switch";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
     {
       name: "input",
       component: FormlyFieldInputComponent,
-      wrappers: ["default-wrapper", "input-wrapper"],
+      wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<FormlyInputProps>>{
         props: {
           nzSize: "default",
@@ -46,11 +48,11 @@ export const FormlyForRoot: ConfigOption = {
       name: "checkbox",
       component: FormlyFieldCheckboxComponent,
       wrappers: [],
-      defaultOptions: <FormlyFieldConfig<FormlyCheckboxProps>>{
-        props: {
-          labelPosition: "Left",
-        },
-      },
+    },
+    {
+      name: "switch",
+      component: FormlyFieldSwitchComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
     },
   ],
   wrappers: [
@@ -59,8 +61,8 @@ export const FormlyForRoot: ConfigOption = {
       component: FormlyDefaultWrapperComponent,
     },
     {
-      name: "input-wrapper",
-      component: FormlyInputWrapperComponent,
+      name: "label-wrapper",
+      component: FormlyLabelWrapperComponent,
     },
   ],
   validators: [
@@ -119,9 +121,10 @@ export const FormlyForRoot: ConfigOption = {
 @NgModule({
   declarations: [
     FormlyFieldInputComponent,
-    FormlyInputWrapperComponent,
+    FormlyLabelWrapperComponent,
     FormlyDefaultWrapperComponent,
     FormlyFieldCheckboxComponent,
+    FormlyFieldSwitchComponent,
   ],
   imports: [
     NzInputModule,
@@ -132,6 +135,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyModule,
     NgxMaskModule,
     NzCheckboxModule,
+    NzSwitchModule,
   ],
 })
 export class FormlyMainModule {}

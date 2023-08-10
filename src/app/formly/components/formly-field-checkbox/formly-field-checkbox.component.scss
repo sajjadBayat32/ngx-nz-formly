@@ -5,7 +5,13 @@ label {
   min-height: 30px;
   align-items: center;
 
-  ::ng-deep .ant-checkbox {
-    top: 0 !important;
+  ::ng-deep {
+    .ant-checkbox {
+      top: 0 !important;
+    }
+
+    .ant-checkbox-checked::after {
+      visibility: hidden !important;
+    }
   }
 }

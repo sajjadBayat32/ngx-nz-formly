@@ -1,0 +1,10 @@
+<nz-switch
+  [formControl]="formControl"
+  [nzId]="fieldID"
+  [nzSize]="props.nzSize"
+  [nzLoading]="props.nzLoading"
+  [nzDisabled]="props.disabled"
+  [nzCheckedChildren]="props.nzCheckedChildren"
+  [nzUnCheckedChildren]="props.nzUnCheckedChildren"
+  (ngModelChange)="props.change?.bind($event)"
+></nz-switch>

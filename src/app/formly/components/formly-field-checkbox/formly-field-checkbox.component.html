@@ -1,8 +1,9 @@
 <label
   nz-checkbox
-  [id]="fieldID"
+  [nzId]="fieldID"
   [formControl]="formControl"
-  (ngModelChange)="props?.change($event)"
+  [nzDisabled]="props.disabled"
+  (ngModelChange)="props.change?.bind($event)"
 >
   {{props.label}}
 </label>

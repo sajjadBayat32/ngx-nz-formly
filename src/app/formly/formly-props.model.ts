@@ -1,35 +1,66 @@
-import { FormlyFieldProps } from "@ngx-formly/core/lib/models/fieldconfig";
+import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
 import { TemplateRef } from "@angular/core";
-import { NzSizeLDSType, NzStatus } from "ng-zorro-antd/core/types";
+import {
+  NzSizeDSType,
+  NzSizeLDSType,
+  NzStatus,
+} from "ng-zorro-antd/core/types";
+import {FormlyFieldProps} from "@ngx-formly/ng-zorro-antd/form-field";
 
-export type FormlyCustomFieldProps = FormlyInputProps & FormlyCheckboxProps;
+export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
 
 enum InputMask {
   PHONE = "phone",
   CURRENCY = "currency",
 }
 
-export interface FormlyInputProps extends FormlyFieldProps {
+export interface FormlyCommonProps {
+  disabled?: boolean;
+  hidden?: boolean;
+  label?: string;
   labelPosition?: "Top" | "Left";
-  nzAddOnAfter?: string | TemplateRef<void> | undefined;
-  nzAddOnBefore?: string | TemplateRef<void> | undefined;
-  nzBorderless?: boolean | undefined;
-  nzPrefix?: string | TemplateRef<void> | undefined;
-  nzSuffix?: string | TemplateRef<void> | undefined;
-  nzSize?: NzSizeLDSType | undefined;
-  nzStatus?: NzStatus | undefined;
-  mask?: InputMask | string;
-  // custom props
+  placeholder?: string;
+  required?: boolean;
+  readonly?: boolean;
+  focus?: FormlyAttributeEvent;
+  blur?: FormlyAttributeEvent;
+  keyup?: FormlyAttributeEvent;
+  keydown?: FormlyAttributeEvent;
+  click?: FormlyAttributeEvent;
+  change?: FormlyAttributeEvent;
+  keypress?: FormlyAttributeEvent;
   styles?: {
-    labelClass?: string | undefined;
-    fieldClass?: string | undefined;
-    labelWidth?: string | undefined;
-    wrapperClass?: string | undefined;
+    labelClass?: string;
+    fieldClass?: string;
+    labelWidth?: string;
+    wrapperClass?: string;
   };
 }
 
-export interface FormlyCheckboxProps extends FormlyFieldProps {
-  hasSelectAll?: boolean | undefined;
-  isGroup?: boolean | undefined;
-  nzDisabled?: boolean | undefined;
+// extends FormlyFieldProps
+
+export interface FormlyInputProps extends FormlyCommonProps {
+  mask?: InputMask | string;
+  minLength?: number;
+  maxLength?: number;
+  nzAddOnAfter?: string | TemplateRef<void>;
+  nzAddOnBefore?: string | TemplateRef<void>;
+  nzBorderless?: boolean;
+  nzPrefix?: string | TemplateRef<void>;
+  nzSuffix?: string | TemplateRef<void>;
+  nzStatus?: NzStatus;
+  nzSize?: NzSizeLDSType;
+  type?: "password" | "text";
+}
+
+export interface FormlyCheckboxProps extends FormlyCommonProps {
+  hasSelectAll?: boolean;
+  isGroup?: boolean;
+}
+
+export interface FormlySwitchProps extends FormlyCommonProps {
+  nzCheckedChildren?: string | TemplateRef<void>;
+  nzUnCheckedChildren?: string | TemplateRef<void>;
+  nzLoading?: boolean;
+  nzSize?: NzSizeDSType;
 }
