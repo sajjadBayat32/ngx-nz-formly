@@ -62,8 +62,8 @@ export class FormlyFieldInputComponent
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
-        map(() => this.formControl.value),
         debounceTime(300),
+        map(() => this.formControl.value),
         tap((value: any) => {
           if (typeof this.props.change == "function") {
             this.props.change(value);

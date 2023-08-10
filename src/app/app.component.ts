@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { FormlyFieldBuilder } from "./formly/formly-type-safe.model";
+import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 
 class FormModel {
   firstName: string;
@@ -37,8 +38,13 @@ export class AppComponent implements OnInit {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [];
 
+  labelObs$ = new BehaviorSubject("Label");
+
   ngOnInit() {
     this.initForm();
+    from(["Label 1", "Label 2", "Label 3"])
+      .pipe(concatMap(item => of(item).pipe(delay(1000))))
+      .subscribe(item => this.labelObs$.next(item));
   }
 
   initForm() {
@@ -50,6 +56,7 @@ export class AppComponent implements OnInit {
           required: true,
           minLength: 3,
           label: "First Name",
+          labelObs: this.labelObs$,
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -137,11 +144,17 @@ export class AppComponent implements OnInit {
         className: "flex-50 px-2",
         props: {
           labelPosition: "Left",
+          nzCheckedChildren: "1",
+          nzUnCheckedChildren: "0",
           label: "Allow notifications",
+          hidden: !this.model.olderThan20,
           styles: {
             labelWidth: "auto",
             wrapperClass: "mb-4",
           },
+        },
+        expressionProperties: {
+          "props.hidden": model => !model.olderThan20,
         },
       }),
     ];
