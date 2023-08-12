@@ -45,14 +45,36 @@ export interface FormlyInputProps extends FormlyCommonProps {
   mask?: InputMask | string;
   minLength?: number;
   maxLength?: number;
+  nzBorderless?: boolean;
+  nzStatus?: NzStatus;
+  type?: "password" | "text";
+  // for nz-input-group
   nzAddOnAfter?: string | TemplateRef<void>;
   nzAddOnBefore?: string | TemplateRef<void>;
-  nzBorderless?: boolean;
+  nzAddOnAfterIcon?: string;
+  nzAddOnBeforeIcon?: string;
   nzPrefix?: string | TemplateRef<void>;
   nzSuffix?: string | TemplateRef<void>;
-  nzStatus?: NzStatus;
   nzSize?: NzSizeLDSType;
-  type?: "password" | "text";
+}
+
+export interface FormlyNumberProps extends FormlyCommonProps {
+  nzMax?: number;
+  nzMin?: number;
+  // nzFormatter
+  // nzParser
+  // nzPrecision
+  // nzPrecisionMode
+  nzStatus?: NzStatus;
+  nzPlaceHolder?: string;
+  // for nz-input-number-group
+  nzAddOnAfter?: string | TemplateRef<void>;
+  nzAddOnBefore?: string | TemplateRef<void>;
+  nzAddOnAfterIcon?: string;
+  nzAddOnBeforeIcon?: string;
+  nzPrefix?: string | TemplateRef<void>;
+  nzSuffix?: string | TemplateRef<void>;
+  nzSize?: NzSizeLDSType;
 }
 
 export interface FormlyCheckboxProps extends FormlyCommonProps {

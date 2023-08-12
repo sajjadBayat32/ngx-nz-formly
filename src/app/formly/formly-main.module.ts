@@ -30,6 +30,8 @@ import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
+import { FormlyFieldNumberComponent } from "./components/formly-field-number/formly-field-number.component";
+import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -125,6 +127,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyDefaultWrapperComponent,
     FormlyFieldCheckboxComponent,
     FormlyFieldSwitchComponent,
+    FormlyFieldNumberComponent,
   ],
   imports: [
     NzInputModule,
@@ -136,6 +139,7 @@ export const FormlyForRoot: ConfigOption = {
     NgxMaskModule,
     NzCheckboxModule,
     NzSwitchModule,
+    NzInputNumberModule,
   ],
 })
 export class FormlyMainModule {}

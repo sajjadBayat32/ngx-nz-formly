@@ -1,0 +1,16 @@
+<nz-input-number-group
+  [nzAddOnAfter]="props.nzAddOnAfter"
+  [nzAddOnBefore]="props.nzAddOnBefore"
+  [nzAddOnAfterIcon]="props.nzAddOnAfterIcon"
+  [nzAddOnBeforeIcon]="props.nzAddOnBeforeIcon"
+  [nzPrefix]="props.nzPrefix"
+  [nzSuffix]="props.nzSuffix"
+  [nzSize]="props.nzSize || 'default'"
+>
+  <nz-input-number
+    [nzMin]="props.nzMin"
+    [nzMax]="props.nzMax"
+    [nzStatus]="props.nzStatus"
+    [nzPlaceHolder]="props.nzPlaceHolder"
+  ></nz-input-number>
+</nz-input-number-group>
