@@ -1,0 +1,23 @@
+nz-input-number,
+.ant-input-number-group-wrapper {
+  width: 100%;
+}
+
+::ng-deep {
+  .ant-input-number-affix-wrapper-focused,
+  .ant-input-number-affix-wrapper:focus {
+    box-shadow: none;
+  }
+
+  .ant-input-number-handler-wrap {
+    display: none;
+  }
+
+  .ant-input-number-prefix {
+    margin-inline-end: 6px;
+  }
+
+  .ant-input-number-group-addon .anticon {
+    vertical-align: 0.125em;
+  }
+}

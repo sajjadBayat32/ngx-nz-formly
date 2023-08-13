@@ -10,7 +10,8 @@ class FormModel {
   phoneNumber: string;
   email: string;
   password: string;
-  age: string;
+  budget: number;
+  age: number;
   olderThan20: boolean;
   allowNotifications: boolean;
 
@@ -20,6 +21,7 @@ class FormModel {
     this.phoneNumber = element?.phoneNumber;
     this.email = element?.email;
     this.password = element?.password;
+    this.budget = element?.budget;
     this.age = element?.age;
     this.olderThan20 = element?.olderThan20;
     this.allowNotifications = element?.allowNotifications;
@@ -118,18 +120,33 @@ export class AppComponent implements OnInit {
           validation: ["password"],
         },
       }),
+      fb.number("budget", {
+        className: "flex-50 px-2",
+        props: {
+          nzMin: 0,
+          nzPrefix: "$",
+          label: "Budget",
+          format: "currency",
+          nzAddOnBeforeIcon: "wallet",
+          placeholder: "e.x. 2000",
+          styles: {
+            labelWidth: "110px",
+            wrapperClass: "mb-4",
+          },
+        },
+      }),
       fb.checkbox("olderThan20", {
         className: "flex-50 px-2 mb-4",
         props: {
           label: "I am older that 20",
         },
       }),
-      fb.input("age", {
+      fb.number("age", {
         className: "flex-50 px-2",
         props: {
-          mask: "00",
+          nzMin: 20,
+          nzMax: 100,
           label: "Age",
-          disabled: this.model.olderThan20,
           placeholder: "enter your age",
           styles: {
             labelWidth: "110px",
@@ -147,7 +164,6 @@ export class AppComponent implements OnInit {
           nzCheckedChildren: "1",
           nzUnCheckedChildren: "0",
           label: "Allow notifications",
-          hidden: !this.model.olderThan20,
           styles: {
             labelWidth: "auto",
             wrapperClass: "mb-4",

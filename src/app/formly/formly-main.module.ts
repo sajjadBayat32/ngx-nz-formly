@@ -9,7 +9,7 @@ import {
 } from "@ngx-formly/core";
 import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
 import { CommonModule } from "@angular/common";
-import { FormlyInputProps } from "./formly-props.model";
+import { FormlyInputProps, FormlyNumberProps } from "./formly-props.model";
 import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import {
@@ -43,6 +43,20 @@ export const FormlyForRoot: ConfigOption = {
         props: {
           nzSize: "default",
           labelPosition: "Left",
+        },
+      },
+    },
+    {
+      name: "number",
+      component: FormlyFieldNumberComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<FormlyNumberProps>>{
+        props: {
+          nzPrecision: 0,
+          nzMax: Infinity,
+          nzMin: -Infinity,
+          nzSize: "default",
+          nzPrecisionMode: "cut",
         },
       },
     },

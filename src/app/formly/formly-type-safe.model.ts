@@ -2,6 +2,7 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import {
   FormlyCheckboxProps,
   FormlyInputProps,
+  FormlyNumberProps,
   FormlySwitchProps,
 } from "./formly-props.model";
 
@@ -13,6 +14,17 @@ export class FormlyFieldBuilder<TModel> {
     return {
       key,
       type: "input",
+      ...configOverrides,
+    };
+  }
+
+  number(
+    key: FormlyKeyValue<TModel, number>,
+    configOverrides: FormlyFieldConfig<FormlyNumberProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "number",
       ...configOverrides,
     };
   }

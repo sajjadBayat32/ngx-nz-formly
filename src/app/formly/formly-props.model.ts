@@ -61,12 +61,15 @@ export interface FormlyInputProps extends FormlyCommonProps {
 export interface FormlyNumberProps extends FormlyCommonProps {
   nzMax?: number;
   nzMin?: number;
+  format?: "currency";
   // nzFormatter
   // nzParser
-  // nzPrecision
-  // nzPrecisionMode
+  nzPrecision?: number;
+  nzPrecisionMode?:
+    | "cut"
+    | "toFixed"
+    | ((value: number | string, precision?: number) => number);
   nzStatus?: NzStatus;
-  nzPlaceHolder?: string;
   // for nz-input-number-group
   nzAddOnAfter?: string | TemplateRef<void>;
   nzAddOnBefore?: string | TemplateRef<void>;
