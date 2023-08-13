@@ -65,8 +65,8 @@ export class FormlyFieldInputComponent
         debounceTime(300),
         map(() => this.formControl.value),
         tap((value: any) => {
-          if (typeof this.props.change == "function") {
-            this.props.change(value);
+          if (typeof this.props.valueChange == "function") {
+            this.props.valueChange(value);
           }
         }),
       )

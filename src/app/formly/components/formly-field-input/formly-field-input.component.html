@@ -10,13 +10,13 @@
   <input
       #input
       nz-input
+      [id]="fieldID"
+      [formControl]="formControl"
       [mask]="mask"
       [type]="type"
-      [id]="fieldID"
       [nzStatus]="status"
       [disabled]="props.disabled"
       [readonly]="props.readonly"
-      [formControl]="formControl"
       [placeholder]="props.placeholder"
       [nzBorderless]="props.nzBorderless"
   />

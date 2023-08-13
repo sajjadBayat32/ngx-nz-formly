@@ -6,5 +6,5 @@
   [nzDisabled]="props.disabled"
   [nzCheckedChildren]="props.nzCheckedChildren"
   [nzUnCheckedChildren]="props.nzUnCheckedChildren"
-  (ngModelChange)="props.change?.bind($event)"
+  (ngModelChange)="props.valueChange?.bind($event)"
 ></nz-switch>

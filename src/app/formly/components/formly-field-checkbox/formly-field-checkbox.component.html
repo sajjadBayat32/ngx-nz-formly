@@ -3,7 +3,7 @@
   [nzId]="fieldID"
   [formControl]="formControl"
   [nzDisabled]="props.disabled"
-  (ngModelChange)="props.change?.bind($event)"
+  (ngModelChange)="props.valueChange?.bind($event)"
 >
   {{props.label}}
 </label>

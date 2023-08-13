@@ -3,6 +3,7 @@ import {
   FormlyCheckboxProps,
   FormlyInputProps,
   FormlyNumberProps,
+  FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
 
@@ -47,6 +48,17 @@ export class FormlyFieldBuilder<TModel> {
     return {
       key,
       type: "switch",
+      ...configOverrides,
+    };
+  }
+
+  select(
+    key: FormlyKeyValue<TModel, any>,
+    configOverrides: FormlyFieldConfig<FormlySelectProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "select",
       ...configOverrides,
     };
   }

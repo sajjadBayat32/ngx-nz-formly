@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { FormlyNumberProps } from "../../formly-props.model";
 import { NzInputNumberComponent } from "ng-zorro-antd/input-number";

@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { FormlyFieldBuilder } from "./formly/formly-type-safe.model";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
+import { NzOptionComponent } from "ng-zorro-antd/select";
 
 class FormModel {
   firstName: string;
@@ -14,6 +15,7 @@ class FormModel {
   age: number;
   olderThan20: boolean;
   allowNotifications: boolean;
+  city: any;
 
   constructor(element: any) {
     this.firstName = element?.firstName;
@@ -25,6 +27,7 @@ class FormModel {
     this.age = element?.age;
     this.olderThan20 = element?.olderThan20;
     this.allowNotifications = element?.allowNotifications;
+    this.city = element?.city;
   }
 }
 
@@ -98,7 +101,7 @@ export class AppComponent implements OnInit {
             labelWidth: "110px",
             wrapperClass: "mb-4",
           },
-          change: data => console.log(data),
+          valueChange: data => console.log(data),
         },
         validators: {
           validation: ["email"],
@@ -171,6 +174,49 @@ export class AppComponent implements OnInit {
         },
         expressionProperties: {
           "props.hidden": model => !model.olderThan20,
+        },
+      }),
+      fb.select("city", {
+        className: "flex-50 px-2",
+        props: {
+          objectValue: true,
+          labelPosition: "Left",
+          label: "City",
+          nzShowSearch: true,
+          placeholder: "select your city",
+          styles: {
+            labelWidth: "110px",
+            wrapperClass: "mb-4",
+          },
+          nzOptionOverflowSize: 4,
+          nzOptions: [
+            {
+              label: "Zanjan",
+              value: "Znj",
+              nzCustomContent: `<strong>Zanjan</strong>`,
+            },
+            {
+              label: "Tehran",
+              value: "Teh",
+              nzCustomContent: `<i>Tehran</i>`,
+            },
+            { label: "Isfahan", value: "Isf" },
+            { label: "Shiraz", value: "Shi" },
+            { label: "Gilan", value: "Gil" },
+          ],
+          nzFilterOption: (input?: string, option?: NzOptionComponent) => {
+            return option?.nzLabel?.toString().includes(input || "") || false;
+          },
+          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          valueChange: data => console.log(data),
+          nzOpenChange: event => console.log("open", event),
+          nzScrollToBottom: () => console.log("scroll"),
+          nzOnSearch: event => console.log("search", event),
+          nzFocus: () => console.log("focus"),
+          nzBlur: () => console.log("blur"),
+        },
+        expressionProperties: {
+          "props.disabled": model => !model.olderThan20,
         },
       }),
     ];

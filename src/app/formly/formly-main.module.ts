@@ -9,7 +9,13 @@ import {
 } from "@ngx-formly/core";
 import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
 import { CommonModule } from "@angular/common";
-import { FormlyInputProps, FormlyNumberProps } from "./formly-props.model";
+import {
+  FormlyCheckboxProps,
+  FormlyInputProps,
+  FormlyNumberProps,
+  FormlySelectProps,
+  FormlySwitchProps,
+} from "./formly-props.model";
 import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import {
@@ -32,6 +38,8 @@ import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/for
 import { NzSwitchModule } from "ng-zorro-antd/switch";
 import { FormlyFieldNumberComponent } from "./components/formly-field-number/formly-field-number.component";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
+import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
+import { NzSelectModule } from "ng-zorro-antd/select";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -52,10 +60,12 @@ export const FormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<FormlyNumberProps>>{
         props: {
+          labelPosition: "Left",
+          nzSize: "default",
+          nzBorderless: false,
           nzPrecision: 0,
           nzMax: Infinity,
           nzMin: -Infinity,
-          nzSize: "default",
           nzPrecisionMode: "cut",
         },
       },
@@ -64,11 +74,54 @@ export const FormlyForRoot: ConfigOption = {
       name: "checkbox",
       component: FormlyFieldCheckboxComponent,
       wrappers: [],
+      defaultOptions: <FormlyFieldConfig<FormlyCheckboxProps>>{
+        props: {
+          disabled: false,
+          nzAutoFocus: false,
+        },
+      },
     },
     {
       name: "switch",
       component: FormlyFieldSwitchComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<FormlySwitchProps>>{
+        props: {
+          disabled: false,
+          nzSize: "default",
+          nzLoading: false,
+        },
+      },
+    },
+    {
+      name: "select",
+      component: FormlyFieldSelectComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<FormlySelectProps>>{
+        props: {
+          objectValue: false,
+          labelPosition: "Left",
+          compareWith: (o1: any, o2: any) => o1 === o2,
+          nzAutoClearSearchValue: true,
+          nzAllowClear: false,
+          nzBorderless: false,
+          nzOpen: false,
+          nzAutoFocus: false,
+          disabled: false,
+          nzDropdownMatchSelectWidth: true,
+          nzServerSearch: false,
+          nzMaxMultipleCount: Infinity,
+          nzMode: "default",
+          nzNotFoundContent: "Not Found",
+          nzShowSearch: false,
+          nzSize: "default",
+          nzTokenSeparators: [],
+          nzLoading: false,
+          nzOptionHeightPx: 32,
+          nzOptionOverflowSize: 8,
+          nzSelectOnTab: false,
+        },
+      },
     },
   ],
   wrappers: [
@@ -142,6 +195,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyFieldCheckboxComponent,
     FormlyFieldSwitchComponent,
     FormlyFieldNumberComponent,
+    FormlyFieldSelectComponent,
   ],
   imports: [
     NzInputModule,
@@ -154,6 +208,7 @@ export const FormlyForRoot: ConfigOption = {
     NzCheckboxModule,
     NzSwitchModule,
     NzInputNumberModule,
+    NzSelectModule,
   ],
 })
 export class FormlyMainModule {}

@@ -1,12 +1,14 @@
 import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
-import { TemplateRef } from "@angular/core";
+import { EventEmitter, TemplateRef } from "@angular/core";
 import {
+  NzSafeAny,
   NzSizeDSType,
   NzSizeLDSType,
   NzStatus,
 } from "ng-zorro-antd/core/types";
 import { Observable } from "rxjs";
-import { FormlyFieldProps } from "@ngx-formly/ng-zorro-antd/form-field";
+import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
+import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 
 export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
 
@@ -24,13 +26,13 @@ export interface FormlyCommonProps {
   placeholder?: string;
   required?: boolean;
   readonly?: boolean;
-  focus?: FormlyAttributeEvent;
-  blur?: FormlyAttributeEvent;
-  keyup?: FormlyAttributeEvent;
-  keydown?: FormlyAttributeEvent;
-  click?: FormlyAttributeEvent;
-  change?: FormlyAttributeEvent;
-  keypress?: FormlyAttributeEvent;
+  // focus?: FormlyAttributeEvent;
+  // blur?: FormlyAttributeEvent;
+  // keyup?: FormlyAttributeEvent;
+  // keydown?: FormlyAttributeEvent;
+  // click?: FormlyAttributeEvent;
+  valueChange?: (event: any) => void;
+  // keypress?: FormlyAttributeEvent;
   styles?: {
     labelClass?: string;
     fieldClass?: string;
@@ -91,3 +93,56 @@ export interface FormlySwitchProps extends FormlyCommonProps {
   nzLoading?: boolean;
   nzSize?: NzSizeDSType;
 }
+
+export interface FormlySelectProps extends FormlyCommonProps {
+  objectValue?: boolean;
+  compareWith?: (o1: any, o2: any) => boolean;
+  nzAutoClearSearchValue?: boolean;
+  nzAllowClear?: boolean;
+  nzBorderless?: boolean;
+  nzOpen?: boolean;
+  nzAutoFocus?: boolean; // does it really work
+  nzDropdownClassName?: string | string[];
+  nzDropdownMatchSelectWidth?: boolean;
+  nzDropdownStyle?: {
+    [key: string]: string;
+  };
+  nzCustomTemplate?: TemplateRef<{ $implicit: NzOptionComponent }>;
+  nzServerSearch?: boolean;
+  nzFilterOption?: (input?: string, option?: NzOptionComponent) => boolean;
+  nzMaxMultipleCount?: number;
+  nzMode?: NzSelectModeType;
+  nzNotFoundContent?: string | TemplateRef<void>;
+  nzPlacement?: NzSelectPlacementType;
+  nzShowArrow?: boolean;
+  nzShowSearch?: boolean;
+  nzSize?: NzSizeLDSType;
+  nzStatus?: NzStatus;
+  nzSuffixIcon?: TemplateRef<any> | string; // does it really work
+  nzRemoveIcon?: TemplateRef<any>; // does it really work
+  nzClearIcon?: TemplateRef<any>; // does it really work
+  nzMenuItemSelectedIcon?: TemplateRef<any>; // does it really work
+  nzTokenSeparators?: string[];
+  nzLoading?: boolean;
+  nzLoadingObs?: Observable<boolean>;
+  nzMaxTagCount?: number; // does it really work
+  nzOptions?: nzOptionType[];
+  nzOptionsObs?: Observable<nzOptionType[]>;
+  nzMaxTagPlaceholder?: TemplateRef<{ $implicit: any[] }>;
+  nzOptionHeightPx?: number;
+  nzOptionOverflowSize?: number;
+  nzSelectOnTab?: boolean;
+  nzOpenChange?: (event: boolean) => void;
+  nzScrollToBottom?: () => void;
+  nzOnSearch?: (event: string) => void;
+  nzFocus?: () => void;
+  nzBlur?: () => void;
+}
+
+type nzOptionType = {
+  label: string | number;
+  value: NzSafeAny;
+  disabled?: boolean;
+  hide?: boolean;
+  nzCustomContent?: string | TemplateRef<NzSafeAny>;
+};
