@@ -10,6 +10,12 @@ import { FormlyCheckboxProps } from "../../formly-props.model";
 export class FormlyFieldCheckboxComponent extends FieldType<
   FieldTypeConfig<FormlyCheckboxProps>
 > {
+  onChange(event: boolean) {
+    if (typeof this.props?.change === "function") {
+      this.props.change(this.field, event);
+    }
+  }
+
   get fieldID() {
     return "control-" + this.field.key;
   }

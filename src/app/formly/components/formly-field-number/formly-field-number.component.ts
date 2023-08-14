@@ -11,14 +11,16 @@ import { NzInputNumberComponent } from "ng-zorro-antd/input-number";
 export class FormlyFieldNumberComponent extends FieldType<
   FieldTypeConfig<FormlyNumberProps>
 > {
+  onChange(event: boolean) {
+    if (typeof this.props?.change === "function") {
+      this.props.change(this.field, event);
+    }
+  }
+
   get nzFormatter() {
     return this.props.format === "currency"
       ? this.currencyFormatter
       : (value: number) => value;
-  }
-
-  get fieldID() {
-    return "control-" + this.field.key;
   }
 
   currencyFormatter(value: number | string) {
@@ -26,6 +28,10 @@ export class FormlyFieldNumberComponent extends FieldType<
       return Number(value).toLocaleString("en-US");
     }
     return value;
+  }
+
+  get fieldID() {
+    return "control-" + this.field.key;
   }
 
   focusInOut(event: NzInputNumberComponent) {

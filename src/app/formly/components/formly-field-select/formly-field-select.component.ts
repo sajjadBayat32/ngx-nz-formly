@@ -10,6 +10,12 @@ import { FormlySelectProps } from "../../formly-props.model";
 export class FormlyFieldSelectComponent extends FieldType<
   FieldTypeConfig<FormlySelectProps>
 > {
+  onChange(event: boolean) {
+    if (typeof this.props?.change === "function") {
+      this.props.change(this.field, event);
+    }
+  }
+
   get fieldID() {
     return "control-" + this.field.key;
   }

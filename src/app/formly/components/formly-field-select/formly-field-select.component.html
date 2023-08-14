@@ -1,6 +1,7 @@
 <nz-select
   [nzId]="fieldID"
   [formControl]="formControl"
+  [formlyAttributes]="field"
   [compareWith]="props.compareWith"
   [nzAutoClearSearchValue]="props.nzAutoClearSearchValue"
   [nzAllowClear]="props.nzAllowClear"
@@ -34,12 +35,10 @@
   [nzOptionHeightPx]="props.nzOptionHeightPx"
   [nzOptionOverflowSize]="props.nzOptionOverflowSize"
   [nzSelectOnTab]="props.nzSelectOnTab"
-  (ngModelChange)="props?.valueChange($event)"
+  (ngModelChange)="onChange($event)"
   (nzOpenChange)="props?.nzOpenChange($event)"
   (nzScrollToBottom)="props?.nzScrollToBottom()"
   (nzOnSearch)="props?.nzOnSearch($event)"
-  (nzFocus)="props?.nzFocus()"
-  (nzBlur)="props?.nzBlur()"
 >
   <nz-option
     *ngFor="let option of props.nzOptions || (props.nzOptionsObs | async)"

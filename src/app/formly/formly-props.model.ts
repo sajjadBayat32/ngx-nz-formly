@@ -26,13 +26,13 @@ export interface FormlyCommonProps {
   placeholder?: string;
   required?: boolean;
   readonly?: boolean;
-  // focus?: FormlyAttributeEvent;
-  // blur?: FormlyAttributeEvent;
-  // keyup?: FormlyAttributeEvent;
-  // keydown?: FormlyAttributeEvent;
-  // click?: FormlyAttributeEvent;
-  valueChange?: (event: any) => void;
-  // keypress?: FormlyAttributeEvent;
+  keyup?: FormlyAttributeEvent;
+  keydown?: FormlyAttributeEvent;
+  keypress?: FormlyAttributeEvent;
+  click?: FormlyAttributeEvent;
+  focus?: FormlyAttributeEvent;
+  blur?: FormlyAttributeEvent;
+  change?: FormlyAttributeEvent;
   styles?: {
     labelClass?: string;
     fieldClass?: string;
@@ -135,8 +135,6 @@ export interface FormlySelectProps extends FormlyCommonProps {
   nzOpenChange?: (event: boolean) => void;
   nzScrollToBottom?: () => void;
   nzOnSearch?: (event: string) => void;
-  nzFocus?: () => void;
-  nzBlur?: () => void;
 }
 
 type nzOptionType = {

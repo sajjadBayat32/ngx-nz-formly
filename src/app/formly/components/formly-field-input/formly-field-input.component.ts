@@ -64,9 +64,9 @@ export class FormlyFieldInputComponent
         takeUntil(this.unSubscribeAll$),
         debounceTime(300),
         map(() => this.formControl.value),
-        tap((value: any) => {
-          if (typeof this.props.valueChange == "function") {
-            this.props.valueChange(value);
+        tap((value: string) => {
+          if (typeof this.props?.change == "function") {
+            this.props.change(this.field, value);
           }
         }),
       )

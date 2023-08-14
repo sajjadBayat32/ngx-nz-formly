@@ -10,6 +10,12 @@ import { FormlySwitchProps } from "../../formly-props.model";
 export class FormlyFieldSwitchComponent extends FieldType<
   FieldTypeConfig<FormlySwitchProps>
 > {
+  onChange(event: boolean) {
+    if (typeof this.props?.change === "function") {
+      this.props.change(this.field, event);
+    }
+  }
+
   get fieldID() {
     return "control-" + this.field.key;
   }

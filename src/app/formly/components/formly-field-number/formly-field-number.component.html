@@ -12,6 +12,7 @@
     #Input
     [nzId]="fieldID"
     [formControl]="formControl"
+    [formlyAttributes]="field"
     [nzMin]="props.nzMin"
     [nzMax]="props.nzMax"
     [nzStatus]="props.nzStatus"
@@ -20,13 +21,15 @@
     [nzPrecision]="props.nzPrecision"
     [nzPrecisionMode]="props.nzPrecisionMode"
     [nzPlaceHolder]="props.placeholder"
-    (ngModelChange)="props.valueChange?.bind($event)"
+    (ngModelChange)="onChange($event)"
     (keyup)="focusInOut(Input)"
   ></nz-input-number>
+
   <nz-input-number
     *ngIf="!props.format"
     [nzId]="fieldID"
     [formControl]="formControl"
+    [formlyAttributes]="field"
     [nzMin]="props.nzMin"
     [nzMax]="props.nzMax"
     [nzStatus]="props.nzStatus"
@@ -34,6 +37,6 @@
     [nzPrecision]="props.nzPrecision"
     [nzPrecisionMode]="props.nzPrecisionMode"
     [nzPlaceHolder]="props.placeholder"
-    (ngModelChange)="props.valueChange?.bind($event)"
+    (ngModelChange)="onChange($event)"
   ></nz-input-number>
 </nz-input-number-group>
