@@ -24,9 +24,7 @@ import {
   RequiredValidator,
 } from "@angular/forms";
 import {
-  maxLengthMessage,
   minLengthMessage,
-  maxLengthValidator,
   minLengthValidator,
   emailValidator,
   passwordValidator,
@@ -145,11 +143,6 @@ export const FormlyForRoot: ConfigOption = {
         minLengthValidator(c, f),
     },
     {
-      name: "maxLength",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        maxLengthValidator(c, f),
-    },
-    {
       name: "email",
       validation: (c: AbstractControl) => emailValidator(c),
     },
@@ -166,10 +159,6 @@ export const FormlyForRoot: ConfigOption = {
     {
       name: "minLength",
       message: (err: any, f: FormlyFieldConfig) => minLengthMessage(f),
-    },
-    {
-      name: "maxLength",
-      message: (err: any, f: FormlyFieldConfig) => maxLengthMessage(f),
     },
     {
       name: "email",
