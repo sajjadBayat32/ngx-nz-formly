@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { FormlyInputProps } from "../../formly-props.model";
-import { debounceTime, map, Subject, takeUntil, tap } from "rxjs";
+import { debounceTime, Subject, takeUntil, tap } from "rxjs";
 import { CountryCodeMask, CountryMasks2 } from "./phone-mask.config";
 
 const DefaultPhoneMask: CountryCodeMask = {
@@ -40,7 +40,6 @@ export class FormlyFieldInputComponent
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
-        map(() => this.formControl.value),
         tap((value: string) => {
           if (value == "") {
             // hint: without setTimeout we don't have Ctrl + A -> delete
@@ -63,7 +62,6 @@ export class FormlyFieldInputComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         debounceTime(300),
-        map(() => this.formControl.value),
         tap((value: string) => {
           if (typeof this.props?.change == "function") {
             this.props.change(this.field, value);
