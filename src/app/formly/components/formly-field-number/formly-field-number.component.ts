@@ -1,20 +1,31 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { FormlyNumberProps } from "../../formly-props.model";
 import { NzInputNumberComponent } from "ng-zorro-antd/input-number";
+import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
   selector: "app-formly-field-number",
   templateUrl: "./formly-field-number.component.html",
   styleUrls: ["./formly-field-number.component.scss"],
 })
-export class FormlyFieldNumberComponent extends FieldType<
-  FieldTypeConfig<FormlyNumberProps>
-> {
-  onChange(event: boolean) {
-    if (typeof this.props?.change === "function") {
-      this.props.change(this.field, event);
-    }
+export class FormlyFieldNumberComponent
+  extends FieldType<FieldTypeConfig<FormlyNumberProps>>
+  implements OnInit, OnDestroy
+{
+  unSubscribeAll$ = new Subject<void>();
+
+  ngOnInit() {
+    this.formControl.valueChanges
+      .pipe(
+        takeUntil(this.unSubscribeAll$),
+        tap((value: string) => {
+          if (typeof this.props?.change == "function") {
+            this.props.change(this.field, value);
+          }
+        }),
+      )
+      .subscribe();
   }
 
   get nzFormatter() {
@@ -39,5 +50,10 @@ export class FormlyFieldNumberComponent extends FieldType<
       event.blur();
       event.focus();
     }
+  }
+
+  ngOnDestroy() {
+    this.unSubscribeAll$.next();
+    this.unSubscribeAll$.complete();
   }
 }
