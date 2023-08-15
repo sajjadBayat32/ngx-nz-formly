@@ -10,6 +10,7 @@ import {
 import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
 import { CommonModule } from "@angular/common";
 import {
+  FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
   FormlyNumberProps,
@@ -38,6 +39,7 @@ import { FormlyFieldNumberComponent } from "./components/formly-field-number/for
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
 import { NzSelectModule } from "ng-zorro-antd/select";
+import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -121,6 +123,23 @@ export const FormlyForRoot: ConfigOption = {
         },
       },
     },
+    {
+      name: "button",
+      component: FormlyButtonComponent,
+      wrappers: ["default-wrapper"],
+      defaultOptions: <FormlyFieldConfig<FormlyButtonProps>>{
+        props: {
+          text: "",
+          disabled: false,
+          nzGhost: false,
+          nzLoading: false,
+          nzSize: "default",
+          nzBlock: false,
+          nzDanger: false,
+          classList: "",
+        },
+      },
+    },
   ],
   wrappers: [
     {
@@ -185,6 +204,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyFieldSwitchComponent,
     FormlyFieldNumberComponent,
     FormlyFieldSelectComponent,
+    FormlyButtonComponent,
   ],
   imports: [
     NzInputModule,

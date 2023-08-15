@@ -16,7 +16,7 @@
 </div>
 
 <ng-template #Label>
-  <label [classList]="props.styles?.labelClass">
+  <label [ngClass]="props.styles?.labelClass">
     {{ props.label || (props.labelObs | async) }}
     <span class="colon" *ngIf="props.labelPosition == 'Left'">:</span>
     <span class="required" *ngIf="props.required">*</span>

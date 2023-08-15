@@ -1,5 +1,5 @@
 import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
-import { EventEmitter, TemplateRef } from "@angular/core";
+import { TemplateRef } from "@angular/core";
 import {
   NzSafeAny,
   NzSizeDSType,
@@ -9,12 +9,12 @@ import {
 import { Observable } from "rxjs";
 import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
 import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
+import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 
 export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
 
 enum InputMask {
   PHONE = "phone",
-  CURRENCY = "currency",
 }
 
 export interface FormlyCommonProps {
@@ -35,8 +35,8 @@ export interface FormlyCommonProps {
   change?: FormlyAttributeEvent;
   styles?: {
     labelClass?: string;
-    fieldClass?: string;
     labelWidth?: string;
+    fieldClass?: string;
     wrapperClass?: string;
   };
 }
@@ -144,3 +144,17 @@ type nzOptionType = {
   hide?: boolean;
   nzCustomContent?: string | TemplateRef<NzSafeAny>;
 };
+
+export interface FormlyButtonProps {
+  text: string;
+  disabled?: boolean;
+  nzGhost?: boolean;
+  nzLoading?: boolean;
+  nzShape?: NzButtonShape;
+  nzSize?: NzSizeLDSType;
+  nzType?: NzButtonType;
+  nzBlock?: boolean;
+  nzDanger?: boolean;
+  classList?: string;
+  click?: () => void;
+}

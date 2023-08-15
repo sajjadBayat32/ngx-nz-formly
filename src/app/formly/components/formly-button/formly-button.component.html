@@ -1,0 +1,16 @@
+<button
+  nz-button
+  type="button"
+  [disabled]="props.disabled"
+  [nzGhost]="props.nzGhost"
+  [nzLoading]="props.nzLoading"
+  [nzShape]="props.nzShape"
+  [nzSize]="props.nzSize"
+  [nzType]="props.nzType"
+  [nzBlock]="props.nzBlock"
+  [nzDanger]="props.nzDanger"
+  [ngClass]="props.classList"
+  (click)="onClick()"
+>
+  {{props.text}}
+</button>

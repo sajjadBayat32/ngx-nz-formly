@@ -1,5 +1,6 @@
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import {
+  FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
   FormlyNumberProps,
@@ -59,6 +60,15 @@ export class FormlyFieldBuilder<TModel> {
     return {
       key,
       type: "select",
+      ...configOverrides,
+    };
+  }
+
+  button(
+    configOverrides: FormlyFieldConfig<FormlyButtonProps>,
+  ): FormlyFieldConfig {
+    return {
+      type: "button",
       ...configOverrides,
     };
   }
