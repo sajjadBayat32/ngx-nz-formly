@@ -62,6 +62,8 @@ export class AppComponent implements OnInit {
           minLength: 3,
           label: "First Name",
           labelObs: this.labelObs$,
+          focus: () => console.log("input focused"),
+          blur: () => console.log("input blurred"),
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -101,7 +103,7 @@ export class AppComponent implements OnInit {
             labelWidth: "110px",
             wrapperClass: "mb-4",
           },
-          valueChange: data => console.log(data),
+          change: (field, event) => console.log("input changed to:", event),
         },
         validators: {
           validation: ["email"],
@@ -136,12 +138,15 @@ export class AppComponent implements OnInit {
             labelWidth: "110px",
             wrapperClass: "mb-4",
           },
+          focus: () => console.log("number focused"),
+          blur: () => console.log("number blurred"),
         },
       }),
       fb.checkbox("olderThan20", {
         className: "flex-50 px-2 mb-4",
         props: {
           label: "I am older that 20",
+          change: (field, event) => console.log("checkbox changed to:", event),
         },
       }),
       fb.number("age", {
@@ -208,15 +213,26 @@ export class AppComponent implements OnInit {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
           compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
-          valueChange: data => console.log(data),
-          nzOpenChange: event => console.log("open", event),
+          nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
-          nzFocus: () => console.log("focus"),
-          nzBlur: () => console.log("blur"),
+          change: (field, event) => console.log("selection changed to:", event),
+          focus: () => console.log("selection focused"),
+          blur: () => console.log("selection blurred"),
         },
         expressionProperties: {
           "props.disabled": model => !model.olderThan20,
+        },
+      }),
+      fb.button({
+        className: "flex-50 px-2",
+        props: {
+          text: "Reset",
+          nzType: "primary",
+          nzLoading: false,
+          nzDanger: true,
+          nzBlock: true,
+          click: () => console.log("clicked"),
         },
       }),
     ];
