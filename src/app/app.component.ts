@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { FormlyFieldBuilder } from "./formly/formly-type-safe.model";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
         className: "flex-50 px-2",
         props: {
           required: true,
-          minLength: 3,
+          minLen: 3,
           label: "First Name",
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
@@ -69,16 +69,22 @@ export class AppComponent implements OnInit {
             wrapperClass: "mb-4",
           },
         },
+        validators: {
+          validation: ["minLen"],
+        },
       }),
       fb.input("lastName", {
         className: "flex-50 px-2",
         props: {
-          maxLength: 10,
+          maxLen: 10,
           label: "Last Name",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
           },
+        },
+        validators: {
+          validation: ["maxLen"],
         },
       }),
       fb.input("phoneNumber", {
@@ -125,19 +131,20 @@ export class AppComponent implements OnInit {
           validation: ["password"],
         },
       }),
-      fb.number("budget", {
+      fb.input("budget", {
         className: "flex-50 px-2",
         props: {
-          nzMin: 0,
           nzPrefix: "$",
           label: "Budget",
-          format: "currency",
+          mask: "separator.2",
+          thousandSeparator: ",",
           nzAddOnBeforeIcon: "wallet",
           placeholder: "e.x. 2000",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
           },
+          change: (field, event) => console.log("number changed to:", event),
           focus: () => console.log("number focused"),
           blur: () => console.log("number blurred"),
         },
@@ -149,11 +156,11 @@ export class AppComponent implements OnInit {
           change: (field, event) => console.log("checkbox changed to:", event),
         },
       }),
-      fb.number("age", {
+      fb.input("age", {
         className: "flex-50 px-2",
         props: {
-          nzMin: 20,
-          nzMax: 100,
+          minValue: 20,
+          maxValue: 100,
           label: "Age",
           placeholder: "enter your age",
           styles: {
@@ -163,6 +170,9 @@ export class AppComponent implements OnInit {
         },
         expressionProperties: {
           "props.disabled": model => !model.olderThan20,
+        },
+        validators: {
+          validation: ["minValue", "maxValue"],
         },
       }),
       fb.switch("allowNotifications", {
@@ -176,6 +186,7 @@ export class AppComponent implements OnInit {
             labelWidth: "auto",
             wrapperClass: "mb-4",
           },
+          change: (field, event) => console.log("switch changed to:", event),
         },
         expressionProperties: {
           "props.hidden": model => !model.olderThan20,
@@ -217,8 +228,6 @@ export class AppComponent implements OnInit {
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
           change: (field, event) => console.log("selection changed to:", event),
-          focus: () => console.log("selection focused"),
-          blur: () => console.log("selection blurred"),
         },
         expressionProperties: {
           "props.disabled": model => !model.olderThan20,
@@ -230,7 +239,7 @@ export class AppComponent implements OnInit {
           text: "Reset",
           nzType: "primary",
           nzLoading: false,
-          nzDanger: true,
+          nzDanger: false,
           nzBlock: true,
           click: () => console.log("clicked"),
         },
