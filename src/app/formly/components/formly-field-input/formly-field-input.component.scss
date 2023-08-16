@@ -15,3 +15,10 @@ input {
   cursor: pointer;
   position: absolute;
 }
+
+::ng-deep {
+  .ant-input-affix-wrapper-focused,
+  .ant-input-affix-wrapper:focus {
+    box-shadow: none !important;
+  }
+}

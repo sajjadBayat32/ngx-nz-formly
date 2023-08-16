@@ -40,7 +40,7 @@ export function maxLengthValidator(
 }
 
 export function maxLengthMessage(field: FormlyFieldConfig<FormlyInputProps>) {
-  return `Field must be at least ${field.props?.maxLen} characters`;
+  return `Field must be at most ${field.props?.maxLen} characters`;
 }
 
 export function minValueValidator(

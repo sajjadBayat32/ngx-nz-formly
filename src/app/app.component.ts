@@ -195,9 +195,10 @@ export class AppComponent implements OnInit {
       fb.select("city", {
         className: "flex-50 px-2",
         props: {
-          objectValue: true,
+          objectValue: false,
           labelPosition: "Left",
           label: "City",
+          nzAllowClear: true,
           nzShowSearch: true,
           placeholder: "select your city",
           styles: {
@@ -223,7 +224,8 @@ export class AppComponent implements OnInit {
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          // compareWith: (o1: any, o2: any): boolean =>
+          //   o1?.value == o2?.value,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),

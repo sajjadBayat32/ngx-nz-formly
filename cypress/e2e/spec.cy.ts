@@ -15,9 +15,9 @@ describe("Nz Formly", () => {
 
     // Test Purpose: Max length validation
     cy.get("#control-lastName").type("bayat@gmail.com").blur();
-    // cy.get("#wrapper-lastName .error-message").contains(
-    //   "Field must be at most 10 characters",
-    // );
+    cy.get("#wrapper-lastName .error-message").contains(
+      "Field must be at most 10 characters",
+    );
     cy.get("#control-lastName").clear().type("bayat").blur();
     cy.get("#wrapper-lastName .error-message").should("not.exist");
 
@@ -65,12 +65,31 @@ describe("Nz Formly", () => {
     cy.get("#wrapper-password .show-password span").click();
     cy.get("#control-password").should("have.attr", "type", "password");
 
+    // Test Purpose: Separator Mask
+    cy.get("#control-budget").type("1000000").should("have.value", "1,000,000");
+
     // Test Purpose: Checkbox and input disabled and switch visibility
     cy.get("#control-age").should("be.disabled");
     cy.get("#control-allowNotifications").should("not.be.visible");
+    cy.get("#control-city").should("be.disabled");
     cy.get("#control-olderThan20").check().should("be.checked");
     cy.get("#control-age").should("not.be.disabled");
     cy.get("#control-allowNotifications").should("be.visible");
+    cy.get("#control-city").should("not.be.disabled");
+
+    // Test Purpose: Min and Max Value Input
+    cy.get("#control-age").type("12").blur();
+    cy.get("#wrapper-age .error-message").contains(
+      "Field value must be more than 20",
+    );
+    cy.get("#control-age").clear().type("250").blur();
+    cy.get("#wrapper-age .error-message").contains(
+      "Field value must be less than 100",
+    );
+    cy.get("#control-age").clear();
+    cy.get("#wrapper-age .error-message").should("exist");
+    cy.get("#control-age").type("26").blur();
+    cy.get("#wrapper-age .error-message").should("not.exist");
 
     // Test Purpose: Switch
     cy.get("#control-allowNotifications")
@@ -79,5 +98,25 @@ describe("Nz Formly", () => {
     cy.get("#control-allowNotifications")
       .click()
       .should("not.have.class", "ant-switch-checked");
+
+    // Test Purpose: Select
+    cy.get("#control-city").click();
+    cy.get(".ant-select-dropdown .ant-select-item").should("have.length", 5);
+    cy.get("#control-city").clear().type("city");
+    cy.get(".ant-select-dropdown .ant-select-item").should("have.length", 0);
+    cy.get("#control-city").clear();
+    cy.get(".ant-select-dropdown .ant-select-item").should("have.length", 5);
+    cy.get("#control-city").clear().type("Te");
+    cy.get(".ant-select-dropdown .ant-select-item")
+      .should("have.length", 1)
+      .eq(0)
+      .click();
+    cy.get("#wrapper-city .ant-select-selection-item").should(
+      "contain.html",
+      "Tehran",
+    );
+    cy.get("#wrapper-city .ant-select").trigger("mouseover");
+    cy.get("#wrapper-city .ant-select-clear").click();
+    cy.get("#wrapper-city .ant-select-selection-item").should("not.exist");
   });
 });
