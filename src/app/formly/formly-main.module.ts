@@ -13,7 +13,6 @@ import {
   FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
-  FormlyNumberProps,
   FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
@@ -29,13 +28,18 @@ import {
   minLengthValidator,
   emailValidator,
   passwordValidator,
+  minValueValidator,
+  maxValueValidator,
+  minValueMessage,
+  maxValueMessage,
+  maxLengthValidator,
+  maxLengthMessage,
 } from "./formly-validators";
 import { NgxMaskModule } from "ngx-mask";
 import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
-import { FormlyFieldNumberComponent } from "./components/formly-field-number/formly-field-number.component";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
 import { NzSelectModule } from "ng-zorro-antd/select";
@@ -51,22 +55,8 @@ export const FormlyForRoot: ConfigOption = {
         props: {
           nzSize: "default",
           labelPosition: "Left",
-        },
-      },
-    },
-    {
-      name: "number",
-      component: FormlyFieldNumberComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlyNumberProps>>{
-        props: {
-          labelPosition: "Left",
-          nzSize: "default",
-          nzBorderless: false,
-          nzPrecision: 0,
-          nzMax: Infinity,
-          nzMin: -Infinity,
-          nzPrecisionMode: "cut",
+          mask: "",
+          thousandSeparator: "",
         },
       },
     },
@@ -157,9 +147,24 @@ export const FormlyForRoot: ConfigOption = {
       validation: () => RequiredValidator,
     },
     {
-      name: "minLength",
+      name: "minLen",
       validation: (c: AbstractControl, f: FormlyFieldConfig) =>
         minLengthValidator(c, f),
+    },
+    {
+      name: "maxLen",
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        maxLengthValidator(c, f),
+    },
+    {
+      name: "minValue",
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        minValueValidator(c, f),
+    },
+    {
+      name: "maxValue",
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        maxValueValidator(c, f),
     },
     {
       name: "email",
@@ -167,7 +172,8 @@ export const FormlyForRoot: ConfigOption = {
     },
     {
       name: "password",
-      validation: (c: AbstractControl) => passwordValidator(c),
+      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
+        passwordValidator(c, f),
     },
   ],
   validationMessages: [
@@ -176,8 +182,20 @@ export const FormlyForRoot: ConfigOption = {
       message: "This field is required",
     },
     {
-      name: "minLength",
+      name: "minLen",
       message: (err: any, f: FormlyFieldConfig) => minLengthMessage(f),
+    },
+    {
+      name: "maxLen",
+      message: (err: any, f: FormlyFieldConfig) => maxLengthMessage(f),
+    },
+    {
+      name: "minValue",
+      message: (err: any, f: FormlyFieldConfig) => minValueMessage(f),
+    },
+    {
+      name: "maxValue",
+      message: (err: any, f: FormlyFieldConfig) => maxValueMessage(f),
     },
     {
       name: "email",
@@ -202,7 +220,6 @@ export const FormlyForRoot: ConfigOption = {
     FormlyDefaultWrapperComponent,
     FormlyFieldCheckboxComponent,
     FormlyFieldSwitchComponent,
-    FormlyFieldNumberComponent,
     FormlyFieldSelectComponent,
     FormlyButtonComponent,
   ],

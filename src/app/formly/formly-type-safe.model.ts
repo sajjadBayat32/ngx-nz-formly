@@ -3,30 +3,18 @@ import {
   FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
-  FormlyNumberProps,
   FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
 
 export class FormlyFieldBuilder<TModel> {
   input(
-    key: FormlyKeyValue<TModel, string>,
+    key: FormlyKeyValue<TModel, string | number>,
     configOverrides: FormlyFieldConfig<FormlyInputProps>,
   ): FormlyFieldConfig {
     return {
       key,
       type: "input",
-      ...configOverrides,
-    };
-  }
-
-  number(
-    key: FormlyKeyValue<TModel, number>,
-    configOverrides: FormlyFieldConfig<FormlyNumberProps>,
-  ): FormlyFieldConfig {
-    return {
-      key,
-      type: "number",
       ...configOverrides,
     };
   }
