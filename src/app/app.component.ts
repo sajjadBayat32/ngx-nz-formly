@@ -178,7 +178,6 @@ export class AppComponent implements OnInit {
       fb.switch("allowNotifications", {
         className: "flex-50 px-2",
         props: {
-          labelPosition: "Left",
           nzCheckedChildren: "1",
           nzUnCheckedChildren: "0",
           label: "Allow notifications",
@@ -196,7 +195,6 @@ export class AppComponent implements OnInit {
         className: "flex-50 px-2",
         props: {
           objectValue: false,
-          labelPosition: "Left",
           label: "City",
           nzAllowClear: true,
           nzShowSearch: true,
@@ -233,6 +231,32 @@ export class AppComponent implements OnInit {
         },
         expressionProperties: {
           "props.disabled": model => !model.olderThan20,
+        },
+      }),
+      fb.radio("gender", {
+        className: "flex-50 px-2",
+        props: {
+          label: "Gender",
+          nzType: "nz-radio-button",
+          styles: {
+            labelWidth: "110px",
+          },
+          nzOptions: [
+            {
+              label: "Male",
+              value: "Male",
+            },
+            {
+              label: "Female",
+              value: "Female",
+            },
+            {
+              label: "None",
+              value: null,
+            },
+          ],
+          nzButtonStyle: "solid",
+          change: (field, event) => console.log("Radio changed to:", event),
         },
       }),
       fb.button({
