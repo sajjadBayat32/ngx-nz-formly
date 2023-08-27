@@ -77,7 +77,7 @@ export interface FormlySwitchProps extends FormlyCommonProps {
 }
 
 export interface FormlyRadioProps extends FormlyCommonProps {
-  nzOptions: nzOptionType[];
+  nzOptions: nzRadioOptionType[];
   nzName?: string;
   nzSize?: NzSizeDSType;
   nzType?: "nz-radio" | "nz-radio-button";
@@ -116,8 +116,8 @@ export interface FormlySelectProps extends FormlyCommonProps {
   nzLoading?: boolean;
   nzLoadingObs?: Observable<boolean>;
   nzMaxTagCount?: number; // does it really work
-  nzOptions?: nzOptionType[];
-  nzOptionsObs?: Observable<nzOptionType[]>;
+  nzOptions?: nzSelectOptionType[];
+  nzOptionsObs?: Observable<nzSelectOptionType[]>;
   nzMaxTagPlaceholder?: TemplateRef<{ $implicit: any[] }>;
   nzOptionHeightPx?: number;
   nzOptionOverflowSize?: number;
@@ -127,13 +127,21 @@ export interface FormlySelectProps extends FormlyCommonProps {
   nzOnSearch?: (event: string) => void;
 }
 
-type nzOptionType = {
+type nzSelectOptionType = {
   label: string | number;
   value: NzSafeAny;
   disabled?: boolean;
   hide?: boolean;
   nzCustomContent?: string | TemplateRef<NzSafeAny>;
 };
+
+type nzRadioOptionType = {
+  value: NzSafeAny;
+  disabled?: boolean;
+} & (
+  | { label: string | number }
+  | { nzCustomContent: string | TemplateRef<NzSafeAny> }
+);
 
 export interface FormlyButtonProps {
   text: string;
