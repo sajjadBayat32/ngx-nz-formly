@@ -16,6 +16,7 @@ class FormModel {
   olderThan20: boolean;
   allowNotifications: boolean;
   city: any;
+  gender: string;
 
   constructor(element: any) {
     this.firstName = element?.firstName;
@@ -28,6 +29,7 @@ class FormModel {
     this.olderThan20 = element?.olderThan20;
     this.allowNotifications = element?.allowNotifications;
     this.city = element?.city;
+    this.gender = element?.gender;
   }
 }
 
