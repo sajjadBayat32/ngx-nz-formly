@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
 import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
+import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
 
 export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
 
@@ -73,6 +74,14 @@ export interface FormlySwitchProps extends FormlyCommonProps {
   nzUnCheckedChildren?: string | TemplateRef<void>;
   nzLoading?: boolean;
   nzSize?: NzSizeDSType;
+}
+
+export interface FormlyRadioProps extends FormlyCommonProps {
+  nzOptions: nzOptionType[];
+  nzName?: string;
+  nzSize?: NzSizeDSType;
+  nzType?: "nz-radio" | "nz-radio-button";
+  nzButtonStyle?: NzRadioButtonStyle;
 }
 
 export interface FormlySelectProps extends FormlyCommonProps {

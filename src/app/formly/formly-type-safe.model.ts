@@ -3,6 +3,7 @@ import {
   FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
+  FormlyRadioProps,
   FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
@@ -37,6 +38,17 @@ export class FormlyFieldBuilder<TModel> {
     return {
       key,
       type: "switch",
+      ...configOverrides,
+    };
+  }
+
+  radio(
+    key: FormlyKeyValue<TModel, any>,
+    configOverrides: FormlyFieldConfig<FormlyRadioProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "radio",
       ...configOverrides,
     };
   }

@@ -1,0 +1,32 @@
+<nz-radio-group
+  [id]="fieldID"
+  [formControl]="formControl"
+  [formlyAttributes]="field"
+  [nzName]="props.nzName"
+  [nzDisabled]="props.disabled"
+  [nzSize]="props.nzSize"
+  [nzButtonStyle]="props.nzButtonStyle"
+>
+  <ng-container *ngIf="props.nzType == 'nz-radio'">
+    <label
+      nz-radio
+      *ngFor="let item of props.nzOptions"
+      [nzDisabled]="item.disabled"
+      [nzValue]="item.value"
+    >
+      {{item.label}}
+      <div [innerHTML]="item.nzCustomContent"></div>
+    </label>
+  </ng-container>
+  <ng-container *ngIf="props.nzType == 'nz-radio-button'">
+    <label
+      nz-radio-button
+      *ngFor="let item of props.nzOptions"
+      [nzDisabled]="item.disabled"
+      [nzValue]="item.value"
+    >
+      {{item.label}}
+      <div [innerHTML]="item.nzCustomContent"></div>
+    </label>
+  </ng-container>
+</nz-radio-group>

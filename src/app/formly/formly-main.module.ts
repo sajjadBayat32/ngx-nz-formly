@@ -13,6 +13,7 @@ import {
   FormlyButtonProps,
   FormlyCheckboxProps,
   FormlyInputProps,
+  FormlyRadioProps,
   FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
@@ -44,6 +45,8 @@ import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
 import { NzSelectModule } from "ng-zorro-antd/select";
 import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
+import { FormlyFieldRadioComponent } from "./components/formly-field-radio/formly-field-radio.component";
+import { NzRadioModule } from "ng-zorro-antd/radio";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -77,9 +80,23 @@ export const FormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<FormlySwitchProps>>{
         props: {
+          labelPosition: "Left",
           disabled: false,
           nzSize: "default",
           nzLoading: false,
+        },
+      },
+    },
+    {
+      name: "radio",
+      component: FormlyFieldRadioComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<FormlyRadioProps>>{
+        props: {
+          labelPosition: "Left",
+          disabled: false,
+          nzSize: "default",
+          nzType: "nz-radio",
         },
       },
     },
@@ -222,6 +239,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyFieldSwitchComponent,
     FormlyFieldSelectComponent,
     FormlyButtonComponent,
+    FormlyFieldRadioComponent,
   ],
   imports: [
     NzInputModule,
@@ -235,6 +253,7 @@ export const FormlyForRoot: ConfigOption = {
     NzSwitchModule,
     NzInputNumberModule,
     NzSelectModule,
+    NzRadioModule,
   ],
 })
 export class FormlyMainModule {}
