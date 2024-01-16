@@ -163,7 +163,6 @@
       }
     }
   },
-  "defaultProject": "nz-formly",
   "cli": {
     "analytics": false,
     "packageManager": "npm",
