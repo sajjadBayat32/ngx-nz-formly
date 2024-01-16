@@ -1,6 +1,6 @@
 {
   "name": "nz-formly",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4500 --host 0.0.0.0 --live-reload false",
