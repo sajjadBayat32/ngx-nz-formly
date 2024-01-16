@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4500 --host 0.0.0.0 --live-reload false",
-    "build": "ng build",
+    "build": "ng build --configuration production --max-old-space-size=4096",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~16.2.12",
     "@angular/common": "~16.2.12",
