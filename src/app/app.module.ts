@@ -9,10 +9,10 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormlyNgZorroAntdModule } from "@ngx-formly/ng-zorro-antd";
 import { FormlyModule } from "@ngx-formly/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormlyForRoot } from "./formly/formly-main.module";
 import en from "@angular/common/locales/en";
 import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
+import { FormlyForRoot } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly.module";
 
 registerLocaleData(en);
 

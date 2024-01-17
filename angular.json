@@ -161,6 +161,39 @@
           }
         }
       }
+    },
+    "NgxNzFormly": {
+      "projectType": "library",
+      "root": "projects/ngx-nz-formly",
+      "sourceRoot": "projects/ngx-nz-formly/src",
+      "prefix": "Ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-nz-formly/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-nz-formly/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-nz-formly/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ngx-nz-formly/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

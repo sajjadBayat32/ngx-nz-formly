@@ -1,14 +1,18 @@
 import { NgModule } from "@angular/core";
+import { NgxNzFormlyComponent } from "./ngx-nz-formly.component";
 import { FormlyFieldInputComponent } from "./components/formly-field-input/formly-field-input.component";
-import { NzButtonModule } from "ng-zorro-antd/button";
-import { NzInputModule } from "ng-zorro-antd/input";
+import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
+import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
+import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
+import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
+import { FormlyFieldRadioComponent } from "./components/formly-field-radio/formly-field-radio.component";
+import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
+import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
 import {
   ConfigOption,
   FormlyFieldConfig,
   FormlyModule,
 } from "@ngx-formly/core";
-import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
-import { CommonModule } from "@angular/common";
 import {
   FormlyButtonProps,
   FormlyCheckboxProps,
@@ -17,36 +21,33 @@ import {
   FormlySelectProps,
   FormlySwitchProps,
 } from "./formly-props.model";
-import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
-import { NzIconModule } from "ng-zorro-antd/icon";
 import {
   AbstractControl,
   ReactiveFormsModule,
   RequiredValidator,
 } from "@angular/forms";
 import {
+  emailValidator,
+  maxLengthMessage,
+  maxLengthValidator,
+  maxValueMessage,
+  maxValueValidator,
   minLengthMessage,
   minLengthValidator,
-  emailValidator,
-  passwordValidator,
-  minValueValidator,
-  maxValueValidator,
   minValueMessage,
-  maxValueMessage,
-  maxLengthValidator,
-  maxLengthMessage,
+  minValueValidator,
+  passwordValidator,
 } from "./formly-validators";
-import { NgxMaskModule } from "ngx-mask";
-import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
+import { NzInputModule } from "ng-zorro-antd/input";
+import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
-import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
-import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
 import { NzSelectModule } from "ng-zorro-antd/select";
-import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
-import { FormlyFieldRadioComponent } from "./components/formly-field-radio/formly-field-radio.component";
 import { NzRadioModule } from "ng-zorro-antd/radio";
+import { CommonModule } from "@angular/common";
+import { NgxMaskModule } from "ngx-mask";
 
 export const FormlyForRoot: ConfigOption = {
   types: [
@@ -233,27 +234,29 @@ export const FormlyForRoot: ConfigOption = {
 @NgModule({
   declarations: [
     FormlyFieldInputComponent,
-    FormlyLabelWrapperComponent,
-    FormlyDefaultWrapperComponent,
     FormlyFieldCheckboxComponent,
     FormlyFieldSwitchComponent,
     FormlyFieldSelectComponent,
     FormlyButtonComponent,
     FormlyFieldRadioComponent,
+    FormlyLabelWrapperComponent,
+    FormlyDefaultWrapperComponent,
+    NgxNzFormlyComponent,
   ],
   imports: [
+    CommonModule,
+    FormlyModule,
+    ReactiveFormsModule,
+    NgxMaskModule,
     NzInputModule,
     NzButtonModule,
-    CommonModule,
     NzIconModule,
-    ReactiveFormsModule,
-    FormlyModule,
-    NgxMaskModule,
     NzCheckboxModule,
     NzSwitchModule,
     NzInputNumberModule,
     NzSelectModule,
     NzRadioModule,
   ],
+  exports: [NgxNzFormlyComponent],
 })
-export class FormlyMainModule {}
+export class NgxNzFormlyModule {}
