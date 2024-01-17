@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
-import { FormlyButtonProps } from "../../formly-props.model";
+import { NzFormlyButtonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
   selector: "app-formly-button",
@@ -8,7 +8,7 @@ import { FormlyButtonProps } from "../../formly-props.model";
   styleUrls: ["./formly-button.component.scss"],
 })
 export class FormlyButtonComponent extends FieldType<
-  FormlyFieldConfig<FormlyButtonProps>
+  FormlyFieldConfig<NzFormlyButtonProps>
 > {
   onClick() {
     if (typeof this.props?.click == "function") {

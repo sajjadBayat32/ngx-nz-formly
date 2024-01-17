@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { FormlyInputProps } from "../../formly-props.model";
+import { NzFormlyInputProps } from "../../ngx-nz-formly-props.model";
 import { debounceTime, Subject, takeUntil, tap } from "rxjs";
 import { CountryCodeMask, CountryMasks2 } from "./phone-mask.config";
 
@@ -16,7 +16,7 @@ const DefaultPhoneMask: CountryCodeMask = {
   styleUrls: ["./formly-field-input.component.scss"],
 })
 export class FormlyFieldInputComponent
-  extends FieldType<FieldTypeConfig<FormlyInputProps>>
+  extends FieldType<FieldTypeConfig<NzFormlyInputProps>>
   implements AfterViewInit, OnDestroy
 {
   mask: string | undefined;

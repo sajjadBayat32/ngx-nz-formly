@@ -1,17 +1,17 @@
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import {
-  FormlyButtonProps,
-  FormlyCheckboxProps,
-  FormlyInputProps,
-  FormlyRadioProps,
-  FormlySelectProps,
-  FormlySwitchProps,
-} from "./formly-props.model";
+  NzFormlyButtonProps,
+  NzFormlyCheckboxProps,
+  NzFormlyInputProps,
+  NzFormlyRadioProps,
+  NzFormlySelectProps,
+  NzFormlySwitchProps,
+} from "./ngx-nz-formly-props.model";
 
-export class FormlyFieldBuilder<TModel> {
+export class NzFormlyFieldBuilder<TModel> {
   input(
     key: FormlyKeyValue<TModel, string | number>,
-    configOverrides: FormlyFieldConfig<FormlyInputProps>,
+    configOverrides: FormlyFieldConfig<NzFormlyInputProps>,
   ): FormlyFieldConfig {
     return {
       key,
@@ -22,7 +22,7 @@ export class FormlyFieldBuilder<TModel> {
 
   checkbox(
     key: FormlyKeyValue<TModel, boolean>,
-    configOverrides: FormlyFieldConfig<FormlyCheckboxProps>,
+    configOverrides: FormlyFieldConfig<NzFormlyCheckboxProps>,
   ): FormlyFieldConfig {
     return {
       key,
@@ -33,7 +33,7 @@ export class FormlyFieldBuilder<TModel> {
 
   switch(
     key: FormlyKeyValue<TModel, boolean>,
-    configOverrides: FormlyFieldConfig<FormlySwitchProps>,
+    configOverrides: FormlyFieldConfig<NzFormlySwitchProps>,
   ): FormlyFieldConfig {
     return {
       key,
@@ -44,7 +44,7 @@ export class FormlyFieldBuilder<TModel> {
 
   radio(
     key: FormlyKeyValue<TModel, any>,
-    configOverrides: FormlyFieldConfig<FormlyRadioProps>,
+    configOverrides: FormlyFieldConfig<NzFormlyRadioProps>,
   ): FormlyFieldConfig {
     return {
       key,
@@ -55,7 +55,7 @@ export class FormlyFieldBuilder<TModel> {
 
   select(
     key: FormlyKeyValue<TModel, any>,
-    configOverrides: FormlyFieldConfig<FormlySelectProps>,
+    configOverrides: FormlyFieldConfig<NzFormlySelectProps>,
   ): FormlyFieldConfig {
     return {
       key,
@@ -65,7 +65,7 @@ export class FormlyFieldBuilder<TModel> {
   }
 
   button(
-    configOverrides: FormlyFieldConfig<FormlyButtonProps>,
+    configOverrides: FormlyFieldConfig<NzFormlyButtonProps>,
   ): FormlyFieldConfig {
     return {
       type: "button",

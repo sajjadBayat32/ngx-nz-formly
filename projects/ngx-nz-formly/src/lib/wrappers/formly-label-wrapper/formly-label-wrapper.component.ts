@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FieldTypeConfig, FieldWrapper } from "@ngx-formly/core";
-import { FormlyCommonProps } from "../../formly-props.model";
+import { NzFormlyCommonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
   selector: "app-formly-label-wrapper",
@@ -8,5 +8,5 @@ import { FormlyCommonProps } from "../../formly-props.model";
   styleUrls: ["./formly-label-wrapper.component.scss"],
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper<
-  FieldTypeConfig<FormlyCommonProps>
+  FieldTypeConfig<NzFormlyCommonProps>
 > {}

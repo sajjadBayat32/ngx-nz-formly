@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { NgxNzFormlyComponent } from "./ngx-nz-formly.component";
 import { FormlyFieldInputComponent } from "./components/formly-field-input/formly-field-input.component";
 import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
 import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
@@ -14,13 +13,13 @@ import {
   FormlyModule,
 } from "@ngx-formly/core";
 import {
-  FormlyButtonProps,
-  FormlyCheckboxProps,
-  FormlyInputProps,
-  FormlyRadioProps,
-  FormlySelectProps,
-  FormlySwitchProps,
-} from "./formly-props.model";
+  NzFormlyButtonProps,
+  NzFormlyCheckboxProps,
+  NzFormlyInputProps,
+  NzFormlyRadioProps,
+  NzFormlySelectProps,
+  NzFormlySwitchProps,
+} from "./ngx-nz-formly-props.model";
 import {
   AbstractControl,
   ReactiveFormsModule,
@@ -37,7 +36,7 @@ import {
   minValueMessage,
   minValueValidator,
   passwordValidator,
-} from "./formly-validators";
+} from "./ngx-nz-formly-validators";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzIconModule } from "ng-zorro-antd/icon";
@@ -49,13 +48,13 @@ import { NzRadioModule } from "ng-zorro-antd/radio";
 import { CommonModule } from "@angular/common";
 import { NgxMaskModule } from "ngx-mask";
 
-export const FormlyForRoot: ConfigOption = {
+export const NzFormlyForRoot: ConfigOption = {
   types: [
     {
       name: "input",
       component: FormlyFieldInputComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlyInputProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
           nzSize: "default",
           labelPosition: "Left",
@@ -68,7 +67,7 @@ export const FormlyForRoot: ConfigOption = {
       name: "checkbox",
       component: FormlyFieldCheckboxComponent,
       wrappers: [],
-      defaultOptions: <FormlyFieldConfig<FormlyCheckboxProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
           disabled: false,
           nzAutoFocus: false,
@@ -79,7 +78,7 @@ export const FormlyForRoot: ConfigOption = {
       name: "switch",
       component: FormlyFieldSwitchComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlySwitchProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
           labelPosition: "Left",
           disabled: false,
@@ -92,7 +91,7 @@ export const FormlyForRoot: ConfigOption = {
       name: "radio",
       component: FormlyFieldRadioComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlyRadioProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
           labelPosition: "Left",
           disabled: false,
@@ -105,7 +104,7 @@ export const FormlyForRoot: ConfigOption = {
       name: "select",
       component: FormlyFieldSelectComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlySelectProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlySelectProps>>{
         props: {
           objectValue: false,
           labelPosition: "Left",
@@ -135,7 +134,7 @@ export const FormlyForRoot: ConfigOption = {
       name: "button",
       component: FormlyButtonComponent,
       wrappers: ["default-wrapper"],
-      defaultOptions: <FormlyFieldConfig<FormlyButtonProps>>{
+      defaultOptions: <FormlyFieldConfig<NzFormlyButtonProps>>{
         props: {
           text: "",
           disabled: false,
@@ -240,8 +239,7 @@ export const FormlyForRoot: ConfigOption = {
     FormlyButtonComponent,
     FormlyFieldRadioComponent,
     FormlyLabelWrapperComponent,
-    FormlyDefaultWrapperComponent,
-    NgxNzFormlyComponent,
+    FormlyDefaultWrapperComponent
   ],
   imports: [
     CommonModule,
@@ -257,6 +255,6 @@ export const FormlyForRoot: ConfigOption = {
     NzSelectModule,
     NzRadioModule,
   ],
-  exports: [NgxNzFormlyComponent],
+  exports: [],
 })
 export class NgxNzFormlyModule {}

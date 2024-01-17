@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { FormlySwitchProps } from "../../formly-props.model";
+import { NzFormlySwitchProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
@@ -9,7 +9,7 @@ import { Subject, takeUntil, tap } from "rxjs";
   styleUrls: ["./formly-field-switch.component.scss"],
 })
 export class FormlyFieldSwitchComponent
-  extends FieldType<FieldTypeConfig<FormlySwitchProps>>
+  extends FieldType<FieldTypeConfig<NzFormlySwitchProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();

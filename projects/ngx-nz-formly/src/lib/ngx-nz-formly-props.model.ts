@@ -12,13 +12,13 @@ import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
 
-export type FormlyCustomFieldProps = FormlyInputProps | FormlyCheckboxProps;
+export type FormlyCustomFieldProps = NzFormlyInputProps | NzFormlyCheckboxProps;
 
 enum InputMask {
   PHONE = "phone",
 }
 
-export interface FormlyCommonProps {
+export interface NzFormlyCommonProps {
   disabled?: boolean;
   hidden?: boolean;
   label?: string;
@@ -44,7 +44,7 @@ export interface FormlyCommonProps {
 
 // extends FormlyFieldProps
 
-export interface FormlyInputProps extends FormlyCommonProps {
+export interface NzFormlyInputProps extends NzFormlyCommonProps {
   mask?: InputMask | string;
   thousandSeparator?: string;
   minLen?: number;
@@ -64,19 +64,19 @@ export interface FormlyInputProps extends FormlyCommonProps {
   nzSize?: NzSizeLDSType;
 }
 
-export interface FormlyCheckboxProps extends FormlyCommonProps {
+export interface NzFormlyCheckboxProps extends NzFormlyCommonProps {
   hasSelectAll?: boolean;
   isGroup?: boolean;
 }
 
-export interface FormlySwitchProps extends FormlyCommonProps {
+export interface NzFormlySwitchProps extends NzFormlyCommonProps {
   nzCheckedChildren?: string | TemplateRef<void>;
   nzUnCheckedChildren?: string | TemplateRef<void>;
   nzLoading?: boolean;
   nzSize?: NzSizeDSType;
 }
 
-export interface FormlyRadioProps extends FormlyCommonProps {
+export interface NzFormlyRadioProps extends NzFormlyCommonProps {
   nzOptions: nzRadioOptionType[];
   nzName?: string;
   nzSize?: NzSizeDSType;
@@ -84,7 +84,7 @@ export interface FormlyRadioProps extends FormlyCommonProps {
   nzButtonStyle?: NzRadioButtonStyle;
 }
 
-export interface FormlySelectProps extends FormlyCommonProps {
+export interface NzFormlySelectProps extends NzFormlyCommonProps {
   objectValue?: boolean;
   compareWith?: (o1: any, o2: any) => boolean;
   nzAutoClearSearchValue?: boolean;
@@ -143,7 +143,7 @@ type nzRadioOptionType = {
   | { nzCustomContent: string | TemplateRef<NzSafeAny> }
 );
 
-export interface FormlyButtonProps {
+export interface NzFormlyButtonProps {
   text: string;
   disabled?: boolean;
   nzGhost?: boolean;

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { FormlyCheckboxProps } from "../../formly-props.model";
+import { NzFormlyCheckboxProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
@@ -9,7 +9,7 @@ import { Subject, takeUntil, tap } from "rxjs";
   styleUrls: ["./formly-field-checkbox.component.scss"],
 })
 export class FormlyFieldCheckboxComponent
-  extends FieldType<FieldTypeConfig<FormlyCheckboxProps>>
+  extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();

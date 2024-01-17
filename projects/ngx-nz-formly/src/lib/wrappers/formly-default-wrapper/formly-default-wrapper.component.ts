@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FieldTypeConfig, FieldWrapper } from "@ngx-formly/core";
 import { animate, style, transition, trigger } from "@angular/animations";
-import { FormlyCommonProps } from "../../formly-props.model";
+import { NzFormlyCommonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
   selector: "app-formly-default-wrapper",
@@ -21,5 +21,5 @@ import { FormlyCommonProps } from "../../formly-props.model";
   ],
 })
 export class FormlyDefaultWrapperComponent extends FieldWrapper<
-  FieldTypeConfig<FormlyCommonProps>
+  FieldTypeConfig<NzFormlyCommonProps>
 > {}

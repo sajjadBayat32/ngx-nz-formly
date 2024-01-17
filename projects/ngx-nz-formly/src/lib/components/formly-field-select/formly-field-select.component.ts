@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { FormlySelectProps } from "../../formly-props.model";
+import { NzFormlySelectProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
@@ -9,7 +9,7 @@ import { Subject, takeUntil, tap } from "rxjs";
   styleUrls: ["./formly-field-select.component.scss"],
 })
 export class FormlyFieldSelectComponent
-  extends FieldType<FieldTypeConfig<FormlySelectProps>>
+  extends FieldType<FieldTypeConfig<NzFormlySelectProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();

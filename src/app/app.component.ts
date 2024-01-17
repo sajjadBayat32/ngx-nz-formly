@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
-import { FormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/lib/formly-type-safe.model";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
+import { FormlyFieldBuilder } from "NgxNzFormly";
 
 class FormModel {
   firstName: string;
