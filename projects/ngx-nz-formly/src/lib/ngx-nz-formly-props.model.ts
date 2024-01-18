@@ -23,7 +23,7 @@ export interface NzFormlyCommonProps {
   hidden?: boolean;
   label?: string;
   labelObs?: Observable<string>;
-  labelPosition?: "Top" | "Left";
+  labelPosition?: "inline" | "top" | "float";
   placeholder?: string;
   required?: boolean;
   readonly?: boolean;

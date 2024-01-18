@@ -57,7 +57,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
           nzSize: "default",
-          labelPosition: "Left",
+          labelPosition: "inline",
           mask: "",
           thousandSeparator: "",
         },
@@ -80,7 +80,7 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
-          labelPosition: "Left",
+          labelPosition: "inline",
           disabled: false,
           nzSize: "default",
           nzLoading: false,
@@ -93,7 +93,7 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
-          labelPosition: "Left",
+          labelPosition: "inline",
           disabled: false,
           nzSize: "default",
           nzType: "nz-radio",
@@ -107,7 +107,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlySelectProps>>{
         props: {
           objectValue: false,
-          labelPosition: "Left",
+          labelPosition: "inline",
           compareWith: (o1: any, o2: any) => o1 === o2,
           nzAutoClearSearchValue: true,
           nzAllowClear: false,

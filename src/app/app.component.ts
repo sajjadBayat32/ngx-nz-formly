@@ -3,7 +3,7 @@ import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
-import { FormlyFieldBuilder } from "NgxNzFormly";
+import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly-type-safe.model";
 
 class FormModel {
   firstName: string;
@@ -55,11 +55,12 @@ export class AppComponent implements OnInit {
   }
 
   initForm() {
-    const fb = new FormlyFieldBuilder<FormModel>();
+    const fb = new NzFormlyFieldBuilder<FormModel>();
     this.fields = [
       fb.input("firstName", {
         className: "flex-50 px-2",
         props: {
+          labelPosition: "top",
           required: true,
           minLen: 3,
           label: "First Name",
@@ -78,6 +79,7 @@ export class AppComponent implements OnInit {
       fb.input("lastName", {
         className: "flex-50 px-2",
         props: {
+          required: true,
           maxLen: 10,
           label: "Last Name",
           styles: {

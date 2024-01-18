@@ -1,12 +1,3 @@
-nz-input-group {
-  position: relative;
-}
-
-input {
-  border-radius: 2px !important;
-  box-shadow: none !important;
-}
-
 .show-password {
   top: 6px;
   z-index: 5;
@@ -14,11 +5,4 @@ input {
   opacity: 0.6;
   cursor: pointer;
   position: absolute;
-}
-
-::ng-deep {
-  .ant-input-affix-wrapper-focused,
-  .ant-input-affix-wrapper:focus {
-    box-shadow: none !important;
-  }
 }

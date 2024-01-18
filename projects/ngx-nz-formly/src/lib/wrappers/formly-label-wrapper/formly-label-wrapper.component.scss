@@ -1,4 +1,4 @@
-.field-wrapper {
+.nz-formly-field-wrapper {
   display: flex;
   align-items: center;
 
@@ -8,26 +8,19 @@
   }
 }
 
-.top-label label {
+.nz-formly-label-top label {
   font-size: 75%;
   font-weight: 500;
 }
 
-.left-label label {
+.nz-formly-label-inline label {
   font-size: 100%;
   font-weight: 600;
   position: relative;
   padding-right: 5px;
 }
 
-label .colon {
-  position: relative;
-  left: -2px;
-}
-
-label .required {
+.nz-formly-label-required {
   color: #f10232;
   position: relative;
-  right: 0;
-  top: 2px;
 }

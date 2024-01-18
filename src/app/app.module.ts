@@ -13,8 +13,8 @@ import en from "@angular/common/locales/en";
 import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
 import { NzFormlyForRoot } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly.module";
-import {NgxNzFormlyModule} from "NgxNzFormly";
-import {NzButtonModule} from "ng-zorro-antd/button";
+import { NzButtonModule } from "ng-zorro-antd/button";
+import { NgxNzFormlyModule } from "ngx-nz-formly";
 
 registerLocaleData(en);
 
@@ -29,7 +29,7 @@ registerLocaleData(en);
     NgxMaskModule.forRoot({}),
     FormlyModule.forRoot(NzFormlyForRoot),
     NgxNzFormlyModule,
-    NzButtonModule
+    NzButtonModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

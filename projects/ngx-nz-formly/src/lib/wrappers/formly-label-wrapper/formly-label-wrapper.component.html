@@ -1,14 +1,13 @@
-<div class="top-label" *ngIf="props.labelPosition == 'Top'">
+<div class="nz-formly-label-top" *ngIf="props.labelPosition == 'top'">
   <ng-container *ngTemplateOutlet="Label"></ng-container>
   <ng-container #fieldComponent></ng-container>
 </div>
 
-<div class="top-label" *ngIf="props.labelPosition == 'Left'">
-  <div class="field-wrapper">
-    <div class="left-label" [ngStyle]="{ width: props.styles?.labelWidth }">
+<div class="nz-formly-label-inline" *ngIf="props.labelPosition == 'inline'">
+  <div class="nz-formly-field-wrapper">
+    <div [ngStyle]="{ width: props.styles?.labelWidth }">
       <ng-container *ngTemplateOutlet="Label"></ng-container>
     </div>
-
     <div class="flex-grow-1">
       <ng-container #fieldComponent></ng-container>
     </div>
@@ -16,9 +15,8 @@
 </div>
 
 <ng-template #Label>
-  <label [ngClass]="props.styles?.labelClass">
+  <label class="nz-formly-label" [ngClass]="props.styles?.labelClass">
     {{ props.label || (props.labelObs | async) }}
-    <span class="colon" *ngIf="props.labelPosition == 'Left'">:</span>
-    <span class="required" *ngIf="props.required">*</span>
+    <span class="nz-formly-label-required" *ngIf="props.required">*</span>
   </label>
 </ng-template>
