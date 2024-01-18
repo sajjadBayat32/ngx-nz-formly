@@ -1,8 +1,7 @@
 .show-password {
-  top: 6px;
   z-index: 5;
-  right: 10px;
   opacity: 0.6;
   cursor: pointer;
   position: absolute;
+  inset-inline-end: 10px;
 }
