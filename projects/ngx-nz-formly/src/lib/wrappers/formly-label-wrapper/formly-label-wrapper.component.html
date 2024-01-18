@@ -14,6 +14,11 @@
   </div>
 </div>
 
+<div class="nz-formly-label-float" *ngIf="props.labelPosition == 'float'">
+  <ng-container #fieldComponent></ng-container>
+  <ng-container *ngTemplateOutlet="Label"></ng-container>
+</div>
+
 <ng-template #Label>
   <label class="nz-formly-label" [ngClass]="props.styles?.labelClass">
     {{ props.label || (props.labelObs | async) }}

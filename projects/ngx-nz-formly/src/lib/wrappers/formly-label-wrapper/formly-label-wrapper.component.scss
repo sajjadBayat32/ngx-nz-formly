@@ -20,6 +20,31 @@
   padding-right: 5px;
 }
 
+.nz-formly-label-float {
+  position: relative;
+
+  label {
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    pointer-events: none;
+    transform-origin: 0 0;
+    inset-inline-start: 10px;
+    border: 1px solid transparent;
+    transition: all .1s ease-in-out;
+  }
+
+  &:focus {
+    label {
+      opacity: .65;
+      transform: scale(.85) translateY(-0.5rem);
+    }
+  }
+}
+
 .nz-formly-label-required {
   color: #f10232;
   position: relative;
