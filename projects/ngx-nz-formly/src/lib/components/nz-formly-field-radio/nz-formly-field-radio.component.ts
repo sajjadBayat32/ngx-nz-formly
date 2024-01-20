@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlySwitchProps } from "../../ngx-nz-formly-props.model";
+import { NzFormlyRadioProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-formly-field-switch",
-  templateUrl: "./formly-field-switch.component.html",
-  styleUrls: ["./formly-field-switch.component.scss"],
+  selector: "app-nz-formly-field-radio",
+  templateUrl: "./nz-formly-field-radio.component.html",
+  styleUrls: ["./nz-formly-field-radio.component.scss"],
 })
-export class FormlyFieldSwitchComponent
-  extends FieldType<FieldTypeConfig<NzFormlySwitchProps>>
+export class NzFormlyFieldRadioComponent
+  extends FieldType<FieldTypeConfig<NzFormlyRadioProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();

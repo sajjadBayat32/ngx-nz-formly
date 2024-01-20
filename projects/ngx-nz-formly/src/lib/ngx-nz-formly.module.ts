@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
-import { FormlyFieldInputComponent } from "./components/formly-field-input/formly-field-input.component";
-import { FormlyFieldCheckboxComponent } from "./components/formly-field-checkbox/formly-field-checkbox.component";
-import { FormlyButtonComponent } from "./components/formly-button/formly-button.component";
-import { FormlyFieldSelectComponent } from "./components/formly-field-select/formly-field-select.component";
-import { FormlyFieldSwitchComponent } from "./components/formly-field-switch/formly-field-switch.component";
-import { FormlyFieldRadioComponent } from "./components/formly-field-radio/formly-field-radio.component";
-import { FormlyLabelWrapperComponent } from "./wrappers/formly-label-wrapper/formly-label-wrapper.component";
-import { FormlyDefaultWrapperComponent } from "./wrappers/formly-default-wrapper/formly-default-wrapper.component";
+import { NzFormlyFieldInputComponent } from "./components/nz-formly-field-input/nz-formly-field-input.component";
+import { NzFormlyFieldCheckboxComponent } from "./components/nz-formly-field-checkbox/nz-formly-field-checkbox.component";
+import { NzFormlyButtonComponent } from "./components/nz-formly-button/nz-formly-button.component";
+import { NzFormlyFieldSelectComponent } from "./components/nz-formly-field-select/nz-formly-field-select.component";
+import { NzFormlyFieldSwitchComponent } from "./components/nz-formly-field-switch/nz-formly-field-switch.component";
+import { NzFormlyFieldRadioComponent } from "./components/nz-formly-field-radio/nz-formly-field-radio.component";
+import { NzFormlyLabelWrapperComponent } from "./wrappers/nz-formly-label-wrapper/nz-formly-label-wrapper.component";
+import { NzFormlyDefaultWrapperComponent } from "./wrappers/nz-formly-default-wrapper/nz-formly-default-wrapper.component";
 import {
   ConfigOption,
   FormlyFieldConfig,
@@ -52,7 +52,7 @@ export const NzFormlyForRoot: ConfigOption = {
   types: [
     {
       name: "input",
-      component: FormlyFieldInputComponent,
+      component: NzFormlyFieldInputComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
@@ -65,7 +65,7 @@ export const NzFormlyForRoot: ConfigOption = {
     },
     {
       name: "checkbox",
-      component: FormlyFieldCheckboxComponent,
+      component: NzFormlyFieldCheckboxComponent,
       wrappers: [],
       defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
@@ -76,7 +76,7 @@ export const NzFormlyForRoot: ConfigOption = {
     },
     {
       name: "switch",
-      component: FormlyFieldSwitchComponent,
+      component: NzFormlyFieldSwitchComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
@@ -89,7 +89,7 @@ export const NzFormlyForRoot: ConfigOption = {
     },
     {
       name: "radio",
-      component: FormlyFieldRadioComponent,
+      component: NzFormlyFieldRadioComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
@@ -102,7 +102,7 @@ export const NzFormlyForRoot: ConfigOption = {
     },
     {
       name: "select",
-      component: FormlyFieldSelectComponent,
+      component: NzFormlyFieldSelectComponent,
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlySelectProps>>{
         props: {
@@ -132,7 +132,7 @@ export const NzFormlyForRoot: ConfigOption = {
     },
     {
       name: "button",
-      component: FormlyButtonComponent,
+      component: NzFormlyButtonComponent,
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyButtonProps>>{
         props: {
@@ -151,11 +151,11 @@ export const NzFormlyForRoot: ConfigOption = {
   wrappers: [
     {
       name: "default-wrapper",
-      component: FormlyDefaultWrapperComponent,
+      component: NzFormlyDefaultWrapperComponent,
     },
     {
       name: "label-wrapper",
-      component: FormlyLabelWrapperComponent,
+      component: NzFormlyLabelWrapperComponent,
     },
   ],
   validators: [
@@ -232,14 +232,14 @@ export const NzFormlyForRoot: ConfigOption = {
 
 @NgModule({
   declarations: [
-    FormlyFieldInputComponent,
-    FormlyFieldCheckboxComponent,
-    FormlyFieldSwitchComponent,
-    FormlyFieldSelectComponent,
-    FormlyButtonComponent,
-    FormlyFieldRadioComponent,
-    FormlyLabelWrapperComponent,
-    FormlyDefaultWrapperComponent
+    NzFormlyFieldInputComponent,
+    NzFormlyFieldCheckboxComponent,
+    NzFormlyFieldSwitchComponent,
+    NzFormlyFieldSelectComponent,
+    NzFormlyButtonComponent,
+    NzFormlyFieldRadioComponent,
+    NzFormlyLabelWrapperComponent,
+    NzFormlyDefaultWrapperComponent
   ],
   imports: [
     CommonModule,

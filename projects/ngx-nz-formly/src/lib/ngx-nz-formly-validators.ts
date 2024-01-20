@@ -2,7 +2,7 @@ import { AbstractControl } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import { NzFormlyInputProps } from "./ngx-nz-formly-props.model";
 
-export type validatorNames = {
+export type NzFormlyValidatorNames = {
   [key in
     | "required"
     | "minLen"
@@ -16,7 +16,7 @@ export type validatorNames = {
 export function minLengthValidator(
   control: AbstractControl,
   field: FormlyFieldConfig<NzFormlyInputProps>,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   if (field.props?.minLen)
     return control.value?.length < field.props?.minLen
       ? { minLen: true }
@@ -31,7 +31,7 @@ export function minLengthMessage(field: FormlyFieldConfig<NzFormlyInputProps>) {
 export function maxLengthValidator(
   control: AbstractControl,
   field: FormlyFieldConfig<NzFormlyInputProps>,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   if (field.props?.maxLen)
     return control.value?.length > field.props?.maxLen
       ? { maxLen: true }
@@ -46,7 +46,7 @@ export function maxLengthMessage(field: FormlyFieldConfig<NzFormlyInputProps>) {
 export function minValueValidator(
   control: AbstractControl,
   field: FormlyFieldConfig<NzFormlyInputProps>,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   if (field.props?.minValue && control.value != null)
     return Number(control.value) < field.props.minValue
       ? { minValue: false }
@@ -61,7 +61,7 @@ export function minValueMessage(field: FormlyFieldConfig<NzFormlyInputProps>) {
 export function maxValueValidator(
   control: AbstractControl,
   field: FormlyFieldConfig<NzFormlyInputProps>,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   if (field.props?.maxValue && control.value != null)
     return Number(control.value) > field.props.maxValue
       ? { maxValue: true }
@@ -75,7 +75,7 @@ export function maxValueMessage(field: FormlyFieldConfig<NzFormlyInputProps>) {
 
 export function emailValidator(
   control: AbstractControl,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   let REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
   return REGEX.test(control.value) ? null : { email: true };
 }
@@ -83,7 +83,7 @@ export function emailValidator(
 export function passwordValidator(
   control: AbstractControl,
   field: FormlyFieldConfig<NzFormlyInputProps>,
-): validatorNames | null {
+): NzFormlyValidatorNames | null {
   if (field.props?.type === "password") {
     let REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
     return REGEX.test(control.value) ? null : { password: true };

@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlyRadioProps } from "../../ngx-nz-formly-props.model";
+import { NzFormlyCheckboxProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-formly-field-radio",
-  templateUrl: "./formly-field-radio.component.html",
-  styleUrls: ["./formly-field-radio.component.scss"],
+  selector: "app-nz-formly-field-checkbox",
+  templateUrl: "./nz-formly-field-checkbox.component.html",
+  styleUrls: ["./nz-formly-field-checkbox.component.scss"],
 })
-export class FormlyFieldRadioComponent
-  extends FieldType<FieldTypeConfig<NzFormlyRadioProps>>
+export class NzFormlyFieldCheckboxComponent
+  extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();
@@ -25,12 +25,6 @@ export class FormlyFieldRadioComponent
         }),
       )
       .subscribe();
-  }
-
-  onChange(event: boolean) {
-    if (typeof this.props?.change === "function") {
-      this.props.change(this.field, event);
-    }
   }
 
   get fieldID() {

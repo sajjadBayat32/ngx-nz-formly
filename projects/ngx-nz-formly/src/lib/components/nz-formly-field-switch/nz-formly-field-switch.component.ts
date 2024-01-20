@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlyCheckboxProps } from "../../ngx-nz-formly-props.model";
+import { NzFormlySwitchProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-formly-field-checkbox",
-  templateUrl: "./formly-field-checkbox.component.html",
-  styleUrls: ["./formly-field-checkbox.component.scss"],
+  selector: "app-nz-formly-field-switch",
+  templateUrl: "./nz-formly-field-switch.component.html",
+  styleUrls: ["./nz-formly-field-switch.component.scss"],
 })
-export class FormlyFieldCheckboxComponent
-  extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>
+export class NzFormlyFieldSwitchComponent
+  extends FieldType<FieldTypeConfig<NzFormlySwitchProps>>
   implements OnInit, OnDestroy
 {
   unSubscribeAll$ = new Subject<void>();
@@ -25,6 +25,12 @@ export class FormlyFieldCheckboxComponent
         }),
       )
       .subscribe();
+  }
+
+  onChange(event: boolean) {
+    if (typeof this.props?.change === "function") {
+      this.props.change(this.field, event);
+    }
   }
 
   get fieldID() {

@@ -4,9 +4,9 @@ import { animate, style, transition, trigger } from "@angular/animations";
 import { NzFormlyCommonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
-  selector: "app-formly-default-wrapper",
-  templateUrl: "./formly-default-wrapper.component.html",
-  styleUrls: ["./formly-default-wrapper.component.scss"],
+  selector: "app-nz-formly-default-wrapper",
+  templateUrl: "./nz-formly-default-wrapper.component.html",
+  styleUrls: ["./nz-formly-default-wrapper.component.scss"],
   animations: [
     trigger("myAnimation", [
       transition(":enter", [
@@ -20,6 +20,6 @@ import { NzFormlyCommonProps } from "../../ngx-nz-formly-props.model";
     ]),
   ],
 })
-export class FormlyDefaultWrapperComponent extends FieldWrapper<
+export class NzFormlyDefaultWrapperComponent extends FieldWrapper<
   FieldTypeConfig<NzFormlyCommonProps>
 > {}
