@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import en from "@angular/common/locales/en";
 import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
-import { NgxNzFormlyModule, NzFormlyForRoot } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly.module";
+import { NzFormlyForRoot } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly.module";
 import { NzButtonModule } from "ng-zorro-antd/button";
 
 registerLocaleData(en);
@@ -27,7 +27,6 @@ registerLocaleData(en);
     FormlyNgZorroAntdModule,
     NgxMaskModule.forRoot({}),
     FormlyModule.forRoot(NzFormlyForRoot),
-    NgxNzFormlyModule,
     NzButtonModule,
   ],
   providers: [
