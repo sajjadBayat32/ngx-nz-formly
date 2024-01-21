@@ -1,6 +1,7 @@
 {
   "name": "ngx-nz-formly",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "description": "awesome ngx nz formly",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0",
@@ -11,8 +12,32 @@
     "ngx-mask": "^13.1.3",
     "rxjs": "~7.5.0"
   },
+  "keywords": [
+    "nz",
+    "ng",
+    "ng2",
+    "zorro",
+    "formly",
+    "angular",
+    "nz-formly",
+    "ng2-nz-formly",
+    "ngx-nz-formly",
+    "angular-formly",
+    "ant-design-formly",
+    "ng2formly"
+  ],
+  "author": "sajjadbayat",
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "typings": "./src/public-api.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./src/public-api.ts"
+    }
   },
   "sideEffects": false
 }
