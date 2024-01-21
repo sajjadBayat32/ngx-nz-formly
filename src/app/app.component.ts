@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
+import { FormlyFieldConfig } from "@ngx-formly/core";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
-import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly-type-safe.model";
+import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly";
 
 class FormModel {
   firstName: string;
@@ -39,10 +39,8 @@ class FormModel {
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  now = Date.now();
   model = new FormModel({});
   form = new FormGroup({});
-  options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [];
 
   labelObs$ = new BehaviorSubject("Label");

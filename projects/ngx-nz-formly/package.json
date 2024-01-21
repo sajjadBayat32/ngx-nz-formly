@@ -30,14 +30,7 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "license": "MIT",
   "typings": "./src/public-api.ts",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    },
-    ".": {
-      "types": "./src/public-api.ts"
-    }
-  },
   "sideEffects": false
 }
