@@ -5,20 +5,18 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Code scaffolding
 
 Run `ng generate component component-name --project NgxNzFormly` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project NgxNzFormly`.
-> Note: Don't forget to add `--project NgxNzFormly` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project NgxNzFormly` or else it will be added to the default project in your `angular.json` file.
 
-## Build
+## Installation
 
-Run `ng build NgxNzFormly` to build the project. The build artifacts will be stored in the `dist/` directory.
+Angular version `16.x.x`
+```bash
+$ npm install --save ngx-nz-formly
+```
 
-## Publishing
+## Quick Start
 
-After building your library with `ng build NgxNzFormly`, go to the dist folder `cd dist/ngx-nz-formly` and run `npm publish`.
+Adding ``ngx-nz-formly`` to your application is super easy. All you need is to add the following modules to imports. 
+```bash
 
-## Running unit tests
-
-Run `ng test NgxNzFormly` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```

@@ -3,10 +3,8 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { NZ_I18N } from "ng-zorro-antd/i18n";
 import { en_US } from "ng-zorro-antd/i18n";
-import { DATE_PIPE_DEFAULT_OPTIONS, registerLocaleData } from "@angular/common";
+import { registerLocaleData } from "@angular/common";
 import { AppComponent } from "./app.component";
-import { ReactiveFormsModule } from "@angular/forms";
-import { FormlyNgZorroAntdModule } from "@ngx-formly/ng-zorro-antd";
 import { FormlyModule } from "@ngx-formly/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import en from "@angular/common/locales/en";
@@ -14,6 +12,7 @@ import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
 import { NzFormlyForRoot } from "../../projects/ngx-nz-formly/src/lib/ngx-nz-formly.module";
 import { NzButtonModule } from "ng-zorro-antd/button";
+import { OverlayModule } from "@angular/cdk/overlay";
 
 registerLocaleData(en);
 
@@ -22,17 +21,13 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormlyNgZorroAntdModule,
+    OverlayModule,
     NgxMaskModule.forRoot({}),
     FormlyModule.forRoot(NzFormlyForRoot),
     NzButtonModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US },
-    { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: "-4" } },
-  ],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

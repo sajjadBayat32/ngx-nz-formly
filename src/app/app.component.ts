@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
@@ -60,10 +60,9 @@ export class AppComponent implements OnInit {
       fb.input("firstName", {
         className: "flex-50 px-2",
         props: {
-          labelPosition: "top",
+          labelPosition: "float",
           required: true,
           minLen: 3,
-          label: "First Name",
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
           blur: () => console.log("input blurred"),
@@ -151,6 +150,12 @@ export class AppComponent implements OnInit {
           change: (field, event) => console.log("number changed to:", event),
           focus: () => console.log("number focused"),
           blur: () => console.log("number blurred"),
+        },
+        validators: {
+          custom: {
+            expression: (control: FormControl) => control.value > 2500,
+            message: "Your budget is less than expected budget",
+          },
         },
       }),
       fb.checkbox("olderThan20", {
