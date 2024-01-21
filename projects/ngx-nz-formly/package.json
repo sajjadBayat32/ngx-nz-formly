@@ -1,6 +1,6 @@
 {
   "name": "ngx-nz-formly",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "awesome ngx nz formly",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
