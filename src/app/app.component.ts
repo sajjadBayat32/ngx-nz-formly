@@ -78,6 +78,7 @@ export class AppComponent implements OnInit {
         props: {
           required: true,
           maxLen: 10,
+          labelPosition: "top",
           label: "Last Name",
           styles: {
             labelWidth: "110px",
@@ -203,7 +204,6 @@ export class AppComponent implements OnInit {
         props: {
           objectValue: false,
           label: "City",
-          labelPosition: "float",
           nzAllowClear: true,
           nzShowSearch: true,
           placeholder: "select your city",
@@ -267,7 +267,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.button({
-        className: "flex-50 px-2",
+        className: "d-flex",
         props: {
           text: "Reset",
           nzType: "primary",
@@ -281,6 +281,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.model);
+    // Object.keys(this.form.controls).forEach(key => {
+    //   console.log(key, this.form.get(key)?.errors);
+    // });
+    // console.log(this.model);
   }
 }
