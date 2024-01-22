@@ -38,6 +38,28 @@ $ npm install @angular/forms @ngx-formly/core --save
 $ npm insatll ngx-mask --save
 ```
 
+### Install Bootstrap (Optional)
+
+If you want to find the final demo more clearly and beautiful, install ``bootstrap``, too.
+
+```bash
+$ npm insatll ngx-mask --save
+```
+
+Then add following lines to ``angular.json``
+
+```
+"styles": [
+  ...
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+"scripts": [
+  ...
+  "node_modules/bootstrap/dist/js/bootstrap.min.js"
+]
+```
+
 ### Install ngx-nz-formly
 
 ```bash
