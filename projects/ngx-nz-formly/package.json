@@ -27,6 +27,14 @@
     "ng2formly"
   ],
   "author": "sajjadbayat",
+  "homepage": "https://github.com/sajjadBayat32/ngx-nz-formly",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sajjadBayat32/ngx-nz-formly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sajjadBayat32/ngx-nz-formly/issues"
+  },
   "dependencies": {
     "tslib": "^2.3.0"
   },

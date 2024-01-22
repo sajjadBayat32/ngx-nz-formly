@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
-import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly";
+import { NzFormlyFieldBuilder } from "ngx-nz-formly";
 
 class FormModel {
   firstName: string;
@@ -42,7 +42,6 @@ export class AppComponent implements OnInit {
   model = new FormModel({});
   form = new FormGroup({});
   fields: FormlyFieldConfig[] = [];
-
   labelObs$ = new BehaviorSubject("Label");
 
   ngOnInit() {
@@ -229,8 +228,7 @@ export class AppComponent implements OnInit {
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          // compareWith: (o1: any, o2: any): boolean =>
-          //   o1?.value == o2?.value,
+          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),

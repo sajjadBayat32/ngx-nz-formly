@@ -1768,13 +1768,6 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngx-formly/ng-zorro-antd@6":
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/ng-zorro-antd/-/ng-zorro-antd-6.2.2.tgz#5c7b4a51dad29c36b8ba822d238adc0ac49462ac"
-  integrity sha512-f0uPgs3oC+OB5axvqnBt9oo/LwwOj9i2VTX+Y+tI3d/oH5RmudIXPJTzp6fOX88jYKkgtOkEXfPm2K+pzLpdcw==
-  dependencies:
-    tslib "^2.0.0"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -2740,11 +2733,6 @@ boolbase@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
-
-bootstrap@^5.2.3:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.2.tgz#97226583f27aae93b2b28ab23f4c114757ff16ae"
-  integrity sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -5791,10 +5779,10 @@ ngx-mask@^13.1.3:
   dependencies:
     tslib "^2.3.0"
 
-ngx-nz-formly@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/ngx-nz-formly/-/ngx-nz-formly-0.0.5.tgz#4eab80a2dcd67f1ac89f3decafa5a2e9dcccba72"
-  integrity sha512-g2aqq0rlaTbfPtBHIDhVFADn0iwcJAhmQKgs3go10CzY4ZZUh//mtIAFzdDtoEnzfdGexUAOrb0dgiJu3Q+ivg==
+ngx-nz-formly@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/ngx-nz-formly/-/ngx-nz-formly-0.0.6.tgz#7acf288519c2eeaaf58114b9f7d3bd468721e3ed"
+  integrity sha512-G/Ufosz96YuoZlSSa+EKqnVG5PdB6KBYv5y992JPZxJwLLjzW+dx2JYv67DmCeKdEeerhOy5DJ/32rUv0jDMMQ==
   dependencies:
     tslib "^2.3.0"
 

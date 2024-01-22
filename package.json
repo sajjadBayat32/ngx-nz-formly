@@ -1,5 +1,5 @@
 {
-  "name": "nz-formly",
+  "name": "ngx-nz-formly",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
@@ -22,10 +22,8 @@
     "@angular/platform-browser-dynamic": "~16.2.12",
     "@angular/router": "~16.2.12",
     "@ngx-formly/core": "6",
-    "@ngx-formly/ng-zorro-antd": "6",
-    "bootstrap": "^5.2.3",
     "ng-zorro-antd": "^16.1.0",
-    "ngx-nz-formly": "^0.0.5",
+    "ngx-nz-formly": "^0.0.6",
     "ngx-mask": "^13.1.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -20,7 +20,11 @@
 </div>
 
 <ng-template #Label>
-  <label class="nz-formly-label" [ngClass]="props.styles?.labelClass">
+  <label
+    class="nz-formly-label"
+    *ngIf="props.label || (props.labelObs | async)"
+    [ngClass]="props.styles?.labelClass"
+  >
     {{ props.label || (props.labelObs | async) }}
     <span class="nz-formly-label-required" *ngIf="props.required">*</span>
   </label>

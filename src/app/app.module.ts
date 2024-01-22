@@ -10,9 +10,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import en from "@angular/common/locales/en";
 import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
-import { NzFormlyForRoot } from "../../projects/ngx-nz-formly";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { OverlayModule } from "@angular/cdk/overlay";
+import { NzFormlyForRoot } from "ngx-nz-formly";
 
 registerLocaleData(en);
 
