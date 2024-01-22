@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
           labelPosition: "float",
           required: true,
           minLen: 3,
+          showError: false,
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
           blur: () => console.log("input blurred"),
@@ -202,6 +203,7 @@ export class AppComponent implements OnInit {
         props: {
           objectValue: false,
           label: "City",
+          labelPosition: "float",
           nzAllowClear: true,
           nzShowSearch: true,
           placeholder: "select your city",
@@ -228,7 +230,7 @@ export class AppComponent implements OnInit {
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          compareWith: (o1: any, o2: any): boolean => o1 == o2,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
