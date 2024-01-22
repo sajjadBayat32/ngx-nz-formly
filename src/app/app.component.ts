@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
           labelPosition: "float",
           required: true,
           minLen: 3,
+          showError: false,
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
           blur: () => console.log("input blurred"),
@@ -77,6 +78,7 @@ export class AppComponent implements OnInit {
         props: {
           required: true,
           maxLen: 10,
+          labelPosition: "top",
           label: "Last Name",
           styles: {
             labelWidth: "110px",
@@ -228,7 +230,7 @@ export class AppComponent implements OnInit {
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          compareWith: (o1: any, o2: any): boolean => o1 == o2,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
@@ -265,7 +267,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.button({
-        className: "flex-50 px-2",
+        className: "d-flex",
         props: {
           text: "Reset",
           nzType: "primary",
@@ -279,6 +281,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.model);
+    // Object.keys(this.form.controls).forEach(key => {
+    //   console.log(key, this.form.get(key)?.errors);
+    // });
+    // console.log(this.model);
   }
 }

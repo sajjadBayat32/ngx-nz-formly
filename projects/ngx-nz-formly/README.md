@@ -110,12 +110,12 @@ Finally, your ``app.component.ts`` file could be something like following box. S
 documentation of available features, until I write one
 
 ```ts
-import {Component, OnInit} from "@angular/core";
-import {FormControl, FormGroup} from "@angular/forms";
-import {FormlyFieldConfig} from "@ngx-formly/core";
-import {BehaviorSubject, concatMap, delay, from, of} from "rxjs";
-import {NzOptionComponent} from "ng-zorro-antd/select";
-import {NzFormlyFieldBuilder} from "../../projects/ngx-nz-formly";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
+import { FormlyFieldConfig } from "@ngx-formly/core";
+import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
+import { NzOptionComponent } from "ng-zorro-antd/select";
+import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/public-api";
 
 class FormModel {
   firstName: string;
@@ -172,6 +172,7 @@ export class AppComponent implements OnInit {
           labelPosition: "float",
           required: true,
           minLen: 3,
+          showError: false,
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
           blur: () => console.log("input blurred"),
@@ -189,6 +190,7 @@ export class AppComponent implements OnInit {
         props: {
           required: true,
           maxLen: 10,
+          labelPosition: "top",
           label: "Last Name",
           styles: {
             labelWidth: "110px",
@@ -333,14 +335,14 @@ export class AppComponent implements OnInit {
               value: "Teh",
               nzCustomContent: `<i>Tehran</i>`,
             },
-            {label: "Isfahan", value: "Isf"},
-            {label: "Shiraz", value: "Shi"},
-            {label: "Gilan", value: "Gil"},
+            { label: "Isfahan", value: "Isf" },
+            { label: "Shiraz", value: "Shi" },
+            { label: "Gilan", value: "Gil" },
           ],
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          compareWith: (o1: any, o2: any): boolean => o1 == o2,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
@@ -377,7 +379,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.button({
-        className: "flex-50 px-2",
+        className: "d-flex",
         props: {
           text: "Reset",
           nzType: "primary",
@@ -391,6 +393,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
+    Object.keys(this.form.controls).forEach(key => {
+      console.log(key, this.form.get(key)?.errors);
+    });
     console.log(this.model);
   }
 }

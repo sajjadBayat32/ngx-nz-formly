@@ -14,7 +14,11 @@
   </div>
 </div>
 
-<div class="nz-formly-label-float" *ngIf="props.labelPosition == 'float'">
+<div
+  class="nz-formly-label-float"
+  *ngIf="props.labelPosition == 'float'"
+  [class.fixed]="formControl.value != null && formControl.value != ''"
+>
   <ng-container #fieldComponent></ng-container>
   <ng-container *ngTemplateOutlet="Label"></ng-container>
 </div>
@@ -22,8 +26,8 @@
 <ng-template #Label>
   <label
     class="nz-formly-label"
-    *ngIf="props.label || (props.labelObs | async)"
     [ngClass]="props.styles?.labelClass"
+    *ngIf="props.label || (props.labelObs | async)"
   >
     {{ props.label || (props.labelObs | async) }}
     <span class="nz-formly-label-required" *ngIf="props.required">*</span>
