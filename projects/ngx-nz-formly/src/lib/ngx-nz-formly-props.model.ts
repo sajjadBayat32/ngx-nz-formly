@@ -87,7 +87,6 @@ export interface NzFormlyRadioProps extends NzFormlyCommonProps {
 
 export interface NzFormlySelectProps extends NzFormlyCommonProps {
   objectValue?: boolean;
-  compareWith?: (o1: any, o2: any) => boolean;
   nzAutoClearSearchValue?: boolean;
   nzAllowClear?: boolean;
   nzBorderless?: boolean;
@@ -100,7 +99,6 @@ export interface NzFormlySelectProps extends NzFormlyCommonProps {
   };
   nzCustomTemplate?: TemplateRef<{ $implicit: NzOptionComponent }>;
   nzServerSearch?: boolean;
-  nzFilterOption?: (input?: string, option?: NzOptionComponent) => boolean;
   nzMaxMultipleCount?: number;
   nzMode?: NzSelectModeType;
   nzNotFoundContent?: string | TemplateRef<void>;
@@ -123,8 +121,10 @@ export interface NzFormlySelectProps extends NzFormlyCommonProps {
   nzOptionHeightPx?: number;
   nzOptionOverflowSize?: number;
   nzSelectOnTab?: boolean;
+  nzFilterOption?: (input?: string, option?: NzOptionComponent) => boolean;
+  compareWith?: (o1: any, o2: any) => boolean;
   nzOpenChange?: (event: boolean) => void;
-  nzScrollToBottom?: () => void;
+  nzScrollToBottom?: (event: boolean) => void;
   nzOnSearch?: (event: string) => void;
 }
 
