@@ -43,21 +43,23 @@ $ npm insatll ngx-mask --save
 If you want to find the final demo more clearly and beautiful, install ``bootstrap``, too.
 
 ```bash
-$ npm insatll ngx-mask --save
+$ npm insatll bootstrap --save
 ```
 
 Then add following lines to ``angular.json``
 
 ```
-"styles": [
-  ...
-  "node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.css"
-],
-"scripts": [
-  ...
-  "node_modules/bootstrap/dist/js/bootstrap.min.js"
-]
+{
+  "styles": [
+    ...
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "src/styles.css"
+  ],
+  "scripts": [
+    ...
+    "node_modules/bootstrap/dist/js/bootstrap.min.js"
+  ]
+}
 ```
 
 ### Install ngx-nz-formly
@@ -97,7 +99,6 @@ able to have your formly with Ant Design.
 add below html code to your ``app.component.html``
 
 ```html
-
 <formly-form
   [form]="form"
   [fields]="fields"
