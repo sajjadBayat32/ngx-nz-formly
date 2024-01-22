@@ -27,6 +27,7 @@ export interface NzFormlyCommonProps {
   placeholder?: string;
   required?: boolean;
   readonly?: boolean;
+  showError?: boolean;
   keyup?: FormlyAttributeEvent;
   keydown?: FormlyAttributeEvent;
   keypress?: FormlyAttributeEvent;
