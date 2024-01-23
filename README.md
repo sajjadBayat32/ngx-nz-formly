@@ -110,13 +110,6 @@ Finally, your ``app.component.ts`` file could be something like following box. S
 documentation of available features, until I write one
 
 ```ts
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { FormlyFieldConfig } from "@ngx-formly/core";
-import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
-import { NzOptionComponent } from "ng-zorro-antd/select";
-import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/public-api";
-
 class FormModel {
   firstName: string;
   lastName: string;
@@ -167,7 +160,7 @@ export class AppComponent implements OnInit {
     const fb = new NzFormlyFieldBuilder<FormModel>();
     this.fields = [
       fb.input("firstName", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           labelPosition: "float",
           required: true,
@@ -186,7 +179,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("lastName", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           maxLen: 10,
@@ -202,7 +195,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("phoneNumber", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           label: "Phone No",
           mask: "phone",
@@ -214,7 +207,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("email", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           label: "Email address",
@@ -230,7 +223,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("password", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           type: "password",
@@ -246,7 +239,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("budget", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           nzPrefix: "$",
           label: "Budget",
@@ -270,14 +263,14 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.checkbox("olderThan20", {
-        className: "flex-50 px-2 mb-4",
+        className: "px-2 mb-4",
         props: {
           label: "I am older that 20",
           change: (field, event) => console.log("checkbox changed to:", event),
         },
       }),
       fb.input("age", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           minValue: 20,
           maxValue: 100,
@@ -296,7 +289,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.switch("allowNotifications", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           nzCheckedChildren: "1",
           nzUnCheckedChildren: "0",
@@ -312,7 +305,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.select("city", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           objectValue: false,
           label: "City",
@@ -335,9 +328,9 @@ export class AppComponent implements OnInit {
               value: "Teh",
               nzCustomContent: `<i>Tehran</i>`,
             },
-            { label: "Isfahan", value: "Isf" },
-            { label: "Shiraz", value: "Shi" },
-            { label: "Gilan", value: "Gil" },
+            {label: "Isfahan", value: "Isf"},
+            {label: "Shiraz", value: "Shi"},
+            {label: "Gilan", value: "Gil"},
           ],
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
@@ -353,7 +346,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.radio("gender", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           label: "Gender",
           nzType: "nz-radio-button",
@@ -393,10 +386,10 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    Object.keys(this.form.controls).forEach(key => {
-      console.log(key, this.form.get(key)?.errors);
-    });
-    console.log(this.model);
+    // Object.keys(this.form.controls).forEach(key => {
+    //   console.log(key, this.form.get(key)?.errors);
+    // });
+    // console.log(this.model);
   }
 }
 ```
