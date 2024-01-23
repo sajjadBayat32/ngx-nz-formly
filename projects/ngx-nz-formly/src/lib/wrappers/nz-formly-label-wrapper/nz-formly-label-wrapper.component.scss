@@ -8,12 +8,12 @@
   }
 }
 
-.nz-formly-label-top label {
+.nz-formly-label-top .nz-formly-label {
   font-size: 75%;
   font-weight: 500;
 }
 
-.nz-formly-label-inline label {
+.nz-formly-label-inline .nz-formly-label {
   font-size: 100%;
   font-weight: 600;
   position: relative;
@@ -23,7 +23,7 @@
 .nz-formly-label-float {
   position: relative;
 
-  label {
+  .nz-formly-label {
     top: 0;
     z-index: 1;
     height: 100%;
@@ -37,8 +37,8 @@
     transition: transform .1s ease-in-out;
   }
 
-  &:focus-within {
-    label {
+  &:focus-within, &.fixed {
+    .nz-formly-label {
       height: 20px;
       background: #fff;
       padding-left: 6px;

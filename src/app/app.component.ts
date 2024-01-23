@@ -55,11 +55,12 @@ export class AppComponent implements OnInit {
     const fb = new NzFormlyFieldBuilder<FormModel>();
     this.fields = [
       fb.input("firstName", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           labelPosition: "float",
           required: true,
           minLen: 3,
+          showError: false,
           labelObs: this.labelObs$,
           focus: () => console.log("input focused"),
           blur: () => console.log("input blurred"),
@@ -73,10 +74,11 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("lastName", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           maxLen: 10,
+          labelPosition: "top",
           label: "Last Name",
           styles: {
             labelWidth: "110px",
@@ -88,7 +90,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("phoneNumber", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           label: "Phone No",
           mask: "phone",
@@ -100,7 +102,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("email", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           label: "Email address",
@@ -116,7 +118,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("password", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           required: true,
           type: "password",
@@ -132,7 +134,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.input("budget", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           nzPrefix: "$",
           label: "Budget",
@@ -156,14 +158,14 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.checkbox("olderThan20", {
-        className: "flex-50 px-2 mb-4",
+        className: "px-2 mb-4",
         props: {
           label: "I am older that 20",
           change: (field, event) => console.log("checkbox changed to:", event),
         },
       }),
       fb.input("age", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           minValue: 20,
           maxValue: 100,
@@ -182,7 +184,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.switch("allowNotifications", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           nzCheckedChildren: "1",
           nzUnCheckedChildren: "0",
@@ -198,7 +200,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.select("city", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           objectValue: false,
           label: "City",
@@ -228,7 +230,7 @@ export class AppComponent implements OnInit {
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
           },
-          compareWith: (o1: any, o2: any): boolean => o1?.value == o2?.value,
+          compareWith: (o1: any, o2: any): boolean => o1 == o2,
           nzOpenChange: event => console.log("selection open status:", event),
           nzScrollToBottom: () => console.log("scroll"),
           nzOnSearch: event => console.log("search", event),
@@ -239,7 +241,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.radio("gender", {
-        className: "flex-50 px-2",
+        className: "px-2",
         props: {
           label: "Gender",
           nzType: "nz-radio-button",
@@ -265,7 +267,7 @@ export class AppComponent implements OnInit {
         },
       }),
       fb.button({
-        className: "flex-50 px-2",
+        className: "d-flex",
         props: {
           text: "Reset",
           nzType: "primary",
@@ -279,6 +281,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.model);
+    // Object.keys(this.form.controls).forEach(key => {
+    //   console.log(key, this.form.get(key)?.errors);
+    // });
+    // console.log(this.model);
   }
 }

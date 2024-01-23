@@ -20,9 +20,9 @@ registerLocaleData(en);
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    OverlayModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    OverlayModule,
     NgxMaskModule.forRoot({}),
     FormlyModule.forRoot(NzFormlyForRoot),
     NzButtonModule,

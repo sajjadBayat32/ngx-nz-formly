@@ -1,10 +1,16 @@
 .nz-formly-error-message {
-  bottom: 0;
-  height: 0;
+  top: -4px;
+  opacity: 0;
   color: #f10232;
   font-size: 85%;
   font-weight: 500;
   position: relative;
+  transition: all 0.1s ease-in;
+
+  &-visible {
+    top: 0;
+    opacity: 1;
+  }
 
   @media (max-width: 500px) {
     margin: 0 !important;
