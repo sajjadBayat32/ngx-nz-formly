@@ -1,50 +1,38 @@
 {
   "name": "ngx-nz-formly",
-  "version": "0.0.1",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --port 4500 --host 0.0.0.0 --live-reload false",
-    "build": "ng build --configuration production --max-old-space-size=4096",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "e2e": "ng e2e",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
-  },
-  "private": false,
-  "dependencies": {
-    "@angular/animations": "~16.2.12",
-    "@angular/common": "~16.2.12",
-    "@angular/compiler": "~16.2.12",
-    "@angular/core": "~16.2.12",
-    "@angular/forms": "~16.2.12",
-    "@angular/platform-browser": "~16.2.12",
-    "@angular/platform-browser-dynamic": "~16.2.12",
-    "@angular/router": "~16.2.12",
+  "version": "0.0.8",
+  "description": "awesome ngx-nz-formly",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
     "@ngx-formly/core": "6",
     "ng-zorro-antd": "^16.1.0",
-    "ngx-nz-formly": "^0.0.6",
-    "ngx-mask": "^13.1.3",
-    "bootstrap": "^5.2.3",
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.13.3"
+    "ngx-mask": "^13.1.3"
   },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~16.2.11",
-    "@angular/cli": "~16.2.11",
-    "@angular/compiler-cli": "~16.2.12",
-    "@cypress/schematic": "2.5.0",
-    "@types/jasmine": "~3.10.0",
-    "@types/node": "^12.11.1",
-    "cypress": "latest",
-    "jasmine-core": "~4.0.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.1.0",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
-    "ng-packagr": "^16.2.0",
-    "typescript": "~4.9.5"
-  }
+  "keywords": [
+    "nz",
+    "ng",
+    "zorro",
+    "formly",
+    "angular",
+    "nz-formly",
+    "ngx-nz-formly",
+    "angular-formly",
+    "ant-design-formly"
+  ],
+  "author": "sajjadbayat",
+  "homepage": "https://github.com/sajjadBayat32/ngx-nz-formly",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sajjadBayat32/ngx-nz-formly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sajjadBayat32/ngx-nz-formly/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "license": "MIT",
+  "typings": "./src/index.ts",
+  "sideEffects": false
 }

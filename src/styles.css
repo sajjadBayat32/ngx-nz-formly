@@ -1,9 +1,0 @@
-body, html {
-  width: auto !important;
-  height: auto !important;
-}
-
-formly-field {
-  height: auto;
-  display: block;
-}
