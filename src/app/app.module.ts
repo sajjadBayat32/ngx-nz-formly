@@ -12,7 +12,7 @@ import { NgxMaskModule } from "ngx-mask";
 import { HttpClientModule } from "@angular/common/http";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { OverlayModule } from "@angular/cdk/overlay";
-import { NzFormlyForRoot } from "ngx-nz-formly";
+import { NzFormlyForRoot } from "../../projects/ngx-nz-formly/src/public-api";
 
 registerLocaleData(en);
 

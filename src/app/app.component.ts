@@ -3,7 +3,8 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import { BehaviorSubject, concatMap, delay, from, of } from "rxjs";
 import { NzOptionComponent } from "ng-zorro-antd/select";
-import { NzFormlyFieldBuilder } from "ngx-nz-formly";
+import { NzFormlyFieldBuilder } from "../../projects/ngx-nz-formly/src/public-api";
+
 
 class FormModel {
   firstName: string;
@@ -176,8 +177,8 @@ export class AppComponent implements OnInit {
             wrapperClass: "mb-4",
           },
         },
-        expressionProperties: {
-          "props.disabled": model => !model.olderThan20,
+        expressions: {
+          "props.disabled": () => !this.model.olderThan20,
         },
         validators: {
           validation: ["minValue", "maxValue"],
@@ -195,8 +196,8 @@ export class AppComponent implements OnInit {
           },
           change: (field, event) => console.log("switch changed to:", event),
         },
-        expressionProperties: {
-          "props.hidden": model => !model.olderThan20,
+        expressions: {
+          "props.hidden": () => !this.model.olderThan20,
         },
       }),
       fb.select("city", {
@@ -236,8 +237,8 @@ export class AppComponent implements OnInit {
           nzOnSearch: event => console.log("search", event),
           change: (field, event) => console.log("selection changed to:", event),
         },
-        expressionProperties: {
-          "props.disabled": model => !model.olderThan20,
+        expressions: {
+          "props.disabled": () => !this.model.olderThan20,
         },
       }),
       fb.radio("gender", {
