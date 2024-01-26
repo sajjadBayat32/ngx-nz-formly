@@ -124,7 +124,7 @@ export interface NzFormlySelectProps extends NzFormlyCommonProps {
   nzFilterOption?: (input?: string, option?: NzOptionComponent) => boolean;
   compareWith?: (o1: any, o2: any) => boolean;
   nzOpenChange?: (event: boolean) => void;
-  nzScrollToBottom?: (event: boolean) => void;
+  nzScrollToBottom?: () => void;
   nzOnSearch?: (event: string) => void;
 }
 
@@ -139,10 +139,9 @@ type NzSelectOptionType = {
 type NzRadioOptionType = {
   value: NzSafeAny;
   disabled?: boolean;
-} & (
-  | { label: string | number }
-  | { nzCustomContent: string | TemplateRef<NzSafeAny> }
-);
+  label: string | number;
+  nzCustomContent: string | TemplateRef<NzSafeAny>;
+};
 
 export interface NzFormlyButtonProps {
   text: string;
