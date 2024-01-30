@@ -7,6 +7,7 @@ import {
   NzFormlySelectProps,
   NzFormlySwitchProps,
 } from "./ngx-nz-formly-props.model";
+import { FormControl } from "@angular/forms";
 
 export class NzFormlyFieldBuilder<TModel> {
   input(
@@ -79,3 +80,7 @@ type FormlyKeyValue<TModel, ControlType> = {
     ? K & string
     : never;
 }[keyof TModel];
+
+export type IForm<T> = {
+  [K in keyof T]?: FormControl<T[K]>;
+};
