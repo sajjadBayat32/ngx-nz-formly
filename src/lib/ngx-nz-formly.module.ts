@@ -67,11 +67,12 @@ export const NzFormlyForRoot: ConfigOption = {
     {
       name: "checkbox",
       component: NzFormlyFieldCheckboxComponent,
-      wrappers: [],
+      wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
           disabled: false,
           nzAutoFocus: false,
+          showError: true,
         },
       },
     },
