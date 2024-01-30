@@ -140,7 +140,7 @@ type NzRadioOptionType = {
   value: NzSafeAny;
   disabled?: boolean;
   label: string | number;
-  nzCustomContent: string | TemplateRef<NzSafeAny>;
+  nzCustomContent?: string | TemplateRef<NzSafeAny>;
 };
 
 export interface NzFormlyButtonProps {
