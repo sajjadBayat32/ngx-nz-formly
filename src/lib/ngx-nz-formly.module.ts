@@ -19,6 +19,7 @@ import {
   NzFormlyRadioProps,
   NzFormlySelectProps,
   NzFormlySwitchProps,
+  NzFormlyTextareaProps,
 } from "./ngx-nz-formly-props.model";
 import {
   AbstractControl,
@@ -47,6 +48,7 @@ import { NzSelectModule } from "ng-zorro-antd/select";
 import { NzRadioModule } from "ng-zorro-antd/radio";
 import { CommonModule } from "@angular/common";
 import { NgxMaskModule } from "ngx-mask";
+import { NzFormlyFieldTextareaComponent } from "./components/nz-formly-field-textarea/nz-formly-field-textarea.component";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -61,6 +63,17 @@ export const NzFormlyForRoot: ConfigOption = {
           mask: "",
           thousandSeparator: "",
           showError: true,
+        },
+      },
+    },
+    {
+      name: "textarea",
+      component: NzFormlyFieldTextareaComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<NzFormlyTextareaProps>>{
+        props: {
+          labelPosition: "inline",
+          rows: 4,
         },
       },
     },
@@ -243,6 +256,7 @@ export const NzFormlyForRoot: ConfigOption = {
 @NgModule({
   declarations: [
     NzFormlyFieldInputComponent,
+    NzFormlyFieldTextareaComponent,
     NzFormlyFieldCheckboxComponent,
     NzFormlyFieldSwitchComponent,
     NzFormlyFieldSelectComponent,

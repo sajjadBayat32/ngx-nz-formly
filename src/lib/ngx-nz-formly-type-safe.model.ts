@@ -6,6 +6,7 @@ import {
   NzFormlyRadioProps,
   NzFormlySelectProps,
   NzFormlySwitchProps,
+  NzFormlyTextareaProps,
 } from "./ngx-nz-formly-props.model";
 import { FormControl } from "@angular/forms";
 
@@ -17,6 +18,17 @@ export class NzFormlyFieldBuilder<TModel> {
     return {
       key,
       type: "input",
+      ...configOverrides,
+    };
+  }
+
+  textarea(
+    key: FormlyKeyValue<TModel, string>,
+    configOverrides: FormlyFieldConfig<NzFormlyTextareaProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "textarea",
       ...configOverrides,
     };
   }

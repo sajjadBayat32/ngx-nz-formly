@@ -65,6 +65,11 @@ export interface NzFormlyInputProps extends NzFormlyCommonProps {
   nzSize?: NzSizeLDSType;
 }
 
+export interface NzFormlyTextareaProps extends NzFormlyCommonProps {
+  rows?: number;
+  nzBorderless?: boolean;
+}
+
 export interface NzFormlyCheckboxProps extends NzFormlyCommonProps {
   hasSelectAll?: boolean;
   isGroup?: boolean;
