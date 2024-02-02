@@ -11,6 +11,7 @@ import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
 import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
+import { NzMarks, NzSliderShowTooltip } from "ng-zorro-antd/slider";
 
 export type FormlyCustomFieldProps = NzFormlyInputProps | NzFormlyCheckboxProps;
 
@@ -131,6 +132,22 @@ export interface NzFormlySelectProps extends NzFormlyCommonProps {
   nzOpenChange?: (event: boolean) => void;
   nzScrollToBottom?: () => void;
   nzOnSearch?: (event: string) => void;
+}
+
+export interface NzFormlySliderProps extends NzFormlyCommonProps {
+  nzDots?: boolean;
+  nzIncluded?: boolean;
+  nzMarks?: NzMarks;
+  nzMax?: number;
+  nzMin?: number;
+  nzRange?: boolean;
+  nzStep?: number;
+  nzTipFormatter?: (value: number) => string;
+  nzVertical?: boolean;
+  nzReverse?: boolean;
+  nzTooltipVisible?: NzSliderShowTooltip;
+  nzTooltipPlacement?: string;
+  nzOnAfterChange?: FormlyAttributeEvent;
 }
 
 type NzSelectOptionType = {

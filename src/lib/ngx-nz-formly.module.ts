@@ -18,6 +18,7 @@ import {
   NzFormlyInputProps,
   NzFormlyRadioProps,
   NzFormlySelectProps,
+  NzFormlySliderProps,
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
 } from "./ngx-nz-formly-props.model";
@@ -49,6 +50,8 @@ import { NzRadioModule } from "ng-zorro-antd/radio";
 import { CommonModule } from "@angular/common";
 import { NgxMaskModule } from "ngx-mask";
 import { NzFormlyFieldTextareaComponent } from "./components/nz-formly-field-textarea/nz-formly-field-textarea.component";
+import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slider/nz-formly-field-slider.component";
+import { NzSliderModule } from "ng-zorro-antd/slider";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -149,6 +152,27 @@ export const NzFormlyForRoot: ConfigOption = {
           nzOpenChange: () => {},
           nzScrollToBottom: () => {},
           nzOnSearch: () => {},
+        },
+      },
+    },
+    {
+      name: "slider",
+      component: NzFormlyFieldSliderComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<NzFormlySliderProps>>{
+        props: {
+          labelPosition: "inline",
+          nzDots: false,
+          nzIncluded: true,
+          nzMarks: {},
+          nzMax: 100,
+          nzMin: 0,
+          nzRange: false,
+          nzStep: 1,
+          nzTipFormatter: (value: number) => String(value),
+          nzVertical: false,
+          nzReverse: false,
+          nzTooltipVisible: "default",
         },
       },
     },
@@ -262,6 +286,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzFormlyFieldSelectComponent,
     NzFormlyButtonComponent,
     NzFormlyFieldRadioComponent,
+    NzFormlyFieldSliderComponent,
     NzFormlyLabelWrapperComponent,
     NzFormlyDefaultWrapperComponent,
   ],
@@ -278,6 +303,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzInputNumberModule,
     NzSelectModule,
     NzRadioModule,
+    NzSliderModule,
   ],
   exports: [],
 })

@@ -5,6 +5,7 @@ import {
   NzFormlyInputProps,
   NzFormlyRadioProps,
   NzFormlySelectProps,
+  NzFormlySliderProps,
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
 } from "./ngx-nz-formly-props.model";
@@ -73,6 +74,17 @@ export class NzFormlyFieldBuilder<TModel> {
     return {
       key,
       type: "select",
+      ...configOverrides,
+    };
+  }
+
+  slider(
+    key: FormlyKeyValue<TModel, number | [number, number]>,
+    configOverrides: FormlyFieldConfig<NzFormlySliderProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "slider",
       ...configOverrides,
     };
   }
