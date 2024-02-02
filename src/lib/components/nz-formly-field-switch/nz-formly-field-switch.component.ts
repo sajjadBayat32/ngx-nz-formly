@@ -14,7 +14,15 @@ export class NzFormlyFieldSwitchComponent
 {
   unSubscribeAll$ = new Subject<void>();
 
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
   ngOnInit() {
+    this.onValueChanges();
+  }
+
+  onValueChanges() {
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
@@ -25,16 +33,6 @@ export class NzFormlyFieldSwitchComponent
         }),
       )
       .subscribe();
-  }
-
-  onChange(event: boolean) {
-    if (typeof this.props?.change === "function") {
-      this.props.change(this.field, event);
-    }
-  }
-
-  get fieldID() {
-    return "control-" + this.field.key;
   }
 
   ngOnDestroy() {

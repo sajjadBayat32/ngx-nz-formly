@@ -14,7 +14,15 @@ export class NzFormlyFieldSelectComponent
 {
   unSubscribeAll$ = new Subject<void>();
 
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
   ngOnInit() {
+    this.onValueChange();
+  }
+
+  onValueChange() {
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
@@ -25,10 +33,6 @@ export class NzFormlyFieldSelectComponent
         }),
       )
       .subscribe();
-  }
-
-  get fieldID() {
-    return "control-" + this.field.key;
   }
 
   ngOnDestroy() {

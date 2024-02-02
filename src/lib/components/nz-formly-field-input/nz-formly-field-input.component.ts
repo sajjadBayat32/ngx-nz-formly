@@ -22,6 +22,18 @@ export class NzFormlyFieldInputComponent
   mask: string | undefined;
   unSubscribeAll$ = new Subject<void>();
 
+  get type() {
+    return this.props.type ?? "text";
+  }
+
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
+  get status() {
+    return this.formControl.touched && this.formControl.invalid ? "error" : "";
+  }
+
   ngAfterViewInit() {
     this.createInitState();
     this.onValueChange();
@@ -97,18 +109,6 @@ export class NzFormlyFieldInputComponent
 
   showPassword(input: any): boolean {
     return input.type === "text";
-  }
-
-  get type() {
-    return this.props.type ?? "text";
-  }
-
-  get fieldID() {
-    return "control-" + this.field.key;
-  }
-
-  get status() {
-    return this.formControl.touched && this.formControl.invalid ? "error" : "";
   }
 
   ngOnDestroy() {

@@ -14,7 +14,15 @@ export class NzFormlyFieldCheckboxComponent
 {
   unSubscribeAll$ = new Subject<void>();
 
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
   ngOnInit() {
+    this.onValueChange();
+  }
+
+  onValueChange() {
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
@@ -25,10 +33,6 @@ export class NzFormlyFieldCheckboxComponent
         }),
       )
       .subscribe();
-  }
-
-  get fieldID() {
-    return "control-" + this.field.key;
   }
 
   ngOnDestroy() {
