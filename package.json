@@ -6,8 +6,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/common": "^16.2.0",
-    "@angular/core": "^16.2.0",
+    "@angular/common": "^17.1.0",
+    "@angular/core": "^17.1.0",
     "@ngx-formly/core": "6",
     "ng-zorro-antd": "^16.1.0",
     "ngx-mask": "^13.1.3"
