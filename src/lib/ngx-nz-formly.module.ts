@@ -307,4 +307,4 @@ export const NzFormlyForRoot: ConfigOption = {
   ],
   exports: [],
 })
-class NgxNzFormlyModule {}
+export class NgxNzFormlyModule {}
