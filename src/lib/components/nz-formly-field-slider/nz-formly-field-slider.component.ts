@@ -6,7 +6,7 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "app-nz-formly-field-slider",
   templateUrl: "./nz-formly-field-slider.component.html",
-  styleUrls: ["./nz-formly-field-slider.component.scss"],
+  styleUrls: [],
 })
 export class NzFormlyFieldSliderComponent
   extends FieldType<FieldTypeConfig<NzFormlySliderProps>>

@@ -6,7 +6,7 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "",
   templateUrl: "./nz-formly-field-textarea.component.html",
-  styleUrls: ["./nz-formly-field-textarea.component.scss"],
+  styleUrls: [],
 })
 export class NzFormlyFieldTextareaComponent
   extends FieldType<FieldTypeConfig<NzFormlyTextareaProps>>
