@@ -73,7 +73,6 @@ export class NzFormlyFieldInputComponent
     this.formControl.valueChanges
       .pipe(
         takeUntil(this.unSubscribeAll$),
-        debounceTime(300),
         tap((value: string) => {
           if (typeof this.props?.change == "function") {
             this.props.change(this.field, value);
