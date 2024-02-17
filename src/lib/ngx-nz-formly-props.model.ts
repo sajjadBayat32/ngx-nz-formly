@@ -6,12 +6,13 @@ import {
   NzSizeLDSType,
   NzStatus,
 } from "ng-zorro-antd/core/types";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
 import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
 import { NzMarks, NzSliderShowTooltip } from "ng-zorro-antd/slider";
+import { NzUploadFile, NzUploadXHRArgs } from "ng-zorro-antd/upload";
 
 export type FormlyCustomFieldProps = NzFormlyInputProps | NzFormlyCheckboxProps;
 
@@ -179,7 +180,12 @@ export interface NzFormlyButtonProps {
   click?: () => void;
 }
 
-
 export interface NzFormlyUploaderProps {
-  
+  label: string;
+  hint?: string;
+  multiple?: boolean,
+  uploadUrl?: string | ((file: NzUploadFile) => string | Observable<string>);
+  uploadHeaders?:object | ((file: NzUploadFile) => object | Observable<any>)
+  customRequest?: (item: NzUploadXHRArgs) => Subscription;
+  /*options will be added soon*/
 }

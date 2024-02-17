@@ -55,6 +55,7 @@ import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slide
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzFormlyUploaderComponent } from "./components/nz-formly-uploader/nz-formly-uploader.component";
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -202,7 +203,9 @@ export const NzFormlyForRoot: ConfigOption = {
       component: NzFormlyUploaderComponent,
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyUploaderProps>>{
-        props: {},
+        props: {
+          multiple: true
+        },
       },
     },
   ],
@@ -316,6 +319,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzSelectModule,
     NzRadioModule,
     NzSliderModule,
+    NzUploadModule
   ],
   providers: [NzFormlyFieldBuilder],
   exports: [],
