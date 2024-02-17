@@ -52,6 +52,7 @@ import { NgxMaskModule } from "ngx-mask";
 import { NzFormlyFieldTextareaComponent } from "./components/nz-formly-field-textarea/nz-formly-field-textarea.component";
 import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slider/nz-formly-field-slider.component";
 import { NzSliderModule } from "ng-zorro-antd/slider";
+import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -305,6 +306,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzRadioModule,
     NzSliderModule,
   ],
+  providers: [NzFormlyFieldBuilder],
   exports: [],
 })
 class NgxNzFormlyModule {}

@@ -10,7 +10,9 @@ import {
   NzFormlyTextareaProps,
 } from "./ngx-nz-formly-props.model";
 import { FormControl } from "@angular/forms";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class NzFormlyFieldBuilder<TModel> {
   input(
     key: FormlyKeyValue<TModel, string | number>,
