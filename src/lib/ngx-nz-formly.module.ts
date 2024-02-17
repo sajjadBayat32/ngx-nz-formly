@@ -21,6 +21,7 @@ import {
   NzFormlySliderProps,
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
+  NzFormlyUploaderProps,
 } from "./ngx-nz-formly-props.model";
 import {
   AbstractControl,
@@ -53,6 +54,7 @@ import { NzFormlyFieldTextareaComponent } from "./components/nz-formly-field-tex
 import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slider/nz-formly-field-slider.component";
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
+import { NzFormlyUploaderComponent } from "./components/nz-formly-uploader/nz-formly-uploader.component";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -195,6 +197,14 @@ export const NzFormlyForRoot: ConfigOption = {
         },
       },
     },
+    {
+      name: "uploader",
+      component: NzFormlyUploaderComponent,
+      wrappers: ["default-wrapper"],
+      defaultOptions: <FormlyFieldConfig<NzFormlyUploaderProps>>{
+        props: {},
+      },
+    },
   ],
   wrappers: [
     {
@@ -290,6 +300,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzFormlyFieldSliderComponent,
     NzFormlyLabelWrapperComponent,
     NzFormlyDefaultWrapperComponent,
+    NzFormlyUploaderComponent,
   ],
   imports: [
     CommonModule,

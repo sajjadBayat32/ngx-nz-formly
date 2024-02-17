@@ -8,6 +8,7 @@ import {
   NzFormlySliderProps,
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
+  NzFormlyUploaderProps,
 } from "./ngx-nz-formly-props.model";
 import { FormControl } from "@angular/forms";
 import { Injectable } from "@angular/core";
@@ -96,6 +97,15 @@ export class NzFormlyFieldBuilder<TModel> {
   ): FormlyFieldConfig {
     return {
       type: "button",
+      ...configOverrides,
+    };
+  }
+
+  uploader(
+    configOverrides: FormlyFieldConfig<NzFormlyUploaderProps>,
+  ): FormlyFieldConfig {
+    return {
+      type: "uploader",
       ...configOverrides,
     };
   }

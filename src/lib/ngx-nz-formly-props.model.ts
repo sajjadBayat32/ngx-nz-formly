@@ -178,3 +178,8 @@ export interface NzFormlyButtonProps {
   classList?: string;
   click?: () => void;
 }
+
+
+export interface NzFormlyUploaderProps {
+  
+}
