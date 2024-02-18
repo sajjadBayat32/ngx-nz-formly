@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { NzFormlyUploaderProps } from "../../ngx-nz-formly-props.model";
-import {NzUploadChangeParam, NzUploadModule} from "ng-zorro-antd/upload";
+import {NzUploadChangeParam, NzUploadFile, NzUploadModule} from "ng-zorro-antd/upload";
 
 @Component({
   selector: "app-nz-formly-uploader",
@@ -15,4 +15,6 @@ export class NzFormlyUploaderComponent extends FieldType<
     const status = file.status;
     console.log(file,fileList)
      }
+
+
 }

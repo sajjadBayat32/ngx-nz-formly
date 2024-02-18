@@ -183,9 +183,10 @@ export interface NzFormlyButtonProps {
 export interface NzFormlyUploaderProps {
   label: string;
   hint?: string;
-  multiple?: boolean,
+  multiple?: boolean;
   uploadUrl?: string | ((file: NzUploadFile) => string | Observable<string>);
-  uploadHeaders?:object | ((file: NzUploadFile) => object | Observable<any>)
+  uploadHeaders?: object | ((file: NzUploadFile) => object | Observable<any>);
   customRequest?: (item: NzUploadXHRArgs) => Subscription;
+  nzDownload?: (file: NzUploadFile) => void;
   /*options will be added soon*/
 }
