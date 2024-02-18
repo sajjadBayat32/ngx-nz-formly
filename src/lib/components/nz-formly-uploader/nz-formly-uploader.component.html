@@ -1,0 +1,18 @@
+<nz-upload
+  nzType="drag"
+  [nzMultiple]="props.multiple"
+  [nzAction]="props.uploadUrl"
+  [nzDownload]="props.nzDownload"
+  (nzChange)="handleChange($event)"
+  [nzCustomRequest]="props.customRequest"
+>
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">{{ props.label }}</p>
+  @if(props.hint) {
+  <p class="ant-upload-hint">
+    {{ props.hint }}
+  </p>
+  }
+</nz-upload>
