@@ -2,7 +2,7 @@
   "name": "ngx-nz-formly",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ngx-nz-formly/src",
-  "prefix": "segalino-front",
+  "prefix": "app",
   "tags": [],
   "projectType": "library",
   "targets": {
