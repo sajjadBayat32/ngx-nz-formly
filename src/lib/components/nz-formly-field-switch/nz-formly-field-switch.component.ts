@@ -6,7 +6,7 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "app-nz-formly-field-switch",
   templateUrl: "./nz-formly-field-switch.component.html",
-  styleUrls: ["./nz-formly-field-switch.component.scss"],
+  styleUrls: [],
 })
 export class NzFormlyFieldSwitchComponent
   extends FieldType<FieldTypeConfig<NzFormlySwitchProps>>

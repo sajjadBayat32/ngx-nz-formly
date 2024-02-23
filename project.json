@@ -7,7 +7,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/angular:package",
+      "executor": "@nx/angular:ng-packagr-lite",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "libs/ngx-nz-formly/ng-package.json"
@@ -28,24 +28,10 @@
       "options": {
         "jestConfig": "libs/ngx-nz-formly/jest.config.ts",
         "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/ngx-nz-formly/**/*.ts",
-          "libs/ngx-nz-formly/**/*.html",
-          "libs/ngx-nz-formly/package.json"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   }
 }

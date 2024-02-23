@@ -6,7 +6,7 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "app-nz-formly-field-radio",
   templateUrl: "./nz-formly-field-radio.component.html",
-  styleUrls: ["./nz-formly-field-radio.component.scss"],
+  styleUrls: [],
 })
 export class NzFormlyFieldRadioComponent
   extends FieldType<FieldTypeConfig<NzFormlyRadioProps>>
