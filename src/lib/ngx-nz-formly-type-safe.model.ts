@@ -2,6 +2,7 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import {
   NzFormlyButtonProps,
   NzFormlyCheckboxProps,
+  NzFormlyDatePickerProps,
   NzFormlyInputProps,
   NzFormlyRadioProps,
   NzFormlySelectProps,
@@ -106,6 +107,17 @@ export class NzFormlyFieldBuilder<TModel> {
   ): FormlyFieldConfig {
     return {
       type: "uploader",
+      ...configOverrides,
+    };
+  }
+
+  datePicker(
+    key: FormlyKeyValue<TModel, Date | [Date, Date]>,
+    configOverrides: FormlyFieldConfig<NzFormlyDatePickerProps>,
+  ): FormlyFieldConfig {
+    return {
+      key,
+      type: "datePicker",
       ...configOverrides,
     };
   }
