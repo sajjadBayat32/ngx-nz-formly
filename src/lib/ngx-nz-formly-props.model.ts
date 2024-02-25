@@ -25,14 +25,14 @@ enum InputMask {
 }
 
 export interface NzFormlyCommonProps {
-  disabled?: boolean;
-  hidden?: boolean;
+  nzDisabled?: boolean;
+  nzHidden?: boolean;
+  nzPlaceholder?: string;
+  nzReadonly?: boolean;
   label?: string;
   labelObs?: Observable<string>;
   labelPosition?: "inline" | "top" | "float";
-  placeholder?: string;
   required?: boolean;
-  readonly?: boolean;
   showError?: boolean;
   keyup?: FormlyAttributeEvent;
   keydown?: FormlyAttributeEvent;
