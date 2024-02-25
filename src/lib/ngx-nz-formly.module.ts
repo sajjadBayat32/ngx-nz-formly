@@ -90,7 +90,7 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
-          disabled: false,
+          nzDisabled: false,
           nzAutoFocus: false,
           showError: true,
         },
@@ -103,7 +103,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
           labelPosition: "inline",
-          disabled: false,
+          nzDisabled: false,
           nzSize: "default",
           nzLoading: false,
           showError: true,
@@ -117,7 +117,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
           labelPosition: "inline",
-          disabled: false,
+          nzDisabled: false,
           nzSize: "default",
           nzType: "nz-radio",
           showError: true,
@@ -137,7 +137,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzBorderless: false,
           nzOpen: false,
           nzAutoFocus: false,
-          disabled: false,
+          nzDisabled: false,
           nzDropdownMatchSelectWidth: true,
           nzServerSearch: false,
           nzMaxMultipleCount: Infinity,
