@@ -15,6 +15,7 @@ import {
 import {
   NzFormlyButtonProps,
   NzFormlyCheckboxProps,
+  NzFormlyDatePickerProps,
   NzFormlyInputProps,
   NzFormlyRadioProps,
   NzFormlySelectProps,
@@ -55,7 +56,8 @@ import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slide
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzFormlyUploaderComponent } from "./components/nz-formly-uploader/nz-formly-uploader.component";
-import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzUploadModule } from "ng-zorro-antd/upload";
+import { NzFormlyFieldDatePickerComponent } from "./components/nz-formly-field-date-picker/nz-formly-field-date-picker.component";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -204,7 +206,17 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyUploaderProps>>{
         props: {
-          multiple: true
+          multiple: true,
+        },
+      },
+    },
+    {
+      name: "datePicker",
+      component: NzFormlyFieldDatePickerComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
+        props: {
+          labelPosition: "inline",
         },
       },
     },
@@ -304,6 +316,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzFormlyLabelWrapperComponent,
     NzFormlyDefaultWrapperComponent,
     NzFormlyUploaderComponent,
+    NzFormlyFieldDatePickerComponent,
   ],
   imports: [
     CommonModule,
