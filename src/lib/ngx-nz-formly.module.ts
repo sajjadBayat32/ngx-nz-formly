@@ -57,6 +57,7 @@ import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzFormlyUploaderComponent } from "./components/nz-formly-uploader/nz-formly-uploader.component";
 import { NzUploadModule } from "ng-zorro-antd/upload";
+import { NzDatePickerModule } from "./date-picker";
 import { NzFormlyFieldDatePickerComponent } from "./components/nz-formly-field-date-picker/nz-formly-field-date-picker.component";
 
 export const NzFormlyForRoot: ConfigOption = {
@@ -332,7 +333,8 @@ export const NzFormlyForRoot: ConfigOption = {
     NzSelectModule,
     NzRadioModule,
     NzSliderModule,
-    NzUploadModule
+    NzUploadModule,
+    NzDatePickerModule,
   ],
   providers: [NzFormlyFieldBuilder],
   exports: [],
