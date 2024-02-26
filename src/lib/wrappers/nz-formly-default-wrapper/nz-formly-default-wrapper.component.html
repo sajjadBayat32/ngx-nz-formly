@@ -2,7 +2,7 @@
   class="position-relative"
   [classList]="props.styles?.wrapperClass"
   [id]="'wrapper-' + field.key"
-  *ngIf="!props.hidden"
+  *ngIf="!props.nzHidden"
 >
   <ng-container #fieldComponent></ng-container>
   <div
