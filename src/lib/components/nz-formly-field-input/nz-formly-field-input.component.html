@@ -8,19 +8,19 @@
   [nzSize]="props.nzSize || 'default'"
 >
   <input
-      #input
-      nz-input
-      [id]="fieldID"
-      [formControl]="formControl"
-      [formlyAttributes]="field"
-      [mask]="mask"
-      [thousandSeparator]="props.thousandSeparator"
-      [type]="type"
-      [nzStatus]="status"
-      [attr.disabled]="props.disabled"
-      [readonly]="props.readonly"
-      [placeholder]="props.placeholder"
-      [nzBorderless]="props.nzBorderless"
+    #input
+    nz-input
+    [id]="fieldID"
+    [formControl]="formControl"
+    [formlyAttributes]="field"
+    [mask]="mask"
+    [thousandSeparator]="props.thousandSeparator"
+    [type]="type"
+    [nzStatus]="status"
+    [attr.disabled]="props.nzDisabled"
+    [readonly]="props.nzReadonly"
+    [placeholder]="props.nzPlaceholder"
+    [nzBorderless]="props.nzBorderless"
   />
   <div class="show-password" *ngIf="props.type === 'password'">
     <span
