@@ -199,7 +199,7 @@ export class AppComponent implements OnInit {
         props: {
           label: "Phone No",
           mask: "phone",
-          placeholder: "e.x. 9127403028",
+          nzPlaceholder: "e.x. 9127403028",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -211,7 +211,7 @@ export class AppComponent implements OnInit {
         props: {
           required: true,
           label: "Email address",
-          placeholder: "e.x. sajjad@gmail.com",
+          nzPlaceholder: "e.x. sajjad@gmail.com",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -228,7 +228,7 @@ export class AppComponent implements OnInit {
           required: true,
           type: "password",
           label: "Password",
-          placeholder: "use complex one",
+          nzPlaceholder: "use complex one",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -246,7 +246,7 @@ export class AppComponent implements OnInit {
           mask: "separator.2",
           thousandSeparator: ",",
           nzAddOnBeforeIcon: "wallet",
-          placeholder: "e.x. 2000",
+          nzPlaceholder: "e.x. 2000",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -275,7 +275,7 @@ export class AppComponent implements OnInit {
           minValue: 20,
           maxValue: 100,
           label: "Age",
-          placeholder: "enter your age",
+          nzPlaceholder: "enter your age",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -311,7 +311,7 @@ export class AppComponent implements OnInit {
           label: "City",
           nzAllowClear: true,
           nzShowSearch: true,
-          placeholder: "select your city",
+          nzPlaceholder: "select your city",
           styles: {
             labelWidth: "110px",
             wrapperClass: "mb-4",
@@ -328,9 +328,9 @@ export class AppComponent implements OnInit {
               value: "Teh",
               nzCustomContent: `<i>Tehran</i>`,
             },
-            {label: "Isfahan", value: "Isf"},
-            {label: "Shiraz", value: "Shi"},
-            {label: "Gilan", value: "Gil"},
+            { label: "Isfahan", value: "Isf" },
+            { label: "Shiraz", value: "Shi" },
+            { label: "Gilan", value: "Gil" },
           ],
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
             return option?.nzLabel?.toString().includes(input || "") || false;
