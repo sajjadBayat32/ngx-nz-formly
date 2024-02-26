@@ -10,26 +10,26 @@ import {
   OnChanges,
   OnInit,
   ViewEncapsulation,
-} from '@angular/core';
+} from "@angular/core";
 
-import { CandyDate, CandyDateFac } from '../../core/time';
-import { valueFunctionProp } from 'ng-zorro-antd/core/util';
+import { CandyDate, CandyDateFac } from "../../core/time";
+import { valueFunctionProp } from "ng-zorro-antd/core/util";
 import {
   DateHelperService,
   NZ_DATE_FORMATS,
   NzDateDisplayFormats,
-} from '../../i18n';
+} from "../../i18n";
 
-import { AbstractTable } from './abstract-table';
-import { DateBodyRow, DateCell } from './interface';
+import { AbstractTable } from "./abstract-table";
+import { DateBodyRow, DateCell } from "./interface";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'month-table',
-  exportAs: 'monthTable',
-  templateUrl: 'abstract-table.html',
+  selector: "month-table",
+  exportAs: "monthTable",
+  templateUrl: "abstract-table.html",
 })
 export class MonthTableComponent
   extends AbstractTable
@@ -41,7 +41,7 @@ export class MonthTableComponent
   constructor(
     private dateHelper: DateHelperService,
     @Inject(CandyDate) candyDate: CandyDateFac,
-    @Inject(NZ_DATE_FORMATS) dateFormats: NzDateDisplayFormats
+    @Inject(NZ_DATE_FORMATS) dateFormats: NzDateDisplayFormats,
   ) {
     super(candyDate, dateFormats);
   }
@@ -65,7 +65,7 @@ export class MonthTableComponent
         const isDisabled = this.isDisabledMonth(month);
         const content = this.dateHelper.format(
           month.nativeDate,
-          this.dateFormats.monthLabel!
+          this.dateFormats.monthLabel!,
         );
         const cell: DateCell = {
           trackByIndex: colIndex,

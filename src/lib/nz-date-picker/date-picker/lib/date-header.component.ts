@@ -8,26 +8,26 @@ import {
   Component,
   Inject,
   ViewEncapsulation,
-} from '@angular/core';
+} from "@angular/core";
 
-import { CandyDate, CandyDateFac } from '../../core/time';
-import { DateHelperService } from '../../i18n';
+import { CandyDate, CandyDateFac } from "../../core/time";
+import { DateHelperService } from "../../i18n";
 
-import { AbstractPanelHeader } from './abstract-panel-header';
-import { PanelSelector } from './interface';
-import { transCompatFormat } from './util';
+import { AbstractPanelHeader } from "./abstract-panel-header";
+import { PanelSelector } from "./interface";
+import { transCompatFormat } from "./util";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'date-header', // eslint-disable-line @angular-eslint/component-selector
-  exportAs: 'dateHeader',
-  templateUrl: './abstract-panel-header.html',
+  selector: "date-header", // eslint-disable-line @angular-eslint/component-selector
+  exportAs: "dateHeader",
+  templateUrl: "./abstract-panel-header.html",
 })
 export class DateHeaderComponent extends AbstractPanelHeader {
   constructor(
     private dateHelper: DateHelperService,
-    @Inject(CandyDate) candyDate: CandyDateFac
+    @Inject(CandyDate) candyDate: CandyDateFac,
   ) {
     super(candyDate);
   }
@@ -37,19 +37,19 @@ export class DateHeaderComponent extends AbstractPanelHeader {
       {
         className: `${this.prefixCls}-year-btn`,
         title: this.locale.yearSelect,
-        onClick: () => this.changeMode('year'),
+        onClick: () => this.changeMode("year"),
         label: this.dateHelper.format(
           this.value.nativeDate,
-          transCompatFormat(this.locale.yearFormat)
+          transCompatFormat(this.locale.yearFormat),
         ),
       },
       {
         className: `${this.prefixCls}-month-btn`,
         title: this.locale.monthSelect,
-        onClick: () => this.changeMode('month'),
+        onClick: () => this.changeMode("month"),
         label: this.dateHelper.format(
           this.value.nativeDate,
-          this.locale.monthFormat || 'MMM'
+          this.locale.monthFormat || "MMM",
         ),
       },
     ];

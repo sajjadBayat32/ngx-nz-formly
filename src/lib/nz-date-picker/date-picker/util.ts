@@ -3,15 +3,15 @@
  * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
  */
 
-import { CandyDate } from '../core/time';
+import { CandyDate } from "../core/time";
 
 import {
   DisabledDateFn,
   DisabledTimeConfig,
   DisabledTimeFn,
-} from './standard-types';
+} from "./standard-types";
 
-export const PREFIX_CLASS = 'ant-picker';
+export const PREFIX_CLASS = "ant-picker";
 
 const defaultDisabledTime: DisabledTimeConfig = {
   nzDisabledHours(): number[] {
@@ -27,7 +27,7 @@ const defaultDisabledTime: DisabledTimeConfig = {
 
 export function getTimeConfig(
   value: CandyDate,
-  disabledTime?: DisabledTimeFn
+  disabledTime?: DisabledTimeFn,
 ): DisabledTimeConfig {
   let disabledTimeConfig = disabledTime
     ? disabledTime(value && value.nativeDate)
@@ -41,7 +41,7 @@ export function getTimeConfig(
 
 export function isTimeValidByConfig(
   value: CandyDate,
-  disabledTimeConfig: DisabledTimeConfig
+  disabledTimeConfig: DisabledTimeConfig,
 ): boolean {
   let invalidTime = false;
   if (value) {
@@ -54,7 +54,7 @@ export function isTimeValidByConfig(
       if (disabledMinutes.indexOf(minutes) === -1) {
         const disabledSeconds = disabledTimeConfig.nzDisabledSeconds(
           hour,
-          minutes
+          minutes,
         );
         invalidTime = disabledSeconds.indexOf(seconds) !== -1;
       } else {
@@ -69,7 +69,7 @@ export function isTimeValidByConfig(
 
 export function isTimeValid(
   value: CandyDate,
-  disabledTime: DisabledTimeFn
+  disabledTime: DisabledTimeFn,
 ): boolean {
   const disabledTimeConfig = getTimeConfig(value, disabledTime);
   return isTimeValidByConfig(value, disabledTimeConfig);
@@ -78,7 +78,7 @@ export function isTimeValid(
 export function isAllowedDate(
   value: CandyDate,
   disabledDate?: DisabledDateFn,
-  disabledTime?: DisabledTimeFn
+  disabledTime?: DisabledTimeFn,
 ): boolean {
   if (!value) {
     return false;

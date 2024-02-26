@@ -8,26 +8,26 @@ import {
   Component,
   Inject,
   ViewEncapsulation,
-} from '@angular/core';
+} from "@angular/core";
 
-import { CandyDate, CandyDateFac } from '../../core/time';
-import { DateHelperService } from '../../i18n';
+import { CandyDate, CandyDateFac } from "../../core/time";
+import { DateHelperService } from "../../i18n";
 
-import { AbstractPanelHeader } from './abstract-panel-header';
-import { PanelSelector } from './interface';
-import { transCompatFormat } from './util';
+import { AbstractPanelHeader } from "./abstract-panel-header";
+import { PanelSelector } from "./interface";
+import { transCompatFormat } from "./util";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'month-header', // eslint-disable-line @angular-eslint/component-selector
-  exportAs: 'monthHeader',
-  templateUrl: './abstract-panel-header.html',
+  selector: "month-header", // eslint-disable-line @angular-eslint/component-selector
+  exportAs: "monthHeader",
+  templateUrl: "./abstract-panel-header.html",
 })
 export class MonthHeaderComponent extends AbstractPanelHeader {
   constructor(
     private dateHelper: DateHelperService,
-    @Inject(CandyDate) candyDate: CandyDateFac
+    @Inject(CandyDate) candyDate: CandyDateFac,
   ) {
     super(candyDate);
   }
@@ -37,10 +37,10 @@ export class MonthHeaderComponent extends AbstractPanelHeader {
       {
         className: `${this.prefixCls}-month-btn`,
         title: this.locale.yearSelect,
-        onClick: () => this.changeMode('year'),
+        onClick: () => this.changeMode("year"),
         label: this.dateHelper.format(
           this.value.nativeDate,
-          transCompatFormat(this.locale.yearFormat)
+          transCompatFormat(this.locale.yearFormat),
         ),
       },
     ];

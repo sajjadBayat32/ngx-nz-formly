@@ -8,26 +8,26 @@ import {
   Component,
   Inject,
   ViewEncapsulation,
-} from '@angular/core';
+} from "@angular/core";
 
-import { CandyDate, CandyDateFac } from '../../core/time';
-import { valueFunctionProp } from 'ng-zorro-antd/core/util';
+import { CandyDate, CandyDateFac } from "../../core/time";
+import { valueFunctionProp } from "ng-zorro-antd/core/util";
 import {
   DateHelperService,
   NZ_DATE_FORMATS,
   NzDateDisplayFormats,
-} from '../../i18n';
+} from "../../i18n";
 
-import { AbstractTable } from './abstract-table';
-import { DateBodyRow, DateCell, YearCell } from './interface';
+import { AbstractTable } from "./abstract-table";
+import { DateBodyRow, DateCell, YearCell } from "./interface";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'year-table',
-  exportAs: 'yearTable',
-  templateUrl: 'abstract-table.html',
+  selector: "year-table",
+  exportAs: "yearTable",
+  templateUrl: "abstract-table.html",
 })
 export class YearTableComponent extends AbstractTable {
   override MAX_ROW = 4;
@@ -36,7 +36,7 @@ export class YearTableComponent extends AbstractTable {
   constructor(
     private dateHelper: DateHelperService,
     @Inject(CandyDate) candyDate: CandyDateFac,
-    @Inject(NZ_DATE_FORMATS) dateFormats: NzDateDisplayFormats
+    @Inject(NZ_DATE_FORMATS) dateFormats: NzDateDisplayFormats,
   ) {
     super(candyDate, dateFormats);
   }
@@ -63,7 +63,7 @@ export class YearTableComponent extends AbstractTable {
         const year = this.activeDate.setYear(yearNum);
         const content = this.dateHelper.format(
           year.nativeDate,
-          this.dateFormats.yearLabel!
+          this.dateFormats.yearLabel!,
         );
         const isDisabled = this.isDisabledYear(year);
         const cell: YearCell = {

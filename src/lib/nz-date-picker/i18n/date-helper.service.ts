@@ -3,22 +3,22 @@
  * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
  */
 
-import { formatDate } from '@angular/common';
-import { Inject, Injectable, Injector, Optional } from '@angular/core';
+import { formatDate } from "@angular/common";
+import { Inject, Injectable, Injector, Optional } from "@angular/core";
 
 import {
   WeekDayIndex,
   NgTimeParser,
   isCustomAdapter,
   NzDateAdapter,
-} from '../core/time';
+} from "../core/time";
 
-import { mergeDateConfig, NzDateConfig, NZ_DATE_CONFIG } from './date-config';
-import { NzI18nService } from './nz-i18n.service';
+import { mergeDateConfig, NzDateConfig, NZ_DATE_CONFIG } from "./date-config";
+import { NzI18nService } from "./nz-i18n.service";
 
 export function DATE_HELPER_SERVICE_FACTORY(
   injector: Injector,
-  config: NzDateConfig
+  config: NzDateConfig,
 ): DateHelperService {
   const i18n = injector.get(NzI18nService);
   const dateAdapter = injector.get(NzDateAdapter);
@@ -33,7 +33,7 @@ export function DATE_HELPER_SERVICE_FACTORY(
  * Compatibility: compact for original usage by default which using DatePipe
  */
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
   useFactory: DATE_HELPER_SERVICE_FACTORY,
   deps: [Injector, [new Optional(), NZ_DATE_CONFIG]],
 })
@@ -41,15 +41,19 @@ export abstract class DateHelperService {
   constructor(
     protected i18n: NzI18nService,
     @Optional() @Inject(NZ_DATE_CONFIG) protected config: NzDateConfig,
-    protected dateAdapter: NzDateAdapter
+    protected dateAdapter: NzDateAdapter,
   ) {
     this.config = mergeDateConfig(this.config);
   }
 
   abstract getISOWeek(date: Date): number;
+
   abstract getFirstDayOfWeek(): WeekDayIndex;
+
   abstract format(date: Date | null, formatStr: string): string;
+
   abstract parseDate(text: string, formatStr?: string): Date;
+
   abstract parseTime(text: string, formatStr?: string): Date | undefined;
 }
 
@@ -57,7 +61,7 @@ export abstract class DateHelperService {
  * DateHelper that handles date formats with date-adapter
  */
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class DateHelperByDateAdapter extends DateHelperService {
   getISOWeek(date: Date): number {
@@ -90,12 +94,12 @@ export class DateHelperByDateAdapter extends DateHelperService {
       ? this.dateAdapter.format(date, formatStr, {
           locale: this.i18n.getDateLocale(),
         })
-      : '';
+      : "";
   }
 
   parseDate(text: string, formatStr: string): Date {
     return this.dateAdapter.toNativeDate(
-      this.dateAdapter.parse(text, formatStr)
+      this.dateAdapter.parse(text, formatStr),
     );
   }
 
@@ -112,13 +116,13 @@ export class DateHelperByDateAdapter extends DateHelperService {
  */
 export class DateHelperByDatePipe extends DateHelperService {
   getISOWeek(date: Date): number {
-    return +this.format(date, 'w');
+    return +this.format(date, "w");
   }
 
   getFirstDayOfWeek(): WeekDayIndex {
     if (this.config.firstDayOfWeek === undefined) {
       const locale = this.i18n.getLocaleId();
-      return locale && ['zh-cn', 'zh-tw'].indexOf(locale.toLowerCase()) > -1
+      return locale && ["zh-cn", "zh-tw"].indexOf(locale.toLowerCase()) > -1
         ? 1
         : 0;
     }
@@ -126,7 +130,7 @@ export class DateHelperByDatePipe extends DateHelperService {
   }
 
   format(date: Date | null, formatStr: string): string {
-    return date ? formatDate(date, formatStr, this.i18n.getLocaleId())! : '';
+    return date ? formatDate(date, formatStr, this.i18n.getLocaleId())! : "";
   }
 
   parseDate(text: string): Date {
