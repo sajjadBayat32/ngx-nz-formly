@@ -68,11 +68,12 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
-          nzSize: "default",
-          labelPosition: "inline",
           mask: "",
-          thousandSeparator: "",
           showError: true,
+          nzSize: "default",
+          nzPlaceholder: "",
+          thousandSeparator: "",
+          labelPosition: "inline",
         },
       },
     },
@@ -154,6 +155,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzOptionOverflowSize: 8,
           nzSelectOnTab: false,
           showError: true,
+          nzPlaceholder: "",
           nzFilterOption: () => true,
           compareWith: (o1: any, o2: any) => o1 === o2,
           nzOpenChange: () => {},
@@ -217,6 +219,7 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
         props: {
+          nzPlaceholder: "",
           labelPosition: "inline",
         },
       },
