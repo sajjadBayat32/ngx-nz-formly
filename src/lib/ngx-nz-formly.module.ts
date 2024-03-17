@@ -15,6 +15,7 @@ import {
 import {
   NzFormlyButtonProps,
   NzFormlyCheckboxProps,
+  NzFormlyDatePickerProps,
   NzFormlyInputProps,
   NzFormlyRadioProps,
   NzFormlySelectProps,
@@ -55,7 +56,9 @@ import { NzFormlyFieldSliderComponent } from "./components/nz-formly-field-slide
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzFormlyUploaderComponent } from "./components/nz-formly-uploader/nz-formly-uploader.component";
-import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzUploadModule } from "ng-zorro-antd/upload";
+import { NzDatePickerModule } from "./nz-date-picker/date-picker";
+import { NzFormlyFieldDatePickerComponent } from "./components/nz-formly-field-date-picker/nz-formly-field-date-picker.component";
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
@@ -65,11 +68,12 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
-          nzSize: "default",
-          labelPosition: "inline",
           mask: "",
-          thousandSeparator: "",
           showError: true,
+          nzSize: "default",
+          nzPlaceholder: "",
+          thousandSeparator: "",
+          labelPosition: "inline",
         },
       },
     },
@@ -90,7 +94,7 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
-          disabled: false,
+          nzDisabled: false,
           nzAutoFocus: false,
           showError: true,
         },
@@ -103,7 +107,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
           labelPosition: "inline",
-          disabled: false,
+          nzDisabled: false,
           nzSize: "default",
           nzLoading: false,
           showError: true,
@@ -117,7 +121,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
           labelPosition: "inline",
-          disabled: false,
+          nzDisabled: false,
           nzSize: "default",
           nzType: "nz-radio",
           showError: true,
@@ -137,7 +141,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzBorderless: false,
           nzOpen: false,
           nzAutoFocus: false,
-          disabled: false,
+          nzDisabled: false,
           nzDropdownMatchSelectWidth: true,
           nzServerSearch: false,
           nzMaxMultipleCount: Infinity,
@@ -151,6 +155,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzOptionOverflowSize: 8,
           nzSelectOnTab: false,
           showError: true,
+          nzPlaceholder: "",
           nzFilterOption: () => true,
           compareWith: (o1: any, o2: any) => o1 === o2,
           nzOpenChange: () => {},
@@ -204,7 +209,18 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyUploaderProps>>{
         props: {
-          multiple: true
+          multiple: true,
+        },
+      },
+    },
+    {
+      name: "datePicker",
+      component: NzFormlyFieldDatePickerComponent,
+      wrappers: ["default-wrapper", "label-wrapper"],
+      defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
+        props: {
+          nzPlaceholder: "",
+          labelPosition: "inline",
         },
       },
     },
@@ -304,6 +320,7 @@ export const NzFormlyForRoot: ConfigOption = {
     NzFormlyLabelWrapperComponent,
     NzFormlyDefaultWrapperComponent,
     NzFormlyUploaderComponent,
+    NzFormlyFieldDatePickerComponent,
   ],
   imports: [
     CommonModule,
@@ -319,7 +336,8 @@ export const NzFormlyForRoot: ConfigOption = {
     NzSelectModule,
     NzRadioModule,
     NzSliderModule,
-    NzUploadModule
+    NzUploadModule,
+    NzDatePickerModule,
   ],
   providers: [NzFormlyFieldBuilder],
   exports: [],

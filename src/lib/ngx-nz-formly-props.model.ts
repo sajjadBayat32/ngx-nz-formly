@@ -1,5 +1,5 @@
 import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
-import { TemplateRef } from "@angular/core";
+import { EventEmitter, TemplateRef } from "@angular/core";
 import {
   NzSafeAny,
   NzSizeDSType,
@@ -12,23 +12,27 @@ import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
 import { NzMarks, NzSliderShowTooltip } from "ng-zorro-antd/slider";
-import { NzUploadFile, NzUploadXHRArgs } from "ng-zorro-antd/upload";
-
-export type FormlyCustomFieldProps = NzFormlyInputProps | NzFormlyCheckboxProps;
+import {
+  NzUploadChangeParam,
+  NzUploadFile,
+  NzUploadXHRArgs,
+} from "ng-zorro-antd/upload";
+import { NzDateMode, NzDatePickerSizeType } from "ng-zorro-antd/date-picker";
+import { NzPlacement } from "ng-zorro-antd/date-picker/date-picker.component";
 
 enum InputMask {
   PHONE = "phone",
 }
 
 export interface NzFormlyCommonProps {
-  disabled?: boolean;
-  hidden?: boolean;
+  nzDisabled?: boolean;
+  nzHidden?: boolean;
+  nzPlaceholder?: string;
+  nzReadonly?: boolean;
   label?: string;
   labelObs?: Observable<string>;
   labelPosition?: "inline" | "top" | "float";
-  placeholder?: string;
   required?: boolean;
-  readonly?: boolean;
   showError?: boolean;
   keyup?: FormlyAttributeEvent;
   keydown?: FormlyAttributeEvent;
@@ -188,5 +192,66 @@ export interface NzFormlyUploaderProps {
   uploadHeaders?: object | ((file: NzUploadFile) => object | Observable<any>);
   customRequest?: (item: NzUploadXHRArgs) => Subscription;
   nzDownload?: (file: NzUploadFile) => void;
+  nzChange?: (event: NzUploadChangeParam) => void;
   /*options will be added soon*/
+}
+
+export interface NzFormlyDatePickerCommonProps extends NzFormlyCommonProps {
+  nzId?: string;
+  nzAllowClear?: boolean;
+  nzAutoFocus?: boolean;
+  nzBackdrop?: boolean;
+  nzDefaultPickerValue?: Date;
+  nzDisabledDate?: (current: Date) => boolean;
+  nzDropdownClassName?: string;
+  nzFormat?: string;
+  nzLocale?: object;
+  nzMode?: NzDateMode;
+  nzPopupStyle?: object;
+  nzRenderExtraFooter?:
+    | TemplateRef<any>
+    | string
+    | (() => TemplateRef<any> | string);
+  nzSize?: NzDatePickerSizeType;
+  nzStatus?: NzStatus;
+  nzPlacement?: NzPlacement;
+  nzSuffixIcon?: string;
+  nzBorderless?: boolean;
+  nzInline?: boolean;
+  nzOnOpenChange?: EventEmitter<boolean>;
+}
+
+export interface NzFormlyDatePickerProps extends NzFormlyDatePickerCommonProps {
+  nzDateRender?:
+    | TemplateRef<Date>
+    | string
+    | ((d: Date) => TemplateRef<Date> | string);
+  nzDisabledTime?: (current: Date) => {
+    nzDisabledHours: any;
+    nzDisabledMinutes: any;
+    nzDisabledSeconds: any;
+  };
+  nzShowTime?: object | boolean;
+  nzShowToday?: boolean;
+  nzShowNow?: boolean;
+  nzShowWeekNumber?: boolean;
+  nzOnOk?: EventEmitter<Date>;
+}
+
+export interface NzFormlyRangePickerProps
+  extends NzFormlyDatePickerCommonProps {
+  nzRanges: { [key: string]: Date[] } | { [key: string]: () => Date[] };
+  nzSeparator: string | TemplateRef<any>;
+  nzOnCalendarChange: EventEmitter<Date[]>;
+  nzShowTime: object | boolean;
+  nzDisabledTime: (
+    current: Date,
+    partial: "start" | "end",
+  ) => {
+    nzDisabledHours: any;
+    nzDisabledMinutes: any;
+    nzDisabledSeconds: any;
+  };
+  nzShowWeekNumber: boolean;
+  nzOnOk: EventEmitter<Date[]>;
 }
