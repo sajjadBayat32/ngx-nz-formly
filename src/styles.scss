@@ -1,0 +1,103 @@
+.nz-formly-field-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: initial;
+  }
+}
+
+.nz-formly-label-top {
+  display: flex;
+  flex-direction: column;
+
+  .nz-formly-label {
+    font-size: 75%;
+    font-weight: 500;
+  }
+}
+
+.nz-formly-label-inline .nz-formly-label {
+  font-size: 100%;
+  font-weight: 600;
+  position: relative;
+  padding-right: 5px;
+}
+
+.nz-formly-label-float {
+  position: relative;
+
+  .nz-formly-label {
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    pointer-events: none;
+    transform-origin: 0 0;
+    inset-inline-start: 10px;
+    border: 1px solid transparent;
+    transition: transform 0.1s ease-in-out;
+  }
+
+  &:focus-within,
+  &.fixed {
+    .nz-formly-label {
+      height: 20px;
+      background: #fff;
+      padding-left: 6px;
+      margin-left: -6px;
+      padding-right: 16px;
+      transform: scale(0.85) translateY(-10px);
+    }
+  }
+}
+
+.nz-formly-label-required {
+  color: #f10232;
+  position: relative;
+}
+
+.nz-formly-error-message {
+  top: -4px;
+  opacity: 0;
+  color: #f10232;
+  font-size: 85%;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.1s ease-in;
+
+  &-visible {
+    top: 0;
+    opacity: 1;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0 !important;
+  }
+}
+
+// inputs style
+.nz-formly-checkbox-label {
+  display: flex;
+  font-size: 100%;
+  font-weight: 600;
+  min-height: 30px;
+  width: fit-content;
+  align-items: center;
+}
+
+.nz-formly-show-password {
+  z-index: 5;
+  opacity: 0.6;
+  cursor: pointer;
+  position: absolute;
+  inset-inline-end: 10px;
+}
+
+nz-select {
+  width: 100%;
+  display: block;
+}

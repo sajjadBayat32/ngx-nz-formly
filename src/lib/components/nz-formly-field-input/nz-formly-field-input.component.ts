@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 import { NzFormlyInputProps } from "../../ngx-nz-formly-props.model";
-import { debounceTime, Subject, takeUntil, tap } from "rxjs";
+import { Subject, takeUntil, tap } from "rxjs";
 import { CountryCodeMask, CountryMasks2 } from "./phone-mask.config";
 
 const DefaultPhoneMask: CountryCodeMask = {
@@ -13,7 +13,6 @@ const DefaultPhoneMask: CountryCodeMask = {
 @Component({
   selector: "app-nz-formly-field-input",
   templateUrl: "./nz-formly-field-input.component.html",
-  styleUrls: ["./nz-formly-field-input.component.scss"],
 })
 export class NzFormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<NzFormlyInputProps>>

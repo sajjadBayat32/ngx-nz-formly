@@ -6,7 +6,6 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "app-nz-formly-field-checkbox",
   templateUrl: "./nz-formly-field-checkbox.component.html",
-  styleUrls: ["./nz-formly-field-checkbox.component.scss"],
 })
 export class NzFormlyFieldCheckboxComponent
   extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>

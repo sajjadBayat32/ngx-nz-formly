@@ -6,7 +6,6 @@ import { Subject, takeUntil, tap } from "rxjs";
 @Component({
   selector: "app-nz-formly-field-select",
   templateUrl: "./nz-formly-field-select.component.html",
-  styleUrls: ["./nz-formly-field-select.component.scss"],
 })
 export class NzFormlyFieldSelectComponent
   extends FieldType<FieldTypeConfig<NzFormlySelectProps>>
