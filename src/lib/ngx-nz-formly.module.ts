@@ -73,6 +73,7 @@ export const NzFormlyForRoot: ConfigOption = {
           mask: "",
           thousandSeparator: "",
           showError: true,
+          nzPlaceholder: "",
         },
       },
     },
@@ -85,6 +86,7 @@ export const NzFormlyForRoot: ConfigOption = {
           labelPosition: "inline",
           rows: 4,
           showError: true,
+          nzPlaceholder: "",
         },
       },
     },
@@ -155,6 +157,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzOptionOverflowSize: 8,
           nzSelectOnTab: false,
           showError: true,
+          nzPlaceholder: "",
           nzFilterOption: () => true,
           compareWith: (o1: any, o2: any) => o1 === o2,
           nzOpenChange: () => {},
@@ -219,6 +222,7 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
         props: {
           labelPosition: "inline",
+          nzPlaceholder: "",
         },
       },
     },
