@@ -84,6 +84,7 @@ export const NzFormlyForRoot: ConfigOption = {
         props: {
           labelPosition: "inline",
           rows: 4,
+          showError: true,
         },
       },
     },

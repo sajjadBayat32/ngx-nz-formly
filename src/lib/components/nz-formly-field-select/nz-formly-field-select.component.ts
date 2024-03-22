@@ -17,6 +17,10 @@ export class NzFormlyFieldSelectComponent
     return "control-" + this.field.key;
   }
 
+  get status() {
+    return this.formControl.touched && this.formControl.invalid ? "error" : "";
+  }
+
   ngOnInit() {
     this.onValueChange();
   }
