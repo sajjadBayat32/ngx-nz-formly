@@ -35,7 +35,6 @@ import {
   NzFormlyUploaderComponent,
 } from "./components";
 import {
-  NzFormlyAddonWrapperComponent,
   NzFormlyDefaultWrapperComponent,
   NzFormlyLabelWrapperComponent,
   wrapperExtension,
@@ -216,10 +215,6 @@ export const NzFormlyForRoot: ConfigOption = {
     {
       name: "label-wrapper",
       component: NzFormlyLabelWrapperComponent,
-    },
-    {
-      name: "addon-wrapper",
-      component: NzFormlyAddonWrapperComponent,
     },
   ],
   extensions: [

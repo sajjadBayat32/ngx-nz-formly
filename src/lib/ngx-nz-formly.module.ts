@@ -30,7 +30,6 @@ import {
 import {
   NzFormlyDefaultWrapperComponent,
   NzFormlyLabelWrapperComponent,
-  NzFormlyAddonWrapperComponent,
 } from "./wrappers";
 
 @NgModule({
@@ -47,7 +46,6 @@ import {
     NzFormlyFieldDatePickerComponent,
     NzFormlyLabelWrapperComponent,
     NzFormlyDefaultWrapperComponent,
-    NzFormlyAddonWrapperComponent,
   ],
   imports: [
     CommonModule,
