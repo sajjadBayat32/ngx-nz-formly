@@ -9,7 +9,7 @@
     *ngIf="props.showError"
     class="nz-formly-error-message"
     [ngClass]="{'nz-formly-error-message-visible': formControl.touched && formControl.invalid}"
-    [ngStyle]="{ 'margin-left': props.labelPosition === 'inline' ? props.styles?.labelWidth ?? '0' : '0' }"
+    [ngStyle]="{ 'inset-inline-start': props.labelPosition === 'inline' ? props.styles?.labelWidth ?? '0' : '0' }"
   >
     <formly-validation-message [field]="field"></formly-validation-message>
   </div>
