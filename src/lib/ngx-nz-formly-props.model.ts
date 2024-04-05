@@ -24,6 +24,12 @@ enum InputMask {
   PHONE = "phone",
 }
 
+interface AddOn {
+  icon?: string;
+  text?: string;
+  onClick?: () => {};
+}
+
 export interface NzFormlyCommonProps {
   nzDisabled?: boolean;
   nzHidden?: boolean;
@@ -34,6 +40,8 @@ export interface NzFormlyCommonProps {
   labelPosition?: "inline" | "top" | "float";
   required?: boolean;
   showError?: boolean;
+  addonBefore?: AddOn;
+  addonAfter?: AddOn;
   keyup?: FormlyAttributeEvent;
   keydown?: FormlyAttributeEvent;
   keypress?: FormlyAttributeEvent;
@@ -42,9 +50,11 @@ export interface NzFormlyCommonProps {
   blur?: FormlyAttributeEvent;
   change?: FormlyAttributeEvent;
   styles?: {
+    /**@deprecated*/
     labelClass?: string;
     labelWidth?: string;
     fieldClass?: string;
+    /**@deprecated*/
     wrapperClass?: string;
   };
 }
