@@ -76,6 +76,8 @@ export interface NzFormlyInputProps extends NzFormlyCommonProps {
 export interface NzFormlyTextareaProps extends NzFormlyCommonProps {
   rows?: number;
   nzBorderless?: boolean;
+  showTextAreaCount?: boolean;
+  maxCount?: number;
 }
 
 export interface NzFormlyCheckboxProps extends NzFormlyCommonProps {
