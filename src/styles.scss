@@ -93,8 +93,11 @@
 .nz-formly-show-password {
   z-index: 5;
   opacity: 0.6;
+  height: 14px;
   cursor: pointer;
+  line-height: 14px;
   position: absolute;
+  top: calc(50% - 7px);
   inset-inline-end: 10px;
 }
 
