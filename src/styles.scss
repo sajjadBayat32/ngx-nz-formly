@@ -55,6 +55,12 @@
   }
 }
 
+.nz-formly-default-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
 .nz-formly-label-required {
   color: #f10232;
   position: relative;
