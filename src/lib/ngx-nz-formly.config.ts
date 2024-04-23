@@ -49,7 +49,6 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
           nzSize: "default",
-          labelPosition: "inline",
           mask: "",
           thousandSeparator: "",
           showError: true,
@@ -63,7 +62,6 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyTextareaProps>>{
         props: {
-          labelPosition: "inline",
           rows: 4,
           showError: true,
           nzPlaceholder: "",
@@ -88,7 +86,6 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
-          labelPosition: "inline",
           nzDisabled: false,
           nzSize: "default",
           nzLoading: false,
@@ -102,7 +99,6 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
-          labelPosition: "inline",
           nzDisabled: false,
           nzSize: "default",
           nzType: "nz-radio",
@@ -117,7 +113,6 @@ export const NzFormlyForRoot: ConfigOption = {
       defaultOptions: <FormlyFieldConfig<NzFormlySelectProps>>{
         props: {
           objectValue: false,
-          labelPosition: "inline",
           nzAutoClearSearchValue: true,
           nzAllowClear: false,
           nzBorderless: false,
@@ -152,7 +147,6 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlySliderProps>>{
         props: {
-          labelPosition: "inline",
           nzDots: false,
           nzIncluded: true,
           nzMarks: {},
@@ -201,7 +195,6 @@ export const NzFormlyForRoot: ConfigOption = {
       wrappers: ["default-wrapper", "label-wrapper"],
       defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
         props: {
-          labelPosition: "inline",
           nzPlaceholder: "",
         },
       },
