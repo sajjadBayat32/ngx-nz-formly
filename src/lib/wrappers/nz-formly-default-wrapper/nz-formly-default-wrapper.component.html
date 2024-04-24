@@ -1,8 +1,7 @@
 <div
-  class="nz-formly-default-wrapper"
-  [classList]="props.styles?.wrapperClass"
-  [id]="'wrapper-' + field.key"
-  *ngIf="!props.nzHidden"
+*ngIf="!props.nzHidden"
+[id]="'wrapper-' + field.key"
+[classList]="props.styles?.wrapperClass ?? ' ' + 'nz-formly-default-wrapper'"
 >
   <ng-container #fieldComponent></ng-container>
   <div

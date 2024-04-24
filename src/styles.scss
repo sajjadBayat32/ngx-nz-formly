@@ -68,17 +68,17 @@
 }
 
 .nz-formly-error-message {
-  top: -4px;
+  bottom: 0;
   opacity: 0;
-  color: #f10232;
   font-size: 85%;
+  color: #f10232;
   font-weight: 500;
-  position: relative;
-  transition: all 0.1s ease-in;
+  position: absolute;
+  transition: all 0.25s linear;
 
   &-visible {
-    top: 0;
     opacity: 1;
+    bottom: -16px;
   }
 
   @media (max-width: 500px) {
