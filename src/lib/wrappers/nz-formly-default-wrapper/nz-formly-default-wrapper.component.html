@@ -1,15 +1,14 @@
 <div
-  class="position-relative"
-  [classList]="props.styles?.wrapperClass"
-  [id]="'wrapper-' + field.key"
-  *ngIf="!props.nzHidden"
+*ngIf="!props.nzHidden"
+[id]="'wrapper-' + field.key"
+[classList]="props.styles?.wrapperClass ?? ' ' + 'nz-formly-default-wrapper'"
 >
   <ng-container #fieldComponent></ng-container>
   <div
     *ngIf="props.showError"
     class="nz-formly-error-message"
     [ngClass]="{'nz-formly-error-message-visible': formControl.touched && formControl.invalid}"
-    [ngStyle]="{ 'margin-left': props.labelPosition === 'inline' ? props.styles?.labelWidth ?? '0' : '0' }"
+    [style.margin-inline-start]="props.labelPosition === 'inline' ? props.styles?.labelWidth ?? '0' : '0'"
   >
     <formly-validation-message [field]="field"></formly-validation-message>
   </div>

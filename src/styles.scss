@@ -22,7 +22,7 @@
   font-size: 100%;
   font-weight: 600;
   position: relative;
-  padding-right: 5px;
+  padding-inline-end: 5px;
 }
 
 .nz-formly-label-float {
@@ -47,12 +47,18 @@
     .nz-formly-label {
       height: 20px;
       background: #fff;
-      padding-left: 6px;
-      margin-left: -6px;
-      padding-right: 16px;
+      padding-inline-end: 16px;
+      padding-inline-start: 6px;
+      margin-inline-start: -6px;
       transform: scale(0.85) translateY(-10px);
     }
   }
+}
+
+.nz-formly-default-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
 }
 
 .nz-formly-label-required {
@@ -62,17 +68,17 @@
 }
 
 .nz-formly-error-message {
-  top: -4px;
+  bottom: 0;
   opacity: 0;
-  color: #f10232;
   font-size: 85%;
+  color: #f10232;
   font-weight: 500;
-  position: relative;
-  transition: all 0.1s ease-in;
+  position: absolute;
+  transition: all 0.25s linear;
 
   &-visible {
-    top: 0;
     opacity: 1;
+    bottom: -16px;
   }
 
   @media (max-width: 500px) {

@@ -12,10 +12,7 @@
         "{workspaceRoot}/dist/{projectRoot}"
       ],
       "options": {
-        "project": "libs/ngx-nz-formly/ng-package.json",
-        "styles": [
-          "libs/ngx-nz-formly/src/styles.scss"
-        ]
+        "project": "libs/ngx-nz-formly/ng-package.json"
       },
       "configurations": {
         "production": {

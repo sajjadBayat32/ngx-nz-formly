@@ -42,9 +42,11 @@ export interface NzFormlyCommonProps {
   blur?: FormlyAttributeEvent;
   change?: FormlyAttributeEvent;
   styles?: {
+    /**@deprecated*/
     labelClass?: string;
     labelWidth?: string;
     fieldClass?: string;
+    /**@deprecated*/
     wrapperClass?: string;
   };
 }
@@ -74,6 +76,8 @@ export interface NzFormlyInputProps extends NzFormlyCommonProps {
 export interface NzFormlyTextareaProps extends NzFormlyCommonProps {
   rows?: number;
   nzBorderless?: boolean;
+  showTextAreaCount?: boolean;
+  maxCount?: number;
 }
 
 export interface NzFormlyCheckboxProps extends NzFormlyCommonProps {

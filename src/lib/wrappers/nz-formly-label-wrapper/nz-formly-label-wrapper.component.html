@@ -1,28 +1,30 @@
-<div class="nz-formly-label-top" *ngIf="props.labelPosition == 'top'">
-  <ng-container *ngTemplateOutlet="Label"></ng-container>
-  <ng-container #fieldComponent></ng-container>
-</div>
-
-<div class="nz-formly-label-inline" *ngIf="props.labelPosition == 'inline'">
-  <div class="nz-formly-field-wrapper">
-    <div [ngStyle]="{ width: props.styles?.labelWidth }">
-      <ng-container *ngTemplateOutlet="Label"></ng-container>
-    </div>
-    <div class="flex-grow-1">
-
-      <ng-container #fieldComponent></ng-container>
+@if(props.labelPosition == 'top') {
+  <div class="nz-formly-label-top">
+    <ng-container *ngTemplateOutlet="Label"></ng-container>
+    <ng-container #fieldComponent></ng-container>
+  </div>
+} @else if (props.labelPosition == 'inline') {
+  <div class="nz-formly-label-inline">
+    <div class="nz-formly-field-wrapper">
+      <div [ngStyle]="{ width: props.styles?.labelWidth }">
+        <ng-container *ngTemplateOutlet="Label"></ng-container>
+      </div>
+      <div class="flex-grow-1">
+        <ng-container #fieldComponent></ng-container>
+      </div>
     </div>
   </div>
-</div>
-
-<div
+} @else if (props.labelPosition == 'float') {
+  <div
   class="nz-formly-label-float"
-  *ngIf="props.labelPosition == 'float'"
   [class.fixed]="formControl.value != null && formControl.value != ''"
 >
   <ng-container #fieldComponent></ng-container>
   <ng-container *ngTemplateOutlet="Label"></ng-container>
 </div>
+} @else {
+  <ng-container #fieldComponent></ng-container>
+}
 
 <ng-template #Label>
   <label

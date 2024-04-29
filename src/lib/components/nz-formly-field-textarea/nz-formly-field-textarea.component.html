@@ -10,3 +10,12 @@
   [rows]="props.rows"
   [nzBorderless]="props.nzBorderless"
 ></textarea>
+@if (props.showTextAreaCount) {
+  <div class="d-block mt-1 opacity-50">
+    @if (props.maxCount) {
+      {{ props.maxCount }}
+      <span>/</span>
+    }
+    {{ formControl.value?.length || 0 }}
+  </div>
+}
