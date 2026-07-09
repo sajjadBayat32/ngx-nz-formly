@@ -26,6 +26,15 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-nz-formly/**/*.ts",
+              "projects/ngx-nz-formly/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -46,10 +55,14 @@
             "outputPath": "dist/demo",
             "index": "projects/demo/src/index.html",
             "browser": "projects/demo/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["projects/demo/src/assets"],
+            "assets": [
+              "projects/demo/src/assets"
+            ],
             "styles": [
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "projects/demo/src/styles.scss"
@@ -91,6 +104,15 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo/**/*.ts",
+              "projects/demo/**/*.html"
+            ]
+          }
         }
       }
     }

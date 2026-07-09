@@ -1,18 +1,13 @@
 {
-  "root": true,
+  "extends": "../../.eslintrc.json",
   "ignorePatterns": [
-    "projects/**/*"
+    "!**/*",
+    "src/lib/nz-date-picker/**/*"
   ],
   "overrides": [
     {
       "files": [
         "*.ts"
-      ],
-      "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -30,18 +25,21 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "argsIgnorePattern": "^_" }
+        ],
+        "@typescript-eslint/no-explicit-any": "warn"
       }
     },
     {
       "files": [
         "*.html"
       ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended",
-        "plugin:@angular-eslint/template/accessibility"
-      ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/label-has-associated-control": "off"
+      }
     }
   ]
 }
