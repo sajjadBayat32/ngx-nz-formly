@@ -76,7 +76,7 @@ export function maxValueMessage(field: FormlyFieldConfig<NzFormlyInputProps>) {
 export function emailValidator(
   control: AbstractControl,
 ): NzFormlyValidatorNames | null {
-  let REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
   return REGEX.test(control.value) ? null : { email: true };
 }
 
@@ -85,7 +85,7 @@ export function passwordValidator(
   field: FormlyFieldConfig<NzFormlyInputProps>,
 ): NzFormlyValidatorNames | null {
   if (field.props?.type === "password") {
-    let REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
+    const REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
     return REGEX.test(control.value) ? null : { password: true };
   }
   return null;

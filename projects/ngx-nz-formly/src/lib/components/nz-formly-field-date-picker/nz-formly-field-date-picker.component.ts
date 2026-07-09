@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NzFormlyDatePickerProps } from "@segalino-front/ngx-nz-formly";
+import { NzFormlyDatePickerProps } from "../../ngx-nz-formly-props.model";
 import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 
 @Component({

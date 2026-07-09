@@ -58,7 +58,7 @@ export class NzFormlyFieldInputComponent
               this.mask = DefaultPhoneMask.globalMask;
             });
           } else {
-            let mask = this.findAppropriateMask(value);
+            const mask = this.findAppropriateMask(value);
             if (mask && this.mask !== mask.globalMask) {
               this.mask = mask.globalMask?.replace(/#|[1-9]/g, "0");
             }
@@ -82,7 +82,7 @@ export class NzFormlyFieldInputComponent
   }
 
   findAppropriateMask(value: string): CountryCodeMask | null {
-    let newMask = CountryMasks2.filter(item =>
+    const newMask = CountryMasks2.filter(item =>
       this.exactEquality(value, item.prefix),
     ).find(item => value.length <= item.globalMask.length);
     if (newMask) return newMask;
@@ -92,8 +92,8 @@ export class NzFormlyFieldInputComponent
   exactEquality(str: string, prefix: string): boolean {
     // hint: replace function removes all characters except numbers to return clean numeric string
     // hint: index of convince us to match prefix on first index of input value
-    let new_str = str.replace(/[^0-9.]/g, "");
-    let new_prefix = prefix.replace(/[^0-9.]/g, "");
+    const new_str = str.replace(/[^0-9.]/g, "");
+    const new_prefix = prefix.replace(/[^0-9.]/g, "");
     return new_str.indexOf(new_prefix) == 0;
   }
 

@@ -1,9 +1,9 @@
-@if(props.labelPosition == 'top') {
+@if(props.labelPosition === 'top') {
   <div class="nz-formly-label-top">
     <ng-container *ngTemplateOutlet="Label"></ng-container>
     <ng-container #fieldComponent></ng-container>
   </div>
-} @else if (props.labelPosition == 'inline') {
+} @else if (props.labelPosition === 'inline') {
   <div class="nz-formly-label-inline">
     <div class="nz-formly-field-wrapper">
       <div [ngStyle]="{ width: props.styles?.labelWidth }">
@@ -14,10 +14,10 @@
       </div>
     </div>
   </div>
-} @else if (props.labelPosition == 'float') {
+} @else if (props.labelPosition === 'float') {
   <div
   class="nz-formly-label-float"
-  [class.fixed]="formControl.value != null && formControl.value != ''"
+  [class.fixed]="formControl.value !== null && formControl.value !== undefined && formControl.value !== ''"
 >
   <ng-container #fieldComponent></ng-container>
   <ng-container *ngTemplateOutlet="Label"></ng-container>

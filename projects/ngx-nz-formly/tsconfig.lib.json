@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "outDir": "../../dist/out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
