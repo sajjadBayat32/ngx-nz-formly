@@ -10,6 +10,9 @@ import {
   minLengthValidator,
   minValueMessage,
   minValueValidator,
+  passwordValidator,
+} from "./ngx-nz-formly-validators";
+import {
   NzFormlyButtonProps,
   NzFormlyCheckboxProps,
   NzFormlyDatePickerProps,
@@ -20,8 +23,7 @@ import {
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
   NzFormlyUploaderProps,
-  passwordValidator,
-} from "@segalino-front/ngx-nz-formly";
+} from "./ngx-nz-formly-props.model";
 import {
   NzFormlyButtonComponent,
   NzFormlyFieldCheckboxComponent,
