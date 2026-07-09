@@ -26,7 +26,10 @@
     <span
       nz-icon
       nzTheme="outline"
+      role="button"
+      tabindex="0"
       (click)="changeShowPassword(input)"
+      (keyup.enter)="changeShowPassword(input)"
       [nzType]="showPassword(input) ? 'eye-invisible' : 'eye'"
     ></span>
   </div>
