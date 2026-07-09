@@ -14,7 +14,7 @@ import { NgxMaskModule } from "ngx-mask";
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzUploadModule } from "ng-zorro-antd/upload";
-import { NzDatePickerModule } from "./nz-date-picker/date-picker";
+import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import {
   NzFormlyButtonComponent,
   NzFormlyFieldCheckboxComponent,

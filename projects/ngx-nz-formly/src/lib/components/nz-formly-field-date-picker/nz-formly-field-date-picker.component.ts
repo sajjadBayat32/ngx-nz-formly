@@ -8,4 +8,12 @@ import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
 })
 export class NzFormlyFieldDatePickerComponent extends FieldType<
   FieldTypeConfig<NzFormlyDatePickerProps>
-> {}
+> {
+  get fieldID() {
+    return "control-" + this.field.key;
+  }
+
+  get status() {
+    return this.formControl.touched && this.formControl.invalid ? "error" : "";
+  }
+}

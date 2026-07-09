@@ -23,11 +23,15 @@
     "@angular/router": "^17.3.0",
     "@ctrl/tinycolor": "^3.6.1",
     "@ngx-formly/core": "^6.3.0",
+    "date-fns-jalali": "^2.30.0-0",
     "ng-zorro-antd": "^16.2.0",
     "ngx-mask": "^13.1.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
+  },
+  "overrides": {
+    "date-fns": "npm:date-fns-jalali@2.30.0-0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.17",
