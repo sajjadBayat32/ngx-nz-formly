@@ -1,7 +1,13 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { AfterViewInit, Component, DestroyRef, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NgxMaskDirective } from 'ngx-mask';
 import { NzFormlyInputProps } from '../../ngx-nz-formly-props.model';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 import { CountryCodeMask, CountryMasks2 } from './phone-mask.config';
 
 const DefaultPhoneMask: CountryCodeMask = {
@@ -13,14 +19,21 @@ const DefaultPhoneMask: CountryCodeMask = {
 @Component({
   selector: 'app-nz-formly-field-input',
   templateUrl: './nz-formly-field-input.component.html',
-  standalone: false
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormlyModule,
+    NzInputModule,
+    NzIconModule,
+    NgxMaskDirective
+  ]
 })
 export class NzFormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<NzFormlyInputProps>>
-  implements AfterViewInit, OnDestroy
+  implements AfterViewInit
 {
+  private destroyRef = inject(DestroyRef);
   mask: string | undefined;
-  unSubscribeAll$ = new Subject<void>();
 
   get type() {
     return this.props.type ?? 'text';
@@ -51,7 +64,7 @@ export class NzFormlyFieldInputComponent
   handlePhoneMask() {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.unSubscribeAll$),
+        takeUntilDestroyed(this.destroyRef),
         tap((value: string) => {
           if (value == '') {
             // hint: without setTimeout we don't have Ctrl + A -> delete
@@ -72,7 +85,7 @@ export class NzFormlyFieldInputComponent
   onValueChange() {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.unSubscribeAll$),
+        takeUntilDestroyed(this.destroyRef),
         tap((value: string) => {
           if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
@@ -108,10 +121,5 @@ export class NzFormlyFieldInputComponent
 
   showPassword(input: any): boolean {
     return input.type === 'text';
-  }
-
-  ngOnDestroy() {
-    this.unSubscribeAll$.next();
-    this.unSubscribeAll$.complete();
   }
 }

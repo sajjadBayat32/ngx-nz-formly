@@ -1,18 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormlyCheckboxProps } from '../../ngx-nz-formly-props.model';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-nz-formly-field-checkbox',
   templateUrl: './nz-formly-field-checkbox.component.html',
-  standalone: false
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, NzCheckboxModule]
 })
 export class NzFormlyFieldCheckboxComponent
   extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>
-  implements OnInit, OnDestroy
+  implements OnInit
 {
-  unSubscribeAll$ = new Subject<void>();
+  private destroyRef = inject(DestroyRef);
 
   get fieldID() {
     return 'control-' + this.field.key;
@@ -25,7 +29,7 @@ export class NzFormlyFieldCheckboxComponent
   onValueChange() {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.unSubscribeAll$),
+        takeUntilDestroyed(this.destroyRef),
         tap((value: string) => {
           if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
@@ -33,10 +37,5 @@ export class NzFormlyFieldCheckboxComponent
         })
       )
       .subscribe();
-  }
-
-  ngOnDestroy() {
-    this.unSubscribeAll$.next();
-    this.unSubscribeAll$.complete();
   }
 }

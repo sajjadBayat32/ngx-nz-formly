@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-import { NgxNzFormlyModule, NzFormlyFieldBuilder } from 'ngx-nz-formly';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { NzFormlyFieldBuilder } from 'ngx-nz-formly';
 
 interface DemoModel {
   firstName: string;
@@ -17,7 +17,7 @@ interface DemoModel {
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, ReactiveFormsModule, NgxNzFormlyModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

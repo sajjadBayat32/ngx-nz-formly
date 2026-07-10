@@ -1,4 +1,5 @@
 export * from './ngx-nz-formly.module';
+export * from './ngx-nz-formly.providers';
 export * from './ngx-nz-formly-props.model';
 export * from './ngx-nz-formly-type-safe.model';
 export * from './ngx-nz-formly-validators';

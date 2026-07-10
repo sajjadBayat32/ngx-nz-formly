@@ -1,19 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzFormlyRadioProps } from '../../ngx-nz-formly-props.model';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-nz-formly-field-radio',
   templateUrl: './nz-formly-field-radio.component.html',
   styleUrls: [],
-  standalone: false
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, NzRadioModule]
 })
 export class NzFormlyFieldRadioComponent
   extends FieldType<FieldTypeConfig<NzFormlyRadioProps>>
-  implements OnInit, OnDestroy
+  implements OnInit
 {
-  unSubscribeAll$ = new Subject<void>();
+  private destroyRef = inject(DestroyRef);
 
   get fieldID() {
     return 'control-' + this.field.key;
@@ -26,7 +30,7 @@ export class NzFormlyFieldRadioComponent
   onValueChange() {
     this.formControl.valueChanges
       .pipe(
-        takeUntil(this.unSubscribeAll$),
+        takeUntilDestroyed(this.destroyRef),
         tap((value: string) => {
           if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
@@ -34,10 +38,5 @@ export class NzFormlyFieldRadioComponent
         })
       )
       .subscribe();
-  }
-
-  ngOnDestroy() {
-    this.unSubscribeAll$.next();
-    this.unSubscribeAll$.complete();
   }
 }
