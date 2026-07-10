@@ -4,7 +4,7 @@ import {
   provideAppInitializer
 } from '@angular/core';
 import { fa_IR, NZ_DATE_LOCALE, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { faIR } from 'date-fns-jalali/locale';
+import { jalaliDateLocale } from './jalali-date-locale';
 import { patchCandyDateForJalali } from './patch-candy-date';
 
 /**
@@ -37,7 +37,7 @@ import { patchCandyDateForJalali } from './patch-candy-date';
 export function provideNzFormlyJalali(): EnvironmentProviders {
   return makeEnvironmentProviders([
     { provide: NZ_I18N, useValue: fa_IR },
-    { provide: NZ_DATE_LOCALE, useValue: faIR },
+    { provide: NZ_DATE_LOCALE, useValue: jalaliDateLocale },
     provideAppInitializer(() => patchCandyDateForJalali())
   ]);
 }
