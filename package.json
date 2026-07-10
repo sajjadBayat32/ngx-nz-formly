@@ -30,6 +30,9 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
   },
+  "overrides": {
+    "date-fns": "npm:date-fns-jalali@2.30.0-0"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^21.2.19",
     "@angular-eslint/builder": "^21.0.1",

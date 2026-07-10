@@ -2,8 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
-import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { provideNgxNzFormly } from 'ngx-nz-formly';
+import { provideNgxNzFormly, provideNzFormlyJalali } from 'ngx-nz-formly';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,9 +10,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideNgxNzFormly(),
     provideNgxMask(),
-    { provide: NZ_I18N, useValue: en_US }
-    // EXPERIMENTAL Jalali (Persian) calendar — see provideNzFormlyJalali().
-    // It renders a Jalali calendar but currently emits an offset Date value
-    // (known ng-zorro/date-fns-jalali issue); not wired here until fixed.
+    // Jalali (Persian) calendar. Requires the `date-fns` -> `date-fns-jalali`
+    // package override (see root package.json "overrides"). Provides fa_IR
+    // UI text + a Jalali date-fns locale and patches CandyDate so values stay
+    // correct Gregorian Dates.
+    provideNzFormlyJalali()
   ]
 };
