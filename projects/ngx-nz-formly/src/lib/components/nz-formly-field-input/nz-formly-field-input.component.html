@@ -6,7 +6,7 @@
   [nzPrefix]="props.nzPrefix"
   [nzSuffix]="props.nzSuffix"
   [nzSize]="props.nzSize || 'default'"
-  >
+>
   <input
     #input
     nz-input
@@ -21,7 +21,7 @@
     [readonly]="props.nzReadonly"
     [placeholder]="props.nzPlaceholder"
     [nzVariant]="props.nzBorderless ? 'borderless' : 'outlined'"
-    />
+  />
   @if (props.type === 'password') {
     <div class="nz-formly-show-password">
       <span

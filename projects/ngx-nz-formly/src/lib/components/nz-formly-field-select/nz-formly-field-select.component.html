@@ -37,7 +37,7 @@
   (nzOpenChange)="props?.nzOpenChange($event)"
   (nzScrollToBottom)="props?.nzScrollToBottom()"
   (nzOnSearch)="props?.nzOnSearch($event)"
-  >
+>
   @for (option of props.nzOptions || (props.nzOptionsObs | async); track option) {
     <nz-option
       [nzDisabled]="option.disabled"
@@ -45,10 +45,8 @@
       [nzValue]="props.objectValue ? option : option.value"
       [nzHide]="option.hide"
       [nzCustomContent]="!!option.nzCustomContent"
-      >
+    >
       <div [innerHTML]="option.nzCustomContent"></div>
     </nz-option>
   }
 </nz-select>
-
-

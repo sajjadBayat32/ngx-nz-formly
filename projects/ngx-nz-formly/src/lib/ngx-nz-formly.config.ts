@@ -1,5 +1,5 @@
-import { ConfigOption, FormlyFieldConfig } from "@ngx-formly/core";
-import { AbstractControl, RequiredValidator } from "@angular/forms";
+import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+import { AbstractControl, RequiredValidator } from '@angular/forms';
 import {
   emailValidator,
   maxLengthMessage,
@@ -10,8 +10,8 @@ import {
   minLengthValidator,
   minValueMessage,
   minValueValidator,
-  passwordValidator,
-} from "./ngx-nz-formly-validators";
+  passwordValidator
+} from './ngx-nz-formly-validators';
 import {
   NzFormlyButtonProps,
   NzFormlyCheckboxProps,
@@ -22,8 +22,8 @@ import {
   NzFormlySliderProps,
   NzFormlySwitchProps,
   NzFormlyTextareaProps,
-  NzFormlyUploaderProps,
-} from "./ngx-nz-formly-props.model";
+  NzFormlyUploaderProps
+} from './ngx-nz-formly-props.model';
 import {
   NzFormlyButtonComponent,
   NzFormlyFieldCheckboxComponent,
@@ -34,84 +34,84 @@ import {
   NzFormlyFieldSliderComponent,
   NzFormlyFieldSwitchComponent,
   NzFormlyFieldTextareaComponent,
-  NzFormlyUploaderComponent,
-} from "./components";
+  NzFormlyUploaderComponent
+} from './components';
 import {
   NzFormlyDefaultWrapperComponent,
   NzFormlyLabelWrapperComponent,
-  wrapperExtension,
-} from "./wrappers";
+  wrapperExtension
+} from './wrappers';
 
 export const NzFormlyForRoot: ConfigOption = {
   types: [
     {
-      name: "input",
+      name: 'input',
       component: NzFormlyFieldInputComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyInputProps>>{
         props: {
-          nzSize: "default",
-          mask: "",
-          thousandSeparator: "",
+          nzSize: 'default',
+          mask: '',
+          thousandSeparator: '',
           showError: true,
-          nzPlaceholder: "",
-        },
-      },
+          nzPlaceholder: ''
+        }
+      }
     },
     {
-      name: "textarea",
+      name: 'textarea',
       component: NzFormlyFieldTextareaComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyTextareaProps>>{
         props: {
           rows: 4,
           showError: true,
-          nzPlaceholder: "",
-        },
-      },
+          nzPlaceholder: ''
+        }
+      }
     },
     {
-      name: "checkbox",
+      name: 'checkbox',
       component: NzFormlyFieldCheckboxComponent,
-      wrappers: ["default-wrapper"],
+      wrappers: ['default-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyCheckboxProps>>{
         props: {
           nzDisabled: false,
           nzAutoFocus: false,
-          showError: true,
-        },
-      },
+          showError: true
+        }
+      }
     },
     {
-      name: "switch",
+      name: 'switch',
       component: NzFormlyFieldSwitchComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlySwitchProps>>{
         props: {
           nzDisabled: false,
-          nzSize: "default",
+          nzSize: 'default',
           nzLoading: false,
-          showError: true,
-        },
-      },
+          showError: true
+        }
+      }
     },
     {
-      name: "radio",
+      name: 'radio',
       component: NzFormlyFieldRadioComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyRadioProps>>{
         props: {
           nzDisabled: false,
-          nzSize: "default",
-          nzType: "nz-radio",
-          showError: true,
-        },
-      },
+          nzSize: 'default',
+          nzType: 'nz-radio',
+          showError: true
+        }
+      }
     },
     {
-      name: "select",
+      name: 'select',
       component: NzFormlyFieldSelectComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlySelectProps>>{
         props: {
           objectValue: false,
@@ -124,30 +124,30 @@ export const NzFormlyForRoot: ConfigOption = {
           nzDropdownMatchSelectWidth: true,
           nzServerSearch: false,
           nzMaxMultipleCount: Infinity,
-          nzMode: "default",
-          nzPlacement: "bottomLeft",
-          nzNotFoundContent: "Not Found",
+          nzMode: 'default',
+          nzPlacement: 'bottomLeft',
+          nzNotFoundContent: 'Not Found',
           nzShowSearch: false,
-          nzSize: "default",
+          nzSize: 'default',
           nzTokenSeparators: [],
           nzLoading: false,
           nzOptionHeightPx: 32,
           nzOptionOverflowSize: 8,
           nzSelectOnTab: false,
           showError: true,
-          nzPlaceholder: "",
+          nzPlaceholder: '',
           nzFilterOption: () => true,
           compareWith: (o1: any, o2: any) => o1 === o2,
           nzOpenChange: () => {},
           nzScrollToBottom: () => {},
-          nzOnSearch: () => {},
-        },
-      },
+          nzOnSearch: () => {}
+        }
+      }
     },
     {
-      name: "slider",
+      name: 'slider',
       component: NzFormlyFieldSliderComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlySliderProps>>{
         props: {
           nzDots: false,
@@ -160,135 +160,130 @@ export const NzFormlyForRoot: ConfigOption = {
           nzTipFormatter: (value: number) => String(value),
           nzVertical: false,
           nzReverse: false,
-          nzTooltipVisible: "default",
-        },
-      },
+          nzTooltipVisible: 'default'
+        }
+      }
     },
     {
-      name: "button",
+      name: 'button',
       component: NzFormlyButtonComponent,
-      wrappers: ["default-wrapper"],
+      wrappers: ['default-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyButtonProps>>{
         props: {
-          text: "",
+          text: '',
           disabled: false,
           nzGhost: false,
           nzLoading: false,
-          nzSize: "default",
+          nzSize: 'default',
           nzBlock: false,
           nzDanger: false,
-          classList: "",
-          click: () => {},
-        },
-      },
+          classList: '',
+          click: () => {}
+        }
+      }
     },
     {
-      name: "uploader",
+      name: 'uploader',
       component: NzFormlyUploaderComponent,
-      wrappers: ["default-wrapper"],
+      wrappers: ['default-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyUploaderProps>>{
         props: {
-          multiple: true,
-        },
-      },
+          multiple: true
+        }
+      }
     },
     {
-      name: "datePicker",
+      name: 'datePicker',
       component: NzFormlyFieldDatePickerComponent,
-      wrappers: ["default-wrapper", "label-wrapper"],
+      wrappers: ['default-wrapper', 'label-wrapper'],
       defaultOptions: <FormlyFieldConfig<NzFormlyDatePickerProps>>{
         props: {
-          nzPlaceholder: "",
-        },
-      },
-    },
+          nzPlaceholder: ''
+        }
+      }
+    }
   ],
   wrappers: [
     {
-      name: "default-wrapper",
-      component: NzFormlyDefaultWrapperComponent,
+      name: 'default-wrapper',
+      component: NzFormlyDefaultWrapperComponent
     },
     {
-      name: "label-wrapper",
-      component: NzFormlyLabelWrapperComponent,
-    },
+      name: 'label-wrapper',
+      component: NzFormlyLabelWrapperComponent
+    }
   ],
   extensions: [
     {
-      name: "wrapper-extensions",
+      name: 'wrapper-extensions',
       extension: {
-        onPopulate: wrapperExtension,
-      },
-    },
+        onPopulate: wrapperExtension
+      }
+    }
   ],
   validators: [
     {
-      name: "required",
-      validation: () => RequiredValidator,
+      name: 'required',
+      validation: () => RequiredValidator
     },
     {
-      name: "minLen",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        minLengthValidator(c, f),
+      name: 'minLen',
+      validation: (c: AbstractControl, f: FormlyFieldConfig) => minLengthValidator(c, f)
     },
     {
-      name: "maxLen",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        maxLengthValidator(c, f),
+      name: 'maxLen',
+      validation: (c: AbstractControl, f: FormlyFieldConfig) => maxLengthValidator(c, f)
     },
     {
-      name: "minValue",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        minValueValidator(c, f),
+      name: 'minValue',
+      validation: (c: AbstractControl, f: FormlyFieldConfig) => minValueValidator(c, f)
     },
     {
-      name: "maxValue",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        maxValueValidator(c, f),
+      name: 'maxValue',
+      validation: (c: AbstractControl, f: FormlyFieldConfig) => maxValueValidator(c, f)
     },
     {
-      name: "email",
-      validation: (c: AbstractControl) => emailValidator(c),
+      name: 'email',
+      validation: (c: AbstractControl) => emailValidator(c)
     },
     {
-      name: "password",
-      validation: (c: AbstractControl, f: FormlyFieldConfig) =>
-        passwordValidator(c, f),
-    },
+      name: 'password',
+      validation: (c: AbstractControl, f: FormlyFieldConfig) => passwordValidator(c, f)
+    }
   ],
   validationMessages: [
     {
-      name: "required",
-      message: "This field is required",
+      name: 'required',
+      message: 'This field is required'
     },
     {
-      name: "minLen",
-      message: (err: any, f: FormlyFieldConfig) => minLengthMessage(f),
+      name: 'minLen',
+      message: (err: any, f: FormlyFieldConfig) => minLengthMessage(f)
     },
     {
-      name: "maxLen",
-      message: (err: any, f: FormlyFieldConfig) => maxLengthMessage(f),
+      name: 'maxLen',
+      message: (err: any, f: FormlyFieldConfig) => maxLengthMessage(f)
     },
     {
-      name: "minValue",
-      message: (err: any, f: FormlyFieldConfig) => minValueMessage(f),
+      name: 'minValue',
+      message: (err: any, f: FormlyFieldConfig) => minValueMessage(f)
     },
     {
-      name: "maxValue",
-      message: (err: any, f: FormlyFieldConfig) => maxValueMessage(f),
+      name: 'maxValue',
+      message: (err: any, f: FormlyFieldConfig) => maxValueMessage(f)
     },
     {
-      name: "email",
-      message: "Email format is not correct",
+      name: 'email',
+      message: 'Email format is not correct'
     },
     {
-      name: "password",
+      name: 'password',
       message:
-        "Password should be at least 8 characters, including one capital letter, one number and one special character",
+        'Password should be at least 8 characters, including one capital letter, one number and one special character'
     },
     {
-      name: "mask",
-      message: "Invalid data",
-    },
-  ],
+      name: 'mask',
+      message: 'Invalid data'
+    }
+  ]
 };

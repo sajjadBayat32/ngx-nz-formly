@@ -7,7 +7,7 @@ with [ng-zorro](https://ng.ant.design/docs/introduce/en)
 ## Installation
 
 Angular version `16.x.x` <br>
-Adding ``ngx-nz-formly`` to your application is super easy but in order to use ``ngx-nz-formly`` you should install
+Adding `ngx-nz-formly` to your application is super easy but in order to use `ngx-nz-formly` you should install
 three more packages.
 
 ### Install ng-zorro-antd
@@ -16,13 +16,11 @@ three more packages.
 $ npm install ng-zorro-antd --save
 ```
 
-Import the pre-built stylesheet in ``angular.json``
+Import the pre-built stylesheet in `angular.json`
 
 ```json
 {
-  "styles": [
-    "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
-  ]
+  "styles": ["node_modules/ng-zorro-antd/ng-zorro-antd.min.css"]
 }
 ```
 
@@ -40,13 +38,13 @@ $ npm insatll ngx-mask --save
 
 ### Install Bootstrap (Optional)
 
-If you want to find the final demo more clearly and beautiful, install ``bootstrap``, too.
+If you want to find the final demo more clearly and beautiful, install `bootstrap`, too.
 
 ```bash
 $ npm insatll bootstrap --save
 ```
 
-Then add following lines to ``angular.json``
+Then add following lines to `angular.json`
 
 ```
 {
@@ -68,7 +66,7 @@ Then add following lines to ``angular.json``
 $ npm install ngx-nz-formly --save
 ```
 
-Last step is to add below modules to ``app.module.ts``
+Last step is to add below modules to `app.module.ts`
 
 ```
 @NgModule({
@@ -89,24 +87,20 @@ Last step is to add below modules to ``app.module.ts``
 export class AppModule {}
 ```
 
-As an explanation, ``HttpClientModule`` and ``providers`` relates to Ant design setup. In order to use special masks on
-inputs, you need to add ``NgxMaskModule``, too. At last, we have ``OverlayModule``, ``BrowserAnimationsModule``
-and ``FormlyModule`` to complete the setup. Finally, you need ``NzFormlyForRoot`` config to FormlyModule for root to be
+As an explanation, `HttpClientModule` and `providers` relates to Ant design setup. In order to use special masks on
+inputs, you need to add `NgxMaskModule`, too. At last, we have `OverlayModule`, `BrowserAnimationsModule`
+and `FormlyModule` to complete the setup. Finally, you need `NzFormlyForRoot` config to FormlyModule for root to be
 able to have your formly with Ant Design.
 
 ## Usage
 
-add below html code to your ``app.component.html``
+add below html code to your `app.component.html`
 
 ```html
-<formly-form
-  [form]="form"
-  [fields]="fields"
-  [model]="model"
-></formly-form>
+<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
 ```
 
-Finally, your ``app.component.ts`` file could be something like following box. So please take this as sample
+Finally, your `app.component.ts` file could be something like following box. So please take this as sample
 documentation of available features, until I write one
 
 ```ts
@@ -139,249 +133,249 @@ class FormModel {
 }
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   model = new FormModel({});
   form = new FormGroup({});
   fields: FormlyFieldConfig[] = [];
-  labelObs$ = new BehaviorSubject("Label");
+  labelObs$ = new BehaviorSubject('Label');
 
   ngOnInit() {
     this.initForm();
-    from(["Label 1", "Label 2", "Label 3"])
-      .pipe(concatMap(item => of(item).pipe(delay(1000))))
-      .subscribe(item => this.labelObs$.next(item));
+    from(['Label 1', 'Label 2', 'Label 3'])
+      .pipe(concatMap((item) => of(item).pipe(delay(1000))))
+      .subscribe((item) => this.labelObs$.next(item));
   }
 
   initForm() {
     const fb = new NzFormlyFieldBuilder<FormModel>();
     this.fields = [
-      fb.input("firstName", {
-        className: "px-2",
+      fb.input('firstName', {
+        className: 'px-2',
         props: {
-          labelPosition: "float",
+          labelPosition: 'float',
           required: true,
           minLen: 3,
           showError: false,
           labelObs: this.labelObs$,
-          focus: () => console.log("input focused"),
-          blur: () => console.log("input blurred"),
+          focus: () => console.log('input focused'),
+          blur: () => console.log('input blurred'),
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
-          },
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
+          }
         },
         validators: {
-          validation: ["minLen"],
-        },
+          validation: ['minLen']
+        }
       }),
-      fb.input("lastName", {
-        className: "px-2",
+      fb.input('lastName', {
+        className: 'px-2',
         props: {
           required: true,
           maxLen: 10,
-          labelPosition: "top",
-          label: "Last Name",
+          labelPosition: 'top',
+          label: 'Last Name',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
-          },
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
+          }
         },
         validators: {
-          validation: ["maxLen"],
-        },
+          validation: ['maxLen']
+        }
       }),
-      fb.input("phoneNumber", {
-        className: "px-2",
+      fb.input('phoneNumber', {
+        className: 'px-2',
         props: {
-          label: "Phone No",
-          mask: "phone",
-          nzPlaceholder: "e.x. 9127403028",
+          label: 'Phone No',
+          mask: 'phone',
+          nzPlaceholder: 'e.x. 9127403028',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
-          },
-        },
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
+          }
+        }
       }),
-      fb.input("email", {
-        className: "px-2",
+      fb.input('email', {
+        className: 'px-2',
         props: {
           required: true,
-          label: "Email address",
-          nzPlaceholder: "e.x. sajjad@gmail.com",
+          label: 'Email address',
+          nzPlaceholder: 'e.x. sajjad@gmail.com',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
           },
-          change: (field, event) => console.log("input changed to:", event),
+          change: (field, event) => console.log('input changed to:', event)
         },
         validators: {
-          validation: ["email"],
-        },
+          validation: ['email']
+        }
       }),
-      fb.input("password", {
-        className: "px-2",
+      fb.input('password', {
+        className: 'px-2',
         props: {
           required: true,
-          type: "password",
-          label: "Password",
-          nzPlaceholder: "use complex one",
+          type: 'password',
+          label: 'Password',
+          nzPlaceholder: 'use complex one',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
-          },
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
+          }
         },
         validators: {
-          validation: ["password"],
-        },
+          validation: ['password']
+        }
       }),
-      fb.input("budget", {
-        className: "px-2",
+      fb.input('budget', {
+        className: 'px-2',
         props: {
-          nzPrefix: "$",
-          label: "Budget",
-          mask: "separator.2",
-          thousandSeparator: ",",
-          nzAddOnBeforeIcon: "wallet",
-          nzPlaceholder: "e.x. 2000",
+          nzPrefix: '$',
+          label: 'Budget',
+          mask: 'separator.2',
+          thousandSeparator: ',',
+          nzAddOnBeforeIcon: 'wallet',
+          nzPlaceholder: 'e.x. 2000',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
           },
-          change: (field, event) => console.log("number changed to:", event),
-          focus: () => console.log("number focused"),
-          blur: () => console.log("number blurred"),
+          change: (field, event) => console.log('number changed to:', event),
+          focus: () => console.log('number focused'),
+          blur: () => console.log('number blurred')
         },
         validators: {
           custom: {
             expression: (control: FormControl) => control.value > 2500,
-            message: "Your budget is less than expected budget",
-          },
-        },
+            message: 'Your budget is less than expected budget'
+          }
+        }
       }),
-      fb.checkbox("olderThan20", {
-        className: "px-2 mb-4",
+      fb.checkbox('olderThan20', {
+        className: 'px-2 mb-4',
         props: {
-          label: "I am older that 20",
-          change: (field, event) => console.log("checkbox changed to:", event),
-        },
+          label: 'I am older that 20',
+          change: (field, event) => console.log('checkbox changed to:', event)
+        }
       }),
-      fb.input("age", {
-        className: "px-2",
+      fb.input('age', {
+        className: 'px-2',
         props: {
           minValue: 20,
           maxValue: 100,
-          label: "Age",
-          nzPlaceholder: "enter your age",
+          label: 'Age',
+          nzPlaceholder: 'enter your age',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
-          },
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
+          }
         },
         expressionProperties: {
-          "props.disabled": model => !model.olderThan20,
+          'props.disabled': (model) => !model.olderThan20
         },
         validators: {
-          validation: ["minValue", "maxValue"],
-        },
+          validation: ['minValue', 'maxValue']
+        }
       }),
-      fb.switch("allowNotifications", {
-        className: "px-2",
+      fb.switch('allowNotifications', {
+        className: 'px-2',
         props: {
-          nzCheckedChildren: "1",
-          nzUnCheckedChildren: "0",
-          label: "Allow notifications",
+          nzCheckedChildren: '1',
+          nzUnCheckedChildren: '0',
+          label: 'Allow notifications',
           styles: {
-            labelWidth: "auto",
-            wrapperClass: "mb-4",
+            labelWidth: 'auto',
+            wrapperClass: 'mb-4'
           },
-          change: (field, event) => console.log("switch changed to:", event),
+          change: (field, event) => console.log('switch changed to:', event)
         },
         expressionProperties: {
-          "props.hidden": model => !model.olderThan20,
-        },
+          'props.hidden': (model) => !model.olderThan20
+        }
       }),
-      fb.select("city", {
-        className: "px-2",
+      fb.select('city', {
+        className: 'px-2',
         props: {
           objectValue: false,
-          label: "City",
+          label: 'City',
           nzAllowClear: true,
           nzShowSearch: true,
-          nzPlaceholder: "select your city",
+          nzPlaceholder: 'select your city',
           styles: {
-            labelWidth: "110px",
-            wrapperClass: "mb-4",
+            labelWidth: '110px',
+            wrapperClass: 'mb-4'
           },
           nzOptionOverflowSize: 4,
           nzOptions: [
             {
-              label: "Zanjan",
-              value: "Znj",
-              nzCustomContent: `<strong>Zanjan</strong>`,
+              label: 'Zanjan',
+              value: 'Znj',
+              nzCustomContent: `<strong>Zanjan</strong>`
             },
             {
-              label: "Tehran",
-              value: "Teh",
-              nzCustomContent: `<i>Tehran</i>`,
+              label: 'Tehran',
+              value: 'Teh',
+              nzCustomContent: `<i>Tehran</i>`
             },
-            { label: "Isfahan", value: "Isf" },
-            { label: "Shiraz", value: "Shi" },
-            { label: "Gilan", value: "Gil" },
+            { label: 'Isfahan', value: 'Isf' },
+            { label: 'Shiraz', value: 'Shi' },
+            { label: 'Gilan', value: 'Gil' }
           ],
           nzFilterOption: (input?: string, option?: NzOptionComponent) => {
-            return option?.nzLabel?.toString().includes(input || "") || false;
+            return option?.nzLabel?.toString().includes(input || '') || false;
           },
           compareWith: (o1: any, o2: any): boolean => o1 == o2,
-          nzOpenChange: event => console.log("selection open status:", event),
-          nzScrollToBottom: () => console.log("scroll"),
-          nzOnSearch: event => console.log("search", event),
-          change: (field, event) => console.log("selection changed to:", event),
+          nzOpenChange: (event) => console.log('selection open status:', event),
+          nzScrollToBottom: () => console.log('scroll'),
+          nzOnSearch: (event) => console.log('search', event),
+          change: (field, event) => console.log('selection changed to:', event)
         },
         expressionProperties: {
-          "props.disabled": model => !model.olderThan20,
-        },
+          'props.disabled': (model) => !model.olderThan20
+        }
       }),
-      fb.radio("gender", {
-        className: "px-2",
+      fb.radio('gender', {
+        className: 'px-2',
         props: {
-          label: "Gender",
-          nzType: "nz-radio-button",
+          label: 'Gender',
+          nzType: 'nz-radio-button',
           styles: {
-            labelWidth: "110px",
+            labelWidth: '110px'
           },
           nzOptions: [
             {
-              label: "Male",
-              value: "Male",
+              label: 'Male',
+              value: 'Male'
             },
             {
-              label: "Female",
-              value: "Female",
+              label: 'Female',
+              value: 'Female'
             },
             {
-              label: "None",
-              value: null,
-            },
+              label: 'None',
+              value: null
+            }
           ],
-          nzButtonStyle: "solid",
-          change: (field, event) => console.log("Radio changed to:", event),
-        },
+          nzButtonStyle: 'solid',
+          change: (field, event) => console.log('Radio changed to:', event)
+        }
       }),
       fb.button({
-        className: "d-flex",
+        className: 'd-flex',
         props: {
-          text: "Reset",
-          nzType: "primary",
+          text: 'Reset',
+          nzType: 'primary',
           nzLoading: false,
           nzDanger: false,
           nzBlock: true,
-          click: () => console.log("clicked"),
-        },
-      }),
+          click: () => console.log('clicked')
+        }
+      })
     ];
   }
 

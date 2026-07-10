@@ -1,4 +1,4 @@
 /* eslint-disable */
 export default {
-  projects: ["<rootDir>/projects/ngx-nz-formly"],
+  projects: ['<rootDir>/projects/ngx-nz-formly']
 };

@@ -21,9 +21,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "ngx-nz-formly": [
-        "./projects/ngx-nz-formly/src/index.ts"
-      ]
+      "ngx-nz-formly": ["./projects/ngx-nz-formly/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

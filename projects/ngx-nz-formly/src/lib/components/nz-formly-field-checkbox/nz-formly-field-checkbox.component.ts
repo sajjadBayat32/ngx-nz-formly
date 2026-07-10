@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlyCheckboxProps } from "../../ngx-nz-formly-props.model";
-import { Subject, takeUntil, tap } from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { NzFormlyCheckboxProps } from '../../ngx-nz-formly-props.model';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
-    selector: "app-nz-formly-field-checkbox",
-    templateUrl: "./nz-formly-field-checkbox.component.html",
-    standalone: false
+  selector: 'app-nz-formly-field-checkbox',
+  templateUrl: './nz-formly-field-checkbox.component.html',
+  standalone: false
 })
 export class NzFormlyFieldCheckboxComponent
   extends FieldType<FieldTypeConfig<NzFormlyCheckboxProps>>
@@ -15,7 +15,7 @@ export class NzFormlyFieldCheckboxComponent
   unSubscribeAll$ = new Subject<void>();
 
   get fieldID() {
-    return "control-" + this.field.key;
+    return 'control-' + this.field.key;
   }
 
   ngOnInit() {
@@ -27,10 +27,10 @@ export class NzFormlyFieldCheckboxComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         tap((value: string) => {
-          if (typeof this.props?.change == "function") {
+          if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
           }
-        }),
+        })
       )
       .subscribe();
   }
