@@ -1,22 +1,35 @@
-# NgxNzFormly
+# ngx-nz-formly
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.<br>
-The only best library to integrate [ngx-formly](https://formly.dev/)
-with [ng-zorro](https://ng.ant.design/docs/introduce/en)
+Declarative [Ant Design](https://ng.ant.design/) forms for Angular, powered by
+[ngx-formly](https://formly.dev/) and [ng-zorro-antd](https://ng.ant.design/).
+Build ng-zorro forms from a typed config with a fluent, type-safe builder — no
+hand-written template per field.
+
+Ships field types for `input`, `textarea`, `checkbox`, `switch`, `radio`,
+`select`, `slider`, `button`, `uploader`, and `datePicker` (with an optional
+**Jalali / Persian calendar**), plus label/error wrappers and a set of
+validators.
+
+## Requirements
+
+`ngx-nz-formly` targets **Angular 21** and declares these peer dependencies:
+
+| Package            | Version                                               |
+| ------------------ | ----------------------------------------------------- |
+| `@angular/common`  | `^21.0.0`                                             |
+| `@angular/core`    | `^21.0.0`                                             |
+| `@ngx-formly/core` | `^7.0.0`                                              |
+| `ng-zorro-antd`    | `^21.0.0`                                             |
+| `ngx-mask`         | `^21.0.0`                                             |
+| `date-fns-jalali`  | `^2.30.0-0` (optional — only for the Jalali calendar) |
 
 ## Installation
 
-Angular version `16.x.x` <br>
-Adding `ngx-nz-formly` to your application is super easy but in order to use `ngx-nz-formly` you should install
-three more packages.
-
-### Install ng-zorro-antd
-
 ```bash
-$ npm install ng-zorro-antd --save
+npm install ngx-nz-formly ng-zorro-antd @ngx-formly/core ngx-mask
 ```
 
-Import the pre-built stylesheet in `angular.json`
+Import ng-zorro's stylesheet in `angular.json`:
 
 ```json
 {
@@ -24,371 +37,222 @@ Import the pre-built stylesheet in `angular.json`
 }
 ```
 
-### Install ngx-formly
+## Setup (standalone)
 
-```bash
-$ npm install @angular/forms @ngx-formly/core --save
-```
+Register everything in your application bootstrap. `provideNgxNzFormly()` wires
+the ng-zorro field types into Formly and provides the type-safe builder:
 
-### Install ngx-mask
+```ts
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { provideNgxMask } from 'ngx-mask';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { provideNgxNzFormly } from 'ngx-nz-formly';
 
-```bash
-$ npm insatll ngx-mask --save
-```
-
-### Install Bootstrap (Optional)
-
-If you want to find the final demo more clearly and beautiful, install `bootstrap`, too.
-
-```bash
-$ npm insatll bootstrap --save
-```
-
-Then add following lines to `angular.json`
-
-```
-{
-  "styles": [
-    ...
-    "node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "src/styles.css"
-  ],
-  "scripts": [
-    ...
-    "node_modules/bootstrap/dist/js/bootstrap.min.js"
-  ]
-}
-```
-
-### Install ngx-nz-formly
-
-```bash
-$ npm install ngx-nz-formly --save
-```
-
-Last step is to add below modules to `app.module.ts`
-
-```
-@NgModule({
-  declarations: [...],
-  imports: [
-    ...,
-    OverlayModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NgxMaskModule.forRoot({}),
-    FormlyModule.forRoot(NzFormlyForRoot),
-  ],
+export const appConfig: ApplicationConfig = {
   providers: [
-    ...,
+    provideAnimations(),
+    provideHttpClient(), // required by ng-zorro's uploader
+    provideNgxMask(), // required for masked inputs
+    provideNgxNzFormly(),
     { provide: NZ_I18N, useValue: en_US }
-  ],
-})
-export class AppModule {}
+  ]
+};
 ```
 
-As an explanation, `HttpClientModule` and `providers` relates to Ant design setup. In order to use special masks on
-inputs, you need to add `NgxMaskModule`, too. At last, we have `OverlayModule`, `BrowserAnimationsModule`
-and `FormlyModule` to complete the setup. Finally, you need `NzFormlyForRoot` config to FormlyModule for root to be
-able to have your formly with Ant Design.
+```ts
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig);
+```
+
+> **Using NgModules?** A back-compat `NgxNzFormlyModule` is still exported. Import
+> it and register the config yourself with
+> `FormlyModule.forRoot(NzFormlyForRoot)`. The field types are standalone
+> components resolved by Formly at runtime, so no per-component declaration is
+> needed.
 
 ## Usage
 
-add below html code to your `app.component.html`
+Render a Formly form in your component's template:
 
 ```html
 <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
 ```
 
-Finally, your `app.component.ts` file could be something like following box. So please take this as sample
-documentation of available features, until I write one
+The host component is standalone — import `FormlyModule` (and
+`ReactiveFormsModule` for the `FormGroup`). Build the `fields` with the type-safe
+`NzFormlyFieldBuilder<TModel>`; each method constrains the `key` to a matching
+property of your model and gives typed `props`:
 
 ```ts
-class FormModel {
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { NzFormlyFieldBuilder } from 'ngx-nz-formly';
+
+interface FormModel {
   firstName: string;
-  lastName: string;
   phoneNumber: string;
   email: string;
   password: string;
   budget: number;
-  age: number;
   olderThan20: boolean;
-  allowNotifications: boolean;
-  city: any;
+  city: string;
   gender: string;
-
-  constructor(element: any) {
-    this.firstName = element?.firstName;
-    this.lastName = element?.lastName;
-    this.phoneNumber = element?.phoneNumber;
-    this.email = element?.email;
-    this.password = element?.password;
-    this.budget = element?.budget;
-    this.age = element?.age;
-    this.olderThan20 = element?.olderThan20;
-    this.allowNotifications = element?.allowNotifications;
-    this.city = element?.city;
-    this.gender = element?.gender;
-  }
+  birthDate: Date;
 }
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  imports: [ReactiveFormsModule, FormlyModule],
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
-  model = new FormModel({});
+export class AppComponent {
   form = new FormGroup({});
-  fields: FormlyFieldConfig[] = [];
-  labelObs$ = new BehaviorSubject('Label');
+  model: Partial<FormModel> = {};
+  fields = this.buildFields();
 
-  ngOnInit() {
-    this.initForm();
-    from(['Label 1', 'Label 2', 'Label 3'])
-      .pipe(concatMap((item) => of(item).pipe(delay(1000))))
-      .subscribe((item) => this.labelObs$.next(item));
-  }
-
-  initForm() {
+  private buildFields(): FormlyFieldConfig[] {
     const fb = new NzFormlyFieldBuilder<FormModel>();
-    this.fields = [
+    return [
       fb.input('firstName', {
-        className: 'px-2',
         props: {
+          label: 'First name',
           labelPosition: 'float',
           required: true,
           minLen: 3,
-          showError: false,
-          labelObs: this.labelObs$,
-          focus: () => console.log('input focused'),
-          blur: () => console.log('input blurred'),
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          }
+          change: (field, value) => console.log('changed:', value)
         },
-        validators: {
-          validation: ['minLen']
-        }
-      }),
-      fb.input('lastName', {
-        className: 'px-2',
-        props: {
-          required: true,
-          maxLen: 10,
-          labelPosition: 'top',
-          label: 'Last Name',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          }
-        },
-        validators: {
-          validation: ['maxLen']
-        }
+        validators: { validation: ['minLen'] }
       }),
       fb.input('phoneNumber', {
-        className: 'px-2',
-        props: {
-          label: 'Phone No',
-          mask: 'phone',
-          nzPlaceholder: 'e.x. 9127403028',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          }
-        }
+        props: { label: 'Phone No', mask: 'phone', nzPlaceholder: 'e.g. 9127403028' }
       }),
       fb.input('email', {
-        className: 'px-2',
-        props: {
-          required: true,
-          label: 'Email address',
-          nzPlaceholder: 'e.x. sajjad@gmail.com',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          },
-          change: (field, event) => console.log('input changed to:', event)
-        },
-        validators: {
-          validation: ['email']
-        }
+        props: { label: 'Email', required: true },
+        validators: { validation: ['email'] }
       }),
       fb.input('password', {
-        className: 'px-2',
-        props: {
-          required: true,
-          type: 'password',
-          label: 'Password',
-          nzPlaceholder: 'use complex one',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          }
-        },
-        validators: {
-          validation: ['password']
-        }
+        props: { label: 'Password', required: true, type: 'password' },
+        validators: { validation: ['password'] }
       }),
       fb.input('budget', {
-        className: 'px-2',
         props: {
-          nzPrefix: '$',
           label: 'Budget',
+          nzPrefix: '$',
           mask: 'separator.2',
-          thousandSeparator: ',',
-          nzAddOnBeforeIcon: 'wallet',
-          nzPlaceholder: 'e.x. 2000',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          },
-          change: (field, event) => console.log('number changed to:', event),
-          focus: () => console.log('number focused'),
-          blur: () => console.log('number blurred')
-        },
-        validators: {
-          custom: {
-            expression: (control: FormControl) => control.value > 2500,
-            message: 'Your budget is less than expected budget'
-          }
+          thousandSeparator: ','
         }
       }),
-      fb.checkbox('olderThan20', {
-        className: 'px-2 mb-4',
-        props: {
-          label: 'I am older that 20',
-          change: (field, event) => console.log('checkbox changed to:', event)
-        }
-      }),
-      fb.input('age', {
-        className: 'px-2',
-        props: {
-          minValue: 20,
-          maxValue: 100,
-          label: 'Age',
-          nzPlaceholder: 'enter your age',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          }
-        },
-        expressionProperties: {
-          'props.disabled': (model) => !model.olderThan20
-        },
-        validators: {
-          validation: ['minValue', 'maxValue']
-        }
-      }),
-      fb.switch('allowNotifications', {
-        className: 'px-2',
-        props: {
-          nzCheckedChildren: '1',
-          nzUnCheckedChildren: '0',
-          label: 'Allow notifications',
-          styles: {
-            labelWidth: 'auto',
-            wrapperClass: 'mb-4'
-          },
-          change: (field, event) => console.log('switch changed to:', event)
-        },
-        expressionProperties: {
-          'props.hidden': (model) => !model.olderThan20
-        }
-      }),
+      fb.checkbox('olderThan20', { props: { label: 'I am older than 20' } }),
       fb.select('city', {
-        className: 'px-2',
         props: {
-          objectValue: false,
           label: 'City',
           nzAllowClear: true,
           nzShowSearch: true,
-          nzPlaceholder: 'select your city',
-          styles: {
-            labelWidth: '110px',
-            wrapperClass: 'mb-4'
-          },
-          nzOptionOverflowSize: 4,
           nzOptions: [
-            {
-              label: 'Zanjan',
-              value: 'Znj',
-              nzCustomContent: `<strong>Zanjan</strong>`
-            },
-            {
-              label: 'Tehran',
-              value: 'Teh',
-              nzCustomContent: `<i>Tehran</i>`
-            },
-            { label: 'Isfahan', value: 'Isf' },
-            { label: 'Shiraz', value: 'Shi' },
-            { label: 'Gilan', value: 'Gil' }
-          ],
-          nzFilterOption: (input?: string, option?: NzOptionComponent) => {
-            return option?.nzLabel?.toString().includes(input || '') || false;
-          },
-          compareWith: (o1: any, o2: any): boolean => o1 == o2,
-          nzOpenChange: (event) => console.log('selection open status:', event),
-          nzScrollToBottom: () => console.log('scroll'),
-          nzOnSearch: (event) => console.log('search', event),
-          change: (field, event) => console.log('selection changed to:', event)
+            { label: 'Zanjan', value: 'Znj' },
+            { label: 'Tehran', value: 'Teh' },
+            { label: 'Shiraz', value: 'Shi' }
+          ]
         },
-        expressionProperties: {
-          'props.disabled': (model) => !model.olderThan20
-        }
+        // Formly expressions still work as usual
+        expressions: { 'props.disabled': (field) => !field.model.olderThan20 }
       }),
       fb.radio('gender', {
-        className: 'px-2',
         props: {
           label: 'Gender',
           nzType: 'nz-radio-button',
-          styles: {
-            labelWidth: '110px'
-          },
-          nzOptions: [
-            {
-              label: 'Male',
-              value: 'Male'
-            },
-            {
-              label: 'Female',
-              value: 'Female'
-            },
-            {
-              label: 'None',
-              value: null
-            }
-          ],
           nzButtonStyle: 'solid',
-          change: (field, event) => console.log('Radio changed to:', event)
+          nzOptions: [
+            { label: 'Male', value: 'Male' },
+            { label: 'Female', value: 'Female' }
+          ]
         }
       }),
+      fb.datePicker('birthDate', { props: { label: 'Birth date' } }),
       fb.button({
-        className: 'd-flex',
         props: {
-          text: 'Reset',
+          text: 'Submit',
           nzType: 'primary',
-          nzLoading: false,
-          nzDanger: false,
           nzBlock: true,
-          click: () => console.log('clicked')
+          click: () => console.log(this.model)
         }
       })
     ];
   }
+}
+```
 
-  onSubmit() {
-    // Object.keys(this.form.controls).forEach(key => {
-    //   console.log(key, this.form.get(key)?.errors);
-    // });
-    // console.log(this.model);
+### Validators
+
+Built-in validators you can list in `validators.validation`: `required`,
+`minLen`, `maxLen`, `minValue`, `maxValue`, `email`, `password`. The matching
+`min*`/`max*` bounds are passed via the field `props` (e.g. `minLen: 3`). You can
+still add your own Formly `validators`/`expressions` alongside them.
+
+## Jalali (Persian) calendar
+
+The `datePicker` type can render a Jalali calendar while still emitting a normal
+(Gregorian) `Date` to your form model. Enable it in two steps.
+
+**1. Add the providers.** `provideNzFormlyJalali()` supplies Persian UI text
+(`fa_IR`), a Jalali date-fns locale, and aligns ng-zorro's date internals so the
+emitted value stays correct. It also makes the picker render right-to-left.
+
+```ts
+import { provideNgxNzFormly, provideNzFormlyJalali } from 'ngx-nz-formly';
+
+providers: [
+  provideNgxNzFormly(),
+  provideNzFormlyJalali()
+  // note: omit the { provide: NZ_I18N, useValue: en_US } line — Jalali sets fa_IR
+];
+```
+
+**2. Switch ng-zorro's calendar arithmetic to Jalali.** ng-zorro computes dates
+from the functions it imports from `date-fns`; that can't be swapped via DI, so
+you replace the `date-fns` package with `date-fns-jalali` through a package
+override in your app's `package.json`:
+
+```jsonc
+{
+  "overrides": {
+    // npm
+    "date-fns": "npm:date-fns-jalali@2.30.0-0"
+  },
+  "resolutions": {
+    // yarn
+    "date-fns": "npm:date-fns-jalali@2.30.0-0"
   }
 }
 ```
 
+Then install `date-fns-jalali` and reinstall from a clean slate:
+
+```bash
+npm install date-fns-jalali@2.30.0-0
+rm -rf node_modules package-lock.json && npm install
+```
+
+> **Why a clean install?** `date-fns-jalali@2.30.0-0` is a prerelease and does
+> not satisfy ng-zorro's `date-fns` semver range, so npm can silently skip the
+> override on an incremental install. A clean install forces it to take effect.
+> Verify with `npm ls date-fns` (it should resolve to `date-fns-jalali`). A
+> tsconfig `paths` alias does **not** work — the build system won't rewrite
+> imports inside already-compiled `node_modules`.
+
+With both in place the calendar shows Persian months/weekdays right-to-left, and
+picking a date emits the correct Gregorian `Date` (e.g. Tir 15 1405 →
+`2026-07-06`).
+
 ## Appreciate
 
-At last, I want to thank every one of you who supports and use the provided library. Be sure that there are lots of more
-features coming up. So please share your feedbacks and comments with me. I will be so happy of getting more of them.
+Thanks to everyone who supports and uses this library. Feedback and
+contributions are very welcome.
