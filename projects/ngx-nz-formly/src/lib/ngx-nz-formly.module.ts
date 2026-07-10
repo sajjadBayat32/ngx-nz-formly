@@ -6,11 +6,10 @@ import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
-import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { NzSelectModule } from "ng-zorro-antd/select";
 import { NzRadioModule } from "ng-zorro-antd/radio";
 import { CommonModule } from "@angular/common";
-import { NgxMaskModule } from "ngx-mask";
+import { NgxMaskDirective } from "ngx-mask";
 import { NzSliderModule } from "ng-zorro-antd/slider";
 import { NzFormlyFieldBuilder } from "./ngx-nz-formly-type-safe.model";
 import { NzUploadModule } from "ng-zorro-antd/upload";
@@ -51,13 +50,12 @@ import {
     CommonModule,
     FormlyModule,
     ReactiveFormsModule,
-    NgxMaskModule,
+    NgxMaskDirective,
     NzInputModule,
     NzButtonModule,
     NzIconModule,
     NzCheckboxModule,
     NzSwitchModule,
-    NzInputNumberModule,
     NzSelectModule,
     NzRadioModule,
     NzSliderModule,

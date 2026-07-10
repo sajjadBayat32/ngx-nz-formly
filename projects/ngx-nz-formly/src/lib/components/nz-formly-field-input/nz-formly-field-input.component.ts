@@ -11,8 +11,9 @@ const DefaultPhoneMask: CountryCodeMask = {
 };
 
 @Component({
-  selector: "app-nz-formly-field-input",
-  templateUrl: "./nz-formly-field-input.component.html",
+    selector: "app-nz-formly-field-input",
+    templateUrl: "./nz-formly-field-input.component.html",
+    standalone: false
 })
 export class NzFormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<NzFormlyInputProps>>

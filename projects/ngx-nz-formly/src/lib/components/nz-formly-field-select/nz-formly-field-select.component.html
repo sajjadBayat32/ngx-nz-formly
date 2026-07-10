@@ -5,7 +5,7 @@
   [compareWith]="props.compareWith"
   [nzAutoClearSearchValue]="props.nzAutoClearSearchValue"
   [nzAllowClear]="props.nzAllowClear"
-  [nzBorderless]="props.nzBorderless"
+  [nzVariant]="props.nzBorderless ? 'borderless' : 'outlined'"
   [nzOpen]="props.nzOpen"
   [nzAutoFocus]="props.nzAutoFocus"
   [nzDisabled]="props.nzDisabled"
@@ -37,17 +37,18 @@
   (nzOpenChange)="props?.nzOpenChange($event)"
   (nzScrollToBottom)="props?.nzScrollToBottom()"
   (nzOnSearch)="props?.nzOnSearch($event)"
->
-  <nz-option
-    *ngFor="let option of props.nzOptions || (props.nzOptionsObs | async)"
-    [nzDisabled]="option.disabled"
-    [nzLabel]="option.label"
-    [nzValue]="props.objectValue ? option : option.value"
-    [nzHide]="option.hide"
-    [nzCustomContent]="!!option.nzCustomContent"
   >
-    <div [innerHTML]="option.nzCustomContent"></div>
-  </nz-option>
+  @for (option of props.nzOptions || (props.nzOptionsObs | async); track option) {
+    <nz-option
+      [nzDisabled]="option.disabled"
+      [nzLabel]="option.label"
+      [nzValue]="props.objectValue ? option : option.value"
+      [nzHide]="option.hide"
+      [nzCustomContent]="!!option.nzCustomContent"
+      >
+      <div [innerHTML]="option.nzCustomContent"></div>
+    </nz-option>
+  }
 </nz-select>
 
 

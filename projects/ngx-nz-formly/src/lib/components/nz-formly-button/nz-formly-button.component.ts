@@ -3,9 +3,10 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
 import { NzFormlyButtonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
-  selector: "app-nz-formly-button",
-  templateUrl: "./nz-formly-button.component.html",
-  styleUrls: [],
+    selector: "app-nz-formly-button",
+    templateUrl: "./nz-formly-button.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class NzFormlyButtonComponent extends FieldType<
   FormlyFieldConfig<NzFormlyButtonProps>

@@ -125,6 +125,7 @@ export const NzFormlyForRoot: ConfigOption = {
           nzServerSearch: false,
           nzMaxMultipleCount: Infinity,
           nzMode: "default",
+          nzPlacement: "bottomLeft",
           nzNotFoundContent: "Not Found",
           nzShowSearch: false,
           nzSize: "default",

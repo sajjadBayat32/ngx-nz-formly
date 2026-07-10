@@ -4,9 +4,10 @@ import { NzFormlySwitchProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-nz-formly-field-switch",
-  templateUrl: "./nz-formly-field-switch.component.html",
-  styleUrls: [],
+    selector: "app-nz-formly-field-switch",
+    templateUrl: "./nz-formly-field-switch.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class NzFormlyFieldSwitchComponent
   extends FieldType<FieldTypeConfig<NzFormlySwitchProps>>

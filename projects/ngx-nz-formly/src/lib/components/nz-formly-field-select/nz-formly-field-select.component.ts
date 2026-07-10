@@ -4,8 +4,9 @@ import { NzFormlySelectProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-nz-formly-field-select",
-  templateUrl: "./nz-formly-field-select.component.html",
+    selector: "app-nz-formly-field-select",
+    templateUrl: "./nz-formly-field-select.component.html",
+    standalone: false
 })
 export class NzFormlyFieldSelectComponent
   extends FieldType<FieldTypeConfig<NzFormlySelectProps>>

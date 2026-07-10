@@ -4,9 +4,10 @@ import { NzFormlyTextareaProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-nz-formly-field-textarea",
-  templateUrl: "./nz-formly-field-textarea.component.html",
-  styleUrls: [],
+    selector: "app-nz-formly-field-textarea",
+    templateUrl: "./nz-formly-field-textarea.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class NzFormlyFieldTextareaComponent
   extends FieldType<FieldTypeConfig<NzFormlyTextareaProps>>

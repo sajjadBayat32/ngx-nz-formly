@@ -4,9 +4,10 @@ import { NzFormlySliderProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-nz-formly-field-slider",
-  templateUrl: "./nz-formly-field-slider.component.html",
-  styleUrls: [],
+    selector: "app-nz-formly-field-slider",
+    templateUrl: "./nz-formly-field-slider.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class NzFormlyFieldSliderComponent
   extends FieldType<FieldTypeConfig<NzFormlySliderProps>>

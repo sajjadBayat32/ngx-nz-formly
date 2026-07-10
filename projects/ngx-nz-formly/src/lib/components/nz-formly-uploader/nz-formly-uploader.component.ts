@@ -4,8 +4,9 @@ import { NzFormlyUploaderProps } from "../../ngx-nz-formly-props.model";
 import { NzUploadChangeParam } from "ng-zorro-antd/upload";
 
 @Component({
-  selector: "app-nz-formly-uploader",
-  templateUrl: "./nz-formly-uploader.component.html",
+    selector: "app-nz-formly-uploader",
+    templateUrl: "./nz-formly-uploader.component.html",
+    standalone: false
 })
 export class NzFormlyUploaderComponent extends FieldType<
   FieldTypeConfig<NzFormlyUploaderProps>

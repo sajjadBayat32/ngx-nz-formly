@@ -1,14 +1,18 @@
-import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
+import { FormlyFieldConfig } from "@ngx-formly/core";
 import { EventEmitter, TemplateRef } from "@angular/core";
 import {
+  NzPlacement,
   NzSafeAny,
   NzSizeDSType,
   NzSizeLDSType,
   NzStatus,
 } from "ng-zorro-antd/core/types";
 import { Observable, Subscription } from "rxjs";
-import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
-import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
+import {
+  NzOptionComponent,
+  NzSelectModeType,
+  NzSelectPlacementType,
+} from "ng-zorro-antd/select";
 import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
 import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
 import { NzMarks, NzSliderShowTooltip } from "ng-zorro-antd/slider";
@@ -18,7 +22,8 @@ import {
   NzUploadXHRArgs,
 } from "ng-zorro-antd/upload";
 import { NzDateMode, NzDatePickerSizeType } from "ng-zorro-antd/date-picker";
-import { NzPlacement } from "ng-zorro-antd/date-picker/date-picker.component";
+
+type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
 
 enum InputMask {
   PHONE = "phone",

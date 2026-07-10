@@ -3,8 +3,9 @@ import { FieldTypeConfig, FieldWrapper } from "@ngx-formly/core";
 import { NzFormlyCommonProps } from "../../ngx-nz-formly-props.model";
 
 @Component({
-  selector: "app-nz-formly-label-wrapper",
-  templateUrl: "./nz-formly-label-wrapper.component.html",
+    selector: "app-nz-formly-label-wrapper",
+    templateUrl: "./nz-formly-label-wrapper.component.html",
+    standalone: false
 })
 export class NzFormlyLabelWrapperComponent extends FieldWrapper<
   FieldTypeConfig<NzFormlyCommonProps>

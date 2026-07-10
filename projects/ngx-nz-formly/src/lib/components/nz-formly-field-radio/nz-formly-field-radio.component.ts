@@ -4,9 +4,10 @@ import { NzFormlyRadioProps } from "../../ngx-nz-formly-props.model";
 import { Subject, takeUntil, tap } from "rxjs";
 
 @Component({
-  selector: "app-nz-formly-field-radio",
-  templateUrl: "./nz-formly-field-radio.component.html",
-  styleUrls: [],
+    selector: "app-nz-formly-field-radio",
+    templateUrl: "./nz-formly-field-radio.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class NzFormlyFieldRadioComponent
   extends FieldType<FieldTypeConfig<NzFormlyRadioProps>>
