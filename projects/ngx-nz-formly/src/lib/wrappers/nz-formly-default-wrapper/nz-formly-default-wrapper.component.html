@@ -1,15 +1,21 @@
-<div
-*ngIf="!props.nzHidden"
-[id]="'wrapper-' + field.key"
-[classList]="props.styles?.wrapperClass ?? ' ' + 'nz-formly-default-wrapper'"
->
-  <ng-container #fieldComponent></ng-container>
+@if (!props.nzHidden) {
   <div
-    *ngIf="props.showError"
-    class="nz-formly-error-message"
-    [ngClass]="{'nz-formly-error-message-visible': formControl.touched && formControl.invalid}"
-    [style.margin-inline-start]="props.labelPosition === 'inline' ? props.styles?.labelWidth ?? '0' : '0'"
+    [id]="'wrapper-' + field.key"
+    [classList]="props.styles?.wrapperClass ?? ' ' + 'nz-formly-default-wrapper'"
   >
-    <formly-validation-message [field]="field"></formly-validation-message>
+    <ng-container #fieldComponent></ng-container>
+    @if (props.showError) {
+      <div
+        class="nz-formly-error-message"
+        [ngClass]="{
+          'nz-formly-error-message-visible': formControl.touched && formControl.invalid
+        }"
+        [style.margin-inline-start]="
+          props.labelPosition === 'inline' ? (props.styles?.labelWidth ?? '0') : '0'
+        "
+      >
+        <formly-validation-message [field]="field"></formly-validation-message>
+      </div>
+    }
   </div>
-</div>
+}

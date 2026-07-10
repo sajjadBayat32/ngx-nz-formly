@@ -1,4 +1,4 @@
-@if(props.labelPosition === 'top') {
+@if (props.labelPosition === 'top') {
   <div class="nz-formly-label-top">
     <ng-container *ngTemplateOutlet="Label"></ng-container>
     <ng-container #fieldComponent></ng-container>
@@ -16,23 +16,25 @@
   </div>
 } @else if (props.labelPosition === 'float') {
   <div
-  class="nz-formly-label-float"
-  [class.fixed]="formControl.value !== null && formControl.value !== undefined && formControl.value !== ''"
->
-  <ng-container #fieldComponent></ng-container>
-  <ng-container *ngTemplateOutlet="Label"></ng-container>
-</div>
+    class="nz-formly-label-float"
+    [class.fixed]="
+      formControl.value !== null && formControl.value !== undefined && formControl.value !== ''
+    "
+  >
+    <ng-container #fieldComponent></ng-container>
+    <ng-container *ngTemplateOutlet="Label"></ng-container>
+  </div>
 } @else {
   <ng-container #fieldComponent></ng-container>
 }
 
 <ng-template #Label>
-  <label
-    class="nz-formly-label"
-    [ngClass]="props.styles?.labelClass"
-    *ngIf="props.label || (props.labelObs | async)"
-  >
-    <span [innerHTML]="props.label || (props.labelObs | async)"></span>
-    <span class="nz-formly-label-required" *ngIf="props.required">*</span>
-  </label>
+  @if (props.label || (props.labelObs | async)) {
+    <label class="nz-formly-label" [ngClass]="props.styles?.labelClass">
+      <span [innerHTML]="props.label || (props.labelObs | async)"></span>
+      @if (props.required) {
+        <span class="nz-formly-label-required">*</span>
+      }
+    </label>
+  }
 </ng-template>

@@ -20,17 +20,19 @@
     [attr.disabled]="props.nzDisabled"
     [readonly]="props.nzReadonly"
     [placeholder]="props.nzPlaceholder"
-    [nzBorderless]="props.nzBorderless"
+    [nzVariant]="props.nzBorderless ? 'borderless' : 'outlined'"
   />
-  <div class="nz-formly-show-password" *ngIf="props.type === 'password'">
-    <span
-      nz-icon
-      nzTheme="outline"
-      role="button"
-      tabindex="0"
-      (click)="changeShowPassword(input)"
-      (keyup.enter)="changeShowPassword(input)"
-      [nzType]="showPassword(input) ? 'eye-invisible' : 'eye'"
-    ></span>
-  </div>
+  @if (props.type === 'password') {
+    <div class="nz-formly-show-password">
+      <span
+        nz-icon
+        nzTheme="outline"
+        role="button"
+        tabindex="0"
+        (click)="changeShowPassword(input)"
+        (keyup.enter)="changeShowPassword(input)"
+        [nzType]="showPassword(input) ? 'eye-invisible' : 'eye'"
+      ></span>
+    </div>
+  }
 </nz-input-group>

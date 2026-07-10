@@ -1,27 +1,24 @@
-import { FormlyAttributeEvent } from "@ngx-formly/core/lib/models/fieldconfig";
-import { EventEmitter, TemplateRef } from "@angular/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { EventEmitter, TemplateRef } from '@angular/core';
 import {
+  NzPlacement,
   NzSafeAny,
   NzSizeDSType,
   NzSizeLDSType,
-  NzStatus,
-} from "ng-zorro-antd/core/types";
-import { Observable, Subscription } from "rxjs";
-import { NzOptionComponent, NzSelectPlacementType } from "ng-zorro-antd/select";
-import { NzSelectModeType } from "ng-zorro-antd/select/select.types";
-import { NzButtonShape, NzButtonType } from "ng-zorro-antd/button";
-import { NzRadioButtonStyle } from "ng-zorro-antd/radio";
-import { NzMarks, NzSliderShowTooltip } from "ng-zorro-antd/slider";
-import {
-  NzUploadChangeParam,
-  NzUploadFile,
-  NzUploadXHRArgs,
-} from "ng-zorro-antd/upload";
-import { NzDateMode, NzDatePickerSizeType } from "ng-zorro-antd/date-picker";
-import { NzPlacement } from "ng-zorro-antd/date-picker/date-picker.component";
+  NzStatus
+} from 'ng-zorro-antd/core/types';
+import { Observable, Subscription } from 'rxjs';
+import { NzOptionComponent, NzSelectModeType, NzSelectPlacementType } from 'ng-zorro-antd/select';
+import { NzButtonShape, NzButtonType } from 'ng-zorro-antd/button';
+import { NzRadioButtonStyle } from 'ng-zorro-antd/radio';
+import { NzMarks, NzSliderShowTooltip } from 'ng-zorro-antd/slider';
+import { NzUploadChangeParam, NzUploadFile, NzUploadXHRArgs } from 'ng-zorro-antd/upload';
+import { NzDateMode, NzDatePickerSizeType } from 'ng-zorro-antd/date-picker';
+
+type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
 
 enum InputMask {
-  PHONE = "phone",
+  PHONE = 'phone'
 }
 
 export interface NzFormlyCommonProps {
@@ -31,7 +28,7 @@ export interface NzFormlyCommonProps {
   nzReadonly?: boolean;
   label?: string;
   labelObs?: Observable<string>;
-  labelPosition?: "inline" | "top" | "float";
+  labelPosition?: 'inline' | 'top' | 'float';
   required?: boolean;
   showError?: boolean;
   keyup?: FormlyAttributeEvent;
@@ -96,7 +93,7 @@ export interface NzFormlyRadioProps extends NzFormlyCommonProps {
   nzOptions: NzRadioOptionType[];
   nzName?: string;
   nzSize?: NzSizeDSType;
-  nzType?: "nz-radio" | "nz-radio-button";
+  nzType?: 'nz-radio' | 'nz-radio-button';
   nzButtonStyle?: NzRadioButtonStyle;
 }
 
@@ -212,10 +209,7 @@ export interface NzFormlyDatePickerCommonProps extends NzFormlyCommonProps {
   nzLocale?: object;
   nzMode?: NzDateMode;
   nzPopupStyle?: object;
-  nzRenderExtraFooter?:
-    | TemplateRef<any>
-    | string
-    | (() => TemplateRef<any> | string);
+  nzRenderExtraFooter?: TemplateRef<any> | string | (() => TemplateRef<any> | string);
   nzSize?: NzDatePickerSizeType;
   nzStatus?: NzStatus;
   nzPlacement?: NzPlacement;
@@ -226,10 +220,7 @@ export interface NzFormlyDatePickerCommonProps extends NzFormlyCommonProps {
 }
 
 export interface NzFormlyDatePickerProps extends NzFormlyDatePickerCommonProps {
-  nzDateRender?:
-    | TemplateRef<Date>
-    | string
-    | ((d: Date) => TemplateRef<Date> | string);
+  nzDateRender?: TemplateRef<Date> | string | ((d: Date) => TemplateRef<Date> | string);
   nzDisabledTime?: (current: Date) => {
     nzDisabledHours: any;
     nzDisabledMinutes: any;
@@ -242,15 +233,14 @@ export interface NzFormlyDatePickerProps extends NzFormlyDatePickerCommonProps {
   nzOnOk?: EventEmitter<Date>;
 }
 
-export interface NzFormlyRangePickerProps
-  extends NzFormlyDatePickerCommonProps {
+export interface NzFormlyRangePickerProps extends NzFormlyDatePickerCommonProps {
   nzRanges: { [key: string]: Date[] } | { [key: string]: () => Date[] };
   nzSeparator: string | TemplateRef<any>;
   nzOnCalendarChange: EventEmitter<Date[]>;
   nzShowTime: object | boolean;
   nzDisabledTime: (
     current: Date,
-    partial: "start" | "end",
+    partial: 'start' | 'end'
   ) => {
     nzDisabledHours: any;
     nzDisabledMinutes: any;

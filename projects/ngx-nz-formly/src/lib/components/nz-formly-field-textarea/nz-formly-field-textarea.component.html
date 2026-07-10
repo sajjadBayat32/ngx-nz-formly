@@ -8,7 +8,7 @@
   [readonly]="props.nzReadonly"
   [placeholder]="props.nzPlaceholder"
   [rows]="props.rows"
-  [nzBorderless]="props.nzBorderless"
+  [nzVariant]="props.nzBorderless ? 'borderless' : 'outlined'"
 ></textarea>
 @if (props.showTextAreaCount) {
   <div class="d-block mt-1 opacity-50">

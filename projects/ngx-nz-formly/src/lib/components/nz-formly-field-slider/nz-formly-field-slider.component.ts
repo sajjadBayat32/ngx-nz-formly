@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlySliderProps } from "../../ngx-nz-formly-props.model";
-import { Subject, takeUntil, tap } from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { NzFormlySliderProps } from '../../ngx-nz-formly-props.model';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
-  selector: "app-nz-formly-field-slider",
-  templateUrl: "./nz-formly-field-slider.component.html",
+  selector: 'app-nz-formly-field-slider',
+  templateUrl: './nz-formly-field-slider.component.html',
   styleUrls: [],
+  standalone: false
 })
 export class NzFormlyFieldSliderComponent
   extends FieldType<FieldTypeConfig<NzFormlySliderProps>>
@@ -15,7 +16,7 @@ export class NzFormlyFieldSliderComponent
   unSubscribeAll$ = new Subject<void>();
 
   get fieldID() {
-    return "control-" + this.field.key;
+    return 'control-' + this.field.key;
   }
 
   ngOnInit() {
@@ -27,10 +28,10 @@ export class NzFormlyFieldSliderComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         tap((value: string) => {
-          if (typeof this.props?.change == "function") {
+          if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
           }
-        }),
+        })
       )
       .subscribe();
   }

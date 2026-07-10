@@ -1,18 +1,19 @@
-import { AfterViewInit, Component, OnDestroy } from "@angular/core";
-import { FieldType, FieldTypeConfig } from "@ngx-formly/core";
-import { NzFormlyInputProps } from "../../ngx-nz-formly-props.model";
-import { Subject, takeUntil, tap } from "rxjs";
-import { CountryCodeMask, CountryMasks2 } from "./phone-mask.config";
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { NzFormlyInputProps } from '../../ngx-nz-formly-props.model';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { CountryCodeMask, CountryMasks2 } from './phone-mask.config';
 
 const DefaultPhoneMask: CountryCodeMask = {
-  countryShortName: "IR",
-  prefix: "+98",
-  globalMask: "+00(000)000-0000",
+  countryShortName: 'IR',
+  prefix: '+98',
+  globalMask: '+00(000)000-0000'
 };
 
 @Component({
-  selector: "app-nz-formly-field-input",
-  templateUrl: "./nz-formly-field-input.component.html",
+  selector: 'app-nz-formly-field-input',
+  templateUrl: './nz-formly-field-input.component.html',
+  standalone: false
 })
 export class NzFormlyFieldInputComponent
   extends FieldType<FieldTypeConfig<NzFormlyInputProps>>
@@ -22,15 +23,15 @@ export class NzFormlyFieldInputComponent
   unSubscribeAll$ = new Subject<void>();
 
   get type() {
-    return this.props.type ?? "text";
+    return this.props.type ?? 'text';
   }
 
   get fieldID() {
-    return "control-" + this.field.key;
+    return 'control-' + this.field.key;
   }
 
   get status() {
-    return this.formControl.touched && this.formControl.invalid ? "error" : "";
+    return this.formControl.touched && this.formControl.invalid ? 'error' : '';
   }
 
   ngAfterViewInit() {
@@ -39,7 +40,7 @@ export class NzFormlyFieldInputComponent
   }
 
   createInitState() {
-    if (this.props.mask === "phone") {
+    if (this.props.mask === 'phone') {
       this.mask = DefaultPhoneMask.globalMask;
       this.handlePhoneMask();
     } else {
@@ -52,7 +53,7 @@ export class NzFormlyFieldInputComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         tap((value: string) => {
-          if (value == "") {
+          if (value == '') {
             // hint: without setTimeout we don't have Ctrl + A -> delete
             setTimeout(() => {
               this.mask = DefaultPhoneMask.globalMask;
@@ -60,10 +61,10 @@ export class NzFormlyFieldInputComponent
           } else {
             const mask = this.findAppropriateMask(value);
             if (mask && this.mask !== mask.globalMask) {
-              this.mask = mask.globalMask?.replace(/#|[1-9]/g, "0");
+              this.mask = mask.globalMask?.replace(/#|[1-9]/g, '0');
             }
           }
-        }),
+        })
       )
       .subscribe();
   }
@@ -73,18 +74,18 @@ export class NzFormlyFieldInputComponent
       .pipe(
         takeUntil(this.unSubscribeAll$),
         tap((value: string) => {
-          if (typeof this.props?.change == "function") {
+          if (typeof this.props?.change == 'function') {
             this.props.change(this.field, value);
           }
-        }),
+        })
       )
       .subscribe();
   }
 
   findAppropriateMask(value: string): CountryCodeMask | null {
-    const newMask = CountryMasks2.filter(item =>
-      this.exactEquality(value, item.prefix),
-    ).find(item => value.length <= item.globalMask.length);
+    const newMask = CountryMasks2.filter((item) => this.exactEquality(value, item.prefix)).find(
+      (item) => value.length <= item.globalMask.length
+    );
     if (newMask) return newMask;
     return null;
   }
@@ -92,21 +93,21 @@ export class NzFormlyFieldInputComponent
   exactEquality(str: string, prefix: string): boolean {
     // hint: replace function removes all characters except numbers to return clean numeric string
     // hint: index of convince us to match prefix on first index of input value
-    const new_str = str.replace(/[^0-9.]/g, "");
-    const new_prefix = prefix.replace(/[^0-9.]/g, "");
+    const new_str = str.replace(/[^0-9.]/g, '');
+    const new_prefix = prefix.replace(/[^0-9.]/g, '');
     return new_str.indexOf(new_prefix) == 0;
   }
 
   changeShowPassword(input: any) {
-    if (input.type === "password") {
-      input.type = "text";
+    if (input.type === 'password') {
+      input.type = 'text';
     } else {
-      input.type = "password";
+      input.type = 'password';
     }
   }
 
   showPassword(input: any): boolean {
-    return input.type === "text";
+    return input.type === 'text';
   }
 
   ngOnDestroy() {
