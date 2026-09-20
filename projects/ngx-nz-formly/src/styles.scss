@@ -59,6 +59,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .nz-formly-label-required {
@@ -93,7 +94,6 @@
   font-weight: 600;
   min-height: 30px;
   width: fit-content;
-  align-items: center;
 }
 
 .nz-formly-show-password {

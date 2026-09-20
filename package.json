@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve demo",
-    "build": "ng build ngx-nz-formly",
+    "build": "ng build ngx-nz-formly && npm run build:styles",
+    "build:styles": "sass projects/ngx-nz-formly/src/styles.scss dist/ngx-nz-formly/ngx-nz-formly.min.css --style=compressed --no-source-map",
     "build:demo": "ng build demo",
     "watch": "ng build ngx-nz-formly --watch --configuration development",
     "test": "jest --passWithNoTests",
@@ -51,6 +52,7 @@
     "jest-environment-jsdom": "^30.4.1",
     "jest-preset-angular": "^17.0.0",
     "ng-packagr": "^21.2.5",
+    "sass": "^1.97.3",
     "ts-node": "^10.9.0",
     "typescript": "~5.9.0"
   }
