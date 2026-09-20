@@ -8,7 +8,7 @@
       <div
         class="nz-formly-error-message"
         [ngClass]="{
-          'nz-formly-error-message-visible': formControl.touched && formControl.invalid
+          'nz-formly-error-message-visible': formControl.dirty && formControl.invalid
         }"
         [style.margin-inline-start]="
           props.labelPosition === 'inline' ? (props.styles?.labelWidth ?? '0') : '0'

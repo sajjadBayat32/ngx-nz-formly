@@ -33,7 +33,10 @@ Import ng-zorro's stylesheet in `angular.json`:
 
 ```json
 {
-  "styles": ["node_modules/ng-zorro-antd/ng-zorro-antd.min.css"]
+  "styles": [
+    "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+    "node_modules/ngx-nz-formly/ngx-nz-formly.min.css"
+  ]
 }
 ```
 

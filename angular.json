@@ -62,6 +62,7 @@
             "assets": ["projects/demo/src/assets"],
             "styles": [
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "projects/ngx-nz-formly/src/styles.scss",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
